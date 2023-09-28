@@ -8,6 +8,8 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './login/login.component';
 import { AdminEditComponent } from './admin-edit/admin-edit.component';
 import { EventPageComponent } from './event-page/event-page.component';
+import { EventDetailComponent } from './shared/components/event-detail/event-detail.component';
+import { PopUpComponent } from './shared/components/pop-up/pop-up.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { EventPageComponent } from './event-page/event-page.component';
     HomepageComponent,
     LoginComponent,
     AdminEditComponent,
-    EventPageComponent
+    EventPageComponent,
+    EventDetailComponent,
+    PopUpComponent
   ],
   imports: [
     BrowserModule
