@@ -10,6 +10,7 @@ import { AdminEditComponent } from './admin-edit/admin-edit.component';
 import { EventPageComponent } from './event-page/event-page.component';
 import { EventDetailComponent } from './shared/components/event-detail/event-detail.component';
 import { PopUpComponent } from './shared/components/pop-up/pop-up.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PopUpComponent } from './shared/components/pop-up/pop-up.component';
     PopUpComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
