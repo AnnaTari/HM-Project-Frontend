@@ -1,0 +1,73 @@
+/*Box with the login window*/
+.login-box {
+  width: 50%;
+  margin: 50px auto 50px auto;
+  height: 587px;
+  border: 1px #4F4343 solid;
+  border-radius: 15px;
+}
+
+.title-box{
+  height: 13%;
+  width: 95%;
+  margin: auto;
+  border-bottom: 1px #4F4343 solid;
+}
+
+.title-box > h1 {
+  color: #005E52;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 60px;
+}
+
+/*Box, where the data is typed in*/
+.grid-container {
+  padding-top: 3%;
+  height: 55%;
+  display: grid;
+  grid-template-columns: 33% 66%;
+}
+
+.grid-container > div {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+
+.grid-container p {
+  color: #A3A1A1;
+  font-size: 28px;
+}
+
+.input-box{
+  margin-top: 3%;
+  width: 530px;
+  height: 66px;
+  background: #F8F8F8;
+  border-radius: 5px;
+  border: 1px #AAAAAA solid;
+}
+
+/*Box with the send button*/
+.send-box{
+  height: 27%;
+  text-align: center;
+}
+
+button.send-button {
+  cursor: pointer;
+  width: 274px;
+  height: 65px;
+  background: #00A075;
+  border-radius: 5%;
+  border: none;
+  margin-top: 10px;
+}
+
+p.button-text{
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  line-height: 0;
+}
