@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
+import {UserService} from "../shared/services/user.service";
+import {UserModel} from "../shared/user.model";
 
 @Component({
   selector: 'app-login',
@@ -8,11 +10,19 @@ import {FormControl, FormGroup} from "@angular/forms";
 })
 export class LoginComponent {
   loginForm = new FormGroup({
-    username: new FormControl(''),
+    email: new FormControl(''),
     password: new FormControl('')
   })
 
-  onSubmit() {
+  constructor(private userService: UserService) {
+  }
 
+  onSubmit() {
+    let user= {
+      id : null,
+      email:this.loginForm.value.email,
+      password: this.loginForm.value.password
+    }
+    this.userService.save(<UserModel>user).subscribe();
   }
 }
