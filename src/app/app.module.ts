@@ -12,6 +12,8 @@ import { EventDetailComponent } from './shared/components/event-detail/event-det
 import { PopUpComponent } from './shared/components/pop-up/pop-up.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import {AppRoutingModule} from "./app-routing.module";
+import { EditEventComponent } from './admin-edit/edit-event/edit-event.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +25,14 @@ import {HttpClientModule} from "@angular/common/http";
     AdminEditComponent,
     EventPageComponent,
     EventDetailComponent,
-    PopUpComponent
+    PopUpComponent,
+    EditEventComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule //adds RoutingModule for use
   ],
   providers: [],
   bootstrap: [AppComponent]

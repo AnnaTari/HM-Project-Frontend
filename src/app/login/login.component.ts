@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {UserService} from "../shared/services/user.service";
 import {UserModel} from "../shared/models/user.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent {
     password: new FormControl('')
   })
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
   }
 
   onSubmit() {
@@ -23,6 +24,7 @@ export class LoginComponent {
       username: this.loginForm.value.username,
       password: this.loginForm.value.password
     }
-    this.userService.save(<UserModel>user);
+    this.userService.check(<UserModel>user);
+    this.router.navigate(['admin-edit']);
   }
 }
