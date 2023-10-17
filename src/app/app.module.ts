@@ -15,6 +15,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
 import { EditEventComponent } from './admin-edit/edit-event/edit-event.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTabsModule} from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    BrowserAnimationsModule //adds RoutingModule for use
+    BrowserAnimationsModule,
+    MatTabsModule,
+    //adds RoutingModule for use
   ],
   providers: [],
   bootstrap: [AppComponent]
