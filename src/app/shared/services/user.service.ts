@@ -1,24 +1,20 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {UserModel} from "../user.model";
+import {UserModel} from "../models/user.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  private endpoint = 'http://localhost:8080/findAllUsers';
 
-  private readonly usersUrl: string
-
-  constructor(private http: HttpClient) {
-    this.usersUrl = 'http://localhost:8080/users';
-  }
-
-  public findAll(): Observable<UserModel[]>{
-    return this.http.get<UserModel[]>(this.usersUrl);
+  constructor(private httpClient: HttpClient) {
   }
 
   public save(user: UserModel) {
-    return this.http.post<UserModel>(this.usersUrl, user);
+    let response = this.httpClient.get<UserModel>(this.endpoint);
+    response.subscribe((data)=>console.log(data));
   }
+
+
 }

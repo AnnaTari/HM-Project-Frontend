@@ -11,6 +11,7 @@ import { EventPageComponent } from './event-page/event-page.component';
 import { EventDetailComponent } from './shared/components/event-detail/event-detail.component';
 import { PopUpComponent } from './shared/components/pop-up/pop-up.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     PopUpComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     ReactiveFormsModule
   ],
