@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {UserModel} from "../models/user.model";
+import {UserModel} from "../shared/models/user.model";
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
-  private endpoint = 'http://localhost:8080/findAllUsers';
+export class UserApi {
+  private endpoint = '/api/users';
 
   constructor(private httpClient: HttpClient) {
   }

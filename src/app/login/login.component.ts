@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
-import {UserService} from "../shared/services/user.service";
+import {UserApi} from "../api/user.api";
 import {UserModel} from "../shared/models/user.model";
 import {Router} from "@angular/router";
 
@@ -15,7 +15,7 @@ export class LoginComponent {
     password: new FormControl('')
   })
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserApi, private router: Router) {
   }
 
   onSubmit() {
