@@ -14,6 +14,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
 import { EditEventComponent } from './admin-edit/edit-event/edit-event.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { EditEventComponent } from './admin-edit/edit-event/edit-event.component
     HttpClientModule,
     BrowserModule,
     ReactiveFormsModule,
-    AppRoutingModule //adds RoutingModule for use
+    AppRoutingModule,
+    BrowserAnimationsModule //adds RoutingModule for use
   ],
   providers: [],
   bootstrap: [AppComponent]
