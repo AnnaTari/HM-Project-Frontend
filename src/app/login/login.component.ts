@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {UserService} from "../shared/services/user.service";
-import {UserModel} from "../shared/user.model";
+import {UserModel} from "../shared/models/user.model";
 
 @Component({
   selector: 'app-login',
@@ -10,7 +10,7 @@ import {UserModel} from "../shared/user.model";
 })
 export class LoginComponent {
   loginForm = new FormGroup({
-    email: new FormControl(''),
+    username: new FormControl(''),
     password: new FormControl('')
   })
 
@@ -18,11 +18,11 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    let user= {
-      id : null,
-      email:this.loginForm.value.email,
+    let user = {
+      id: null,
+      username: this.loginForm.value.username,
       password: this.loginForm.value.password
     }
-    this.userService.save(<UserModel>user).subscribe();
+    this.userService.save(<UserModel>user);
   }
 }
