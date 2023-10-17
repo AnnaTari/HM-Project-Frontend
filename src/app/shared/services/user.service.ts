@@ -11,7 +11,7 @@ export class UserService {
   constructor(private httpClient: HttpClient) {
   }
 
-  public save(user: UserModel) {
+  public check(user: UserModel) {
     let response = this.httpClient.get<UserModel>(this.endpoint);
     response.subscribe((data)=>console.log(data));
   }
