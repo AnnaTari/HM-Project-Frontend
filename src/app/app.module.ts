@@ -16,6 +16,8 @@ import {AppRoutingModule} from "./app-routing.module";
 import { EditEventComponent } from './admin-edit/edit-event/edit-event.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTabsModule} from "@angular/material/tabs";
+import { EditOptionComponent } from './admin-edit/edit-option/edit-option.component';
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -28,17 +30,18 @@ import {MatTabsModule} from "@angular/material/tabs";
     EventPageComponent,
     EventDetailComponent,
     PopUpComponent,
-    EditEventComponent
+    EditEventComponent,
+    EditOptionComponent,
   ],
-  imports: [
-    HttpClientModule,
-    BrowserModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatTabsModule,
-    //adds RoutingModule for use
-  ],
+    imports: [
+        HttpClientModule,
+        BrowserModule,
+        ReactiveFormsModule,
+        AppRoutingModule, //adds RoutingModule for use
+        BrowserAnimationsModule,
+        MatTabsModule,
+        MatIconModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
