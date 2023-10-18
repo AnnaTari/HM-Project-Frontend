@@ -1,0 +1,14 @@
+/*Footer*/
+.footer {
+  height: 36px;
+  width: 100%;
+  background-color: rgba(0, 160, 117, 0.15);
+  padding: 10px;
+  text-align: center;
+}
+
+
+p {
+  color: #005E52;
+  font-family: 'Barlow', sans-serif;
+}

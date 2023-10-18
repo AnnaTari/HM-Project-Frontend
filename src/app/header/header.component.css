@@ -1,0 +1,45 @@
+.headerbar {
+  display: flex;
+  text-align: center; /*center horizontally*/
+  justify-content: space-between; /*buttons at margins*/
+  width: 100%;
+  background-color: rgba(0, 160, 117, 0.15);
+  height: 134px;
+}
+
+
+/*Buttons in header*/
+.events-button {
+  border: none;
+  border-radius: 5%;
+  padding: 20px 20px;
+  font-size: 24px;
+  background-color: rgba(0, 160, 117,0);
+  color: black;
+}
+
+.events-button:hover {
+  background-color: #005E52;
+  color: white;
+  cursor: pointer;
+}
+
+/*Logo*/
+.logo {
+  height: 134px;
+  max-width: 220px;
+  position: center;
+  margin: 20px auto;
+  border-radius: 5%;
+}
+
+/*centered*/
+.logo-box {
+  flex: 1;
+}
+
+.logo:hover {
+  cursor: pointer;
+}
+
+
