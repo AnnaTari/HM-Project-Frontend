@@ -27,6 +27,7 @@
   height: 55%;
   display: grid;
   grid-template-columns: 33% 66%;
+  margin-bottom: 5%;
 }
 
 .grid-container > div {
@@ -41,6 +42,7 @@
 }
 
 .input-box{
+  font-size: 24px;
   margin-top: 3%;
   width: 530px;
   height: 66px;

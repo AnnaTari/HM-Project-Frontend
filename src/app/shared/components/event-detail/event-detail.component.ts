@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {EventModel} from "../../models/event.model";
 
 @Component({
   selector: 'app-event-detail',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./event-detail.component.css']
 })
 export class EventDetailComponent {
+  @Input()
+  events: EventModel = {id: 0, title: ""};
 
 }

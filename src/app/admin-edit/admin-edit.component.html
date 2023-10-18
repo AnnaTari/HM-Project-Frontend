@@ -1,1 +1,26 @@
-<p>admin-edit works!</p>
+<div class="grid-container">
+  <!--placeholder-->
+  <div></div>
+  <!--list of events-->
+  <div>
+    <mat-tab-group mat-align-tabs="center">
+      <!--going through all actual events-->
+      <mat-tab label="Aktuelle Events">
+        <div class="event-list" *ngFor="let actualEvent of actualEvents">
+          <app-edit-option></app-edit-option>
+          <app-event-detail [events]=actualEvent></app-event-detail>
+        </div>
+      </mat-tab>
+      <!--going through all future events-->
+      <mat-tab label="Zukünftige Events">
+        <div class="event-list" *ngFor="let futureEvent of futureEvents">
+          <app-edit-option></app-edit-option>
+          <app-event-detail [events]=futureEvent></app-event-detail>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  <div>
+    <mat-icon>add_circle_outline</mat-icon>
+  </div>
+</div>
