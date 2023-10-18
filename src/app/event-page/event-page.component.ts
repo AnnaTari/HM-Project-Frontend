@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
+import {MatDialog} from "@angular/material/dialog";
+import {PopUpComponent} from "../shared/components/pop-up/pop-up.component";
+import {MatDialogService} from "../shared/services/mat-dialog.service";
 
 
 @Component({
@@ -14,7 +17,11 @@ export class EventPageComponent {
     escortname: new FormControl(``)
   })
 
-  onSubmit() {
 
+
+
+  constructor(private matDialogService: MatDialogService) {}
+  onSubmit() {
+    this.matDialogService.openDialogWithVariableText("Vielen Dank für die Teilnahme!")
   }
 }
