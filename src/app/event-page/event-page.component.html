@@ -41,14 +41,15 @@
   <div>
     <input class="input-box" type="text" formControlName="escortname">
   </div>
-    <!--abschicken-button, disable if type invalid--->
-
-    <div class="send-box">
-      <button class="send-button" type="submit" [disabled]="!participationForm.valid">
-        <p class="button-text">Abschicken</p>
-      </button>
-    </div>
   </form>
+
+  <!--abschicken-button, disable if type invalid--->
+
+  <div class="send-box">
+    <button class="send-button" type="submit" [disabled]="!participationForm.valid">
+      <p class="button-text">Abschicken</p>
+    </button>
+  </div>
 
  </div>
 </div>

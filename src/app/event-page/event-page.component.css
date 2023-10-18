@@ -98,7 +98,7 @@
 /*abschicken-button */
 .send-box{
   text-align: center;
-  margin-left: 250px;
+  margin: 250px auto;
 }
 
 button.send-button {
