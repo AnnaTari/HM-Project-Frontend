@@ -10,7 +10,7 @@ import { AdminEditComponent } from './admin-edit/admin-edit.component';
 import { EventPageComponent } from './event-page/event-page.component';
 import { EventDetailComponent } from './shared/components/event-detail/event-detail.component';
 import { PopUpComponent } from './shared/components/pop-up/pop-up.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
 import { EditEventComponent } from './admin-edit/edit-event/edit-event.component';
@@ -33,15 +33,16 @@ import {MatIconModule} from "@angular/material/icon";
     EditEventComponent,
     EditOptionComponent,
   ],
-    imports: [
-        HttpClientModule,
-        BrowserModule,
-        ReactiveFormsModule,
-        AppRoutingModule, //adds RoutingModule for use
-        BrowserAnimationsModule,
-        MatTabsModule,
-        MatIconModule,
-    ],
+  imports: [
+    HttpClientModule,
+    BrowserModule,
+    ReactiveFormsModule,
+    AppRoutingModule, //adds RoutingModule for use
+    BrowserAnimationsModule,
+    MatTabsModule,
+    MatIconModule,
+    FormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

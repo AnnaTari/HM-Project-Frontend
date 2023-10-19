@@ -1,0 +1,22 @@
+.container{
+  background-color: #fff5;
+  width: 70%;
+  backdrop-filter: blur(7px);
+  box-shadow: 0 0.4rem .8rem #0005;
+  border-radius: .8rem;
+  margin: 10px auto auto;
+  padding-bottom: 20px;
+}
+
+.container-header{
+  width: 100%;
+  padding-top:20px;
+  padding-left: 20px;
+}
+
+.container-body{
+  width: 90%;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
