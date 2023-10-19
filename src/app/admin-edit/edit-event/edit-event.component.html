@@ -1,1 +1,9 @@
-<p>edit-event works!</p>
+<div class="container">
+  <div class="container-header">
+    <p>Füge die Event-Details hinzu:</p>
+  </div>
+  <form class="container-body" [formGroup]="eventForm" (ngSubmit)="updateEvent()">
+    <input formControlName="title">
+    <button type="submit"></button>
+  </form>
+</div>

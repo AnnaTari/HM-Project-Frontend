@@ -24,7 +24,7 @@ export class LoginComponent {
       username: this.loginForm.value.username,
       password: this.loginForm.value.password
     }
-    this.userService.check(<UserModel>user);
+    //this.userService.check(<UserModel>user);
     this.router.navigate(['admin-edit']);
   }
 }

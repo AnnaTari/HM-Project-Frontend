@@ -12,7 +12,7 @@ import { EventDetailComponent } from './shared/components/event-detail/event-det
 import { PopUpComponent } from './shared/components/pop-up/pop-up.component';
 import { CurrentEventBoxComponent} from "./current-event-box/current-event-box.component";
 import {TermsAndConditionsComponent} from "./terms-and-conditions/terms-and-conditions.component";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
 import { EditEventComponent } from './admin-edit/edit-event/edit-event.component';
@@ -47,6 +47,7 @@ import {MatButtonModule} from "@angular/material/button";
         BrowserAnimationsModule,
         MatTabsModule,
         MatIconModule,
+        FormsModule,
         MatDialogModule,
         MatButtonModule
     ],
