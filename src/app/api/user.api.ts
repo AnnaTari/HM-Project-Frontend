@@ -6,13 +6,14 @@ import {UserModel} from "../shared/models/user.model";
   providedIn: 'root'
 })
 export class UserApi {
-  private endpoint = '/api/users';
+  private endpoint = '/api/admin';
 
   constructor(private httpClient: HttpClient) {
   }
 
   public check(user: UserModel) {
-    let response = this.httpClient.get<UserModel>(this.endpoint);
+    console.log("Vor Abschicken");
+    let response = this.httpClient.post <UserModel>(this.endpoint, user);
     response.subscribe((data)=>console.log(data));
   }
 
