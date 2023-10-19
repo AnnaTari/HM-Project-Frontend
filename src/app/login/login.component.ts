@@ -20,11 +20,11 @@ export class LoginComponent {
 
   onSubmit() {
     let user = {
-      id: null,
-      username: this.loginForm.value.username,
+      admin_id: null,
+      adminname: this.loginForm.value.username,
       password: this.loginForm.value.password
     }
-    //this.userService.check(<UserModel>user);
+    this.userService.check(<UserModel>user);
     this.router.navigate(['admin-edit']);
   }
 }
