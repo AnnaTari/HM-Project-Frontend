@@ -34,7 +34,6 @@ import {MatButtonModule} from "@angular/material/button";
     EventPageComponent,
     EventDetailComponent,
     PopUpComponent,
-    EditEventComponent,
     EditOptionComponent,
     CurrentEventBoxComponent,
     TermsAndConditionsComponent,
