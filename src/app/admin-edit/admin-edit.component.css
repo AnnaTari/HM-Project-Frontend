@@ -5,13 +5,26 @@ mat-tab-group {
 
 .grid-container{
   display: grid;
-  grid-template-columns: 10% 80% 10%;
+  grid-template-columns: 15% 70% 15%;
 }
 
 .event-list {
+  backdrop-filter: blur(7px);
+  box-shadow: 0 0.4rem .8rem #0005;
   width: 50%;
   height: 200px;
   border-radius: 15px;
   border: 2px solid #005E52;
   margin: 5% auto 5% auto;
+}
+
+mat-icon {
+  color:#00A075;
+}
+
+.button-icon {
+  border: none;
+  margin: 2%;
+  cursor:pointer;
+  background-color: white;
 }

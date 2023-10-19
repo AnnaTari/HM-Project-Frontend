@@ -6,21 +6,23 @@
     <mat-tab-group mat-align-tabs="center">
       <!--going through all actual events-->
       <mat-tab label="Aktuelle Events">
+        <router-outlet></router-outlet>
         <div class="event-list" *ngFor="let actualEvent of actualEvents">
-          <app-edit-option></app-edit-option>
-          <app-event-detail [events]=actualEvent></app-event-detail>
+          <app-edit-option [event]=actualEvent></app-edit-option>
+          <app-event-detail [event]=actualEvent></app-event-detail>
         </div>
       </mat-tab>
       <!--going through all future events-->
       <mat-tab label="Zukünftige Events">
         <div class="event-list" *ngFor="let futureEvent of futureEvents">
-          <app-edit-option></app-edit-option>
-          <app-event-detail [events]=futureEvent></app-event-detail>
+          <app-edit-option [event]=futureEvent></app-edit-option>
+          <app-event-detail [event]=futureEvent></app-event-detail>
         </div>
       </mat-tab>
     </mat-tab-group>
   </div>
+  <!--button for adding events-->
   <div>
-    <mat-icon>add_circle_outline</mat-icon>
+    <button class="button-icon" [routerLink]="['edit-event']"><mat-icon>add_circle_outline</mat-icon></button>
   </div>
 </div>

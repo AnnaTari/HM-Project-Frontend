@@ -1,4 +1,17 @@
-mat-icon {
+.icon-container {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+}
+
+.button-icon {
+  border: none;
+  margin: 2%;
+  cursor:pointer;
+  background-color: white;
+}
+
+.button-icon > mat-icon {
   font-size: 24px;
-  margin: 1%;
+  color: #00A075;
 }

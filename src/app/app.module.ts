@@ -10,7 +10,7 @@ import { AdminEditComponent } from './admin-edit/admin-edit.component';
 import { EventPageComponent } from './event-page/event-page.component';
 import { EventDetailComponent } from './shared/components/event-detail/event-detail.component';
 import { PopUpComponent } from './shared/components/pop-up/pop-up.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
 import { EditEventComponent } from './admin-edit/edit-event/edit-event.component';
@@ -43,6 +43,7 @@ import {MatButtonModule} from "@angular/material/button";
         BrowserAnimationsModule,
         MatTabsModule,
         MatIconModule,
+        FormsModule,
         MatDialogModule,
         MatButtonModule
     ],
