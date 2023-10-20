@@ -1,0 +1,125 @@
+.matchname-box > h1 {
+  color: black;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 60px;
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: -80px;
+}
+
+.eventbody-box {
+  width: 100%;
+  height: 100%;
+}
+
+.matchinfo-box {
+  width: 15%;
+  height: 150px;
+  border-radius: 15px;
+  border: 2px #00A075 solid;
+  position: relative;
+  top: 320px;
+  left: 200px;
+}
+
+.matchinfo-box > h3 {
+  color: black;
+  font-size: 16px;
+  text-align: center;
+  font-weight: 700;
+  line-height: 60px;
+  margin-top: 1px;
+}
+
+.matchinfo-box > p {
+  color: black;
+  font-size: 14px;
+  margin-left: 20px;
+  margin-top: -10px;
+}
+
+/*Box with the participation window*/
+.participation-box {
+  width: 35%;
+  height: 500px;
+  border: 2px #00A075 solid;
+  border-radius: 15px;
+  box-shadow: 30px 20px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+  left: 1020px;
+  top: 0px;
+}
+
+.title-box{
+  height: 13%;
+  width: 95%;
+  margin: auto;
+  border-bottom: 1px #4F4343 solid;
+}
+
+.title-box > h2 {
+  color: black;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 60px;
+  text-align: center;
+}
+
+/*participation-box, where user can type in */
+.container {
+  margin: 10px auto;
+  height: 5%;
+  display: grid;
+  grid-template-columns: 33% 66%;
+}
+
+.container > div {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+
+.container p {
+  color: black;
+  font-size: 20px;
+}
+
+.input-box{
+  width: 330px;
+  height: 36px;
+  border-radius: 6px;
+  margin-top: 4%;
+  background: white;
+  border: 1px #AAAAAA solid;
+}
+
+/*abschicken-button */
+.send-box{
+  text-align: center;
+  margin: 250px auto;
+}
+
+button.send-button {
+  width: 174px;
+  height: 35px;
+  background: #00A075;
+  margin-top: 10px;
+  border-radius: 20px;
+  border-color: black;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+button.send-button:hover {
+  font-weight: bold;
+}
+
+p.button-text{
+  font-size: 15px;
+  color: black;
+  text-align: center;
+  line-height: 0;
+}
+
