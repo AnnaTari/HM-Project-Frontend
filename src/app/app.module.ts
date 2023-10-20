@@ -18,8 +18,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTabsModule} from "@angular/material/tabs";
 import { EditOptionComponent } from './admin-edit/edit-option/edit-option.component';
 import {MatIconModule} from "@angular/material/icon";
-import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
+import {TermsAndConditionsComponent} from "./terms-and-conditions/terms-and-conditions.component";
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {MatButtonModule} from "@angular/material/button";
     PopUpComponent,
     EditEventComponent,
     EditOptionComponent,
+    TermsAndConditionsComponent
   ],
     imports: [
         HttpClientModule,
