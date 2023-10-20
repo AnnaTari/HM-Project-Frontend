@@ -20,7 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTabsModule} from "@angular/material/tabs";
 import { EditOptionComponent } from './admin-edit/edit-option/edit-option.component';
 import {MatIconModule} from "@angular/material/icon";
-import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
@@ -34,6 +34,7 @@ import {MatButtonModule} from "@angular/material/button";
     EventPageComponent,
     EventDetailComponent,
     PopUpComponent,
+    EditEventComponent,
     EditOptionComponent,
     CurrentEventBoxComponent,
     TermsAndConditionsComponent,

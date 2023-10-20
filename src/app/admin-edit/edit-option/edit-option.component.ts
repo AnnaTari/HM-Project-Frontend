@@ -8,7 +8,7 @@ import {EventModel} from "../../shared/models/event.model";
 })
 export class EditOptionComponent {
   @Input()
-  event: EventModel = {id: 0, title:""};
+  event = {id: 0, title:""};
 
   constructor() {
   }

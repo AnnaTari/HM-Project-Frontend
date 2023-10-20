@@ -10,7 +10,7 @@ export class EventService {
 
   constructor(private eventApi: EventApi) { }
 
-  getDataFromBackend():Observable<EventModel> {
-    return new BehaviorSubject<EventModel>({id:2 , title:"Endlich"})
+  getDataFromBackend():Observable<any> {
+    return new BehaviorSubject({id:2 , title:"Endlich"})
   }
 }
