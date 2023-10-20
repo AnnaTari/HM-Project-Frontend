@@ -1,4 +1,16 @@
+import {Time} from "@angular/common";
+
 export interface EventModel {
-  id: number,
-  title: string
+  eventHsvId: number,
+  eventTypeId: number,
+  adminId: number,
+  matchName: string,
+  matchDetails: string,
+  eventDate: Date,
+  eventTime: Time,
+  location: string,
+  picture: File,
+  deadline: Date,
+  ticketAmount: number,
+
 }
