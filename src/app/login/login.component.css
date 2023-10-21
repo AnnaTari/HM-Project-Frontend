@@ -7,7 +7,7 @@
   border-radius: 15px;
 }
 
-.title-box{
+.title-box {
   height: 13%;
   width: 95%;
   margin: auto;
@@ -41,7 +41,7 @@
   font-size: 28px;
 }
 
-.input-box{
+.input-box {
   font-size: 24px;
   margin-top: 3%;
   width: 530px;
@@ -52,7 +52,7 @@
 }
 
 /*Box with the send button*/
-.send-box{
+.send-box {
   height: 27%;
   text-align: center;
 }
@@ -67,9 +67,16 @@ button.send-button {
   margin-top: 10px;
 }
 
-p.button-text{
+.warn-text {
+  color: red;
+  font-size: 24px;
+  margin-top: 2%;
+}
+
+p.button-text {
   text-align: center;
   color: white;
   font-size: 30px;
   line-height: 0;
 }
+
