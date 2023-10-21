@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
-import {UserApi} from "../api/user.api";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AdminApi} from "../api/admin.api";
 import {UserModel} from "../shared/models/user.model";
 import {Router} from "@angular/router";
 
@@ -11,20 +11,19 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent {
   loginForm = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl('')
+    username: new FormControl('',Validators.required),
+    password: new FormControl('', Validators.required)
   })
 
-  constructor(private userService: UserApi, private router: Router) {
+  constructor(private userService: AdminApi, private router: Router) {
   }
 
   onSubmit() {
-    let user = {
-      admin_id: null,
-      adminname: this.loginForm.value.username,
-      password: this.loginForm.value.password
+    let admin = {
+      adminName: this.loginForm.value.username!,
+      adminPassword: this.loginForm.value.password!
     }
-    this.userService.check(<UserModel>user);
+    this.userService.check(admin);
     this.router.navigate(['admin-edit']);
   }
 }
