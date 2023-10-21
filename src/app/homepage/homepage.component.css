@@ -1,0 +1,58 @@
+.title-box {
+  text-align: center;
+  width:100%;
+  margin: 150px auto;
+}
+
+h1 {
+  font-size: 48px;
+  color:  black;
+}
+
+.placeholder-event-boxes {
+  height: 217px;
+  width: 350px;
+  float: left;
+}
+
+.future-event-box {
+  display: flex;
+  margin-right: 38px;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  height: 217px;
+  width: 373px;
+  border: 2px solid black;
+  border-radius: 5%;
+  float: left;
+  padding-top: 25px;
+}
+
+.information-event-box {
+  height: 39px;
+  width: 373px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  float: left;
+}
+
+.event-image {
+  border: 1px solid black;
+  width: 300px;
+  height: 120px;
+  float: left;
+}
+
+.placeholder-large {
+  width: 100%;
+  height: 250px;
+}
+
+.placeholder-end {
+  width: 100%;
+  height: 500px;
+}
+
+

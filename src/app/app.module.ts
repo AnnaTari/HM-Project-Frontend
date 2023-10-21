@@ -20,6 +20,7 @@ import { EditOptionComponent } from './admin-edit/edit-option/edit-option.compon
 import {MatIconModule} from "@angular/material/icon";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
+import { CurrentEventBoxComponent } from './current-event-box/current-event-box.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {MatButtonModule} from "@angular/material/button";
     PopUpComponent,
     EditEventComponent,
     EditOptionComponent,
+    CurrentEventBoxComponent,
   ],
     imports: [
         HttpClientModule,
