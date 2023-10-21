@@ -1,0 +1,59 @@
+.placeholder-event-boxes {
+  height: 217px;
+  width: 350px;
+  float: left;
+}
+
+.small-placeholder-event-boxes {
+  height: 217px;
+  width: 36px;
+  float: left;
+}
+
+.event-box {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  height: 217px;
+  width: 373px;
+  border: 2px solid black;
+  border-radius: 5%;
+  float: left;
+  padding-top: 5px;
+}
+
+.event-image {
+  border: 1px solid black;
+  width: 300px;
+  height: 120px;
+  float: left;
+
+}
+
+.information-event-box {
+  height: 39px;
+  width: 373px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  float: left;
+}
+
+.participation-button {
+  position: absolute; /*placed at bottom*/
+  background-color: #005E52;
+  color: #ffffff;
+  border-radius: 10%;
+  width: 200px;
+  height: 39px;
+  bottom: 10px;
+  font-size: 20px;
+  align-items: center; /*text vertically centered*/
+  display: flex;
+  justify-content: center; /*text horizontally centered*/
+}
+
+.participation-button:hover {
+  cursor: pointer;
+}

@@ -10,6 +10,8 @@ import { AdminEditComponent } from './admin-edit/admin-edit.component';
 import { EventPageComponent } from './event-page/event-page.component';
 import { EventDetailComponent } from './shared/components/event-detail/event-detail.component';
 import { PopUpComponent } from './shared/components/pop-up/pop-up.component';
+import { CurrentEventBoxComponent} from "./current-event-box/current-event-box.component";
+import {TermsAndConditionsComponent} from "./terms-and-conditions/terms-and-conditions.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
@@ -34,6 +36,8 @@ import {MatButtonModule} from "@angular/material/button";
     PopUpComponent,
     EditEventComponent,
     EditOptionComponent,
+    CurrentEventBoxComponent,
+    TermsAndConditionsComponent,
   ],
     imports: [
         HttpClientModule,
