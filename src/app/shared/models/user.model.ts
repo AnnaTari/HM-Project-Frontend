@@ -1,5 +1,5 @@
 export interface UserModel {
-  adminId: number| null;
-  adminName: string;
-  adminPassword: string;
+  admin_id: number| null;
+  adminname: string;
+  password: string;
 }

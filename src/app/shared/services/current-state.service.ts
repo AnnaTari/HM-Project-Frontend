@@ -1,22 +1,21 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
-import {AdminApi} from "../../api/admin.api";
 import {UserModel} from "../models/user.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CurrentStateService {
-  public admin$= new BehaviorSubject<UserModel>({adminId: 0, adminName: "", adminPassword: ""});
+  private admin$: BehaviorSubject<UserModel>= new BehaviorSubject<UserModel>({admin_id: 0, adminname: "", password: ""});
 
-  constructor(private adminApi: AdminApi) {
+  constructor() {
   }
 
-  setAdmin(admin: { adminName: string, adminPassword: string }) {
-    this.adminApi.getAdmin(admin).subscribe((admin)=>this.admin$.next(admin));
+  setAdminObs(admin: UserModel) {
+    this.admin$.next(admin);
   }
 
-  getAdmin() {
+  getAdminObs() {
     return this.admin$.asObservable();
   }
 }
