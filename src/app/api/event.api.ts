@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {EventModel} from "../shared/models/event.model";
 
 @Injectable({
   providedIn: 'root'
@@ -9,5 +10,9 @@ export class EventApi {
 
   constructor(private httpClient: HttpClient) {
 
+  }
+  public check() {
+    let response = this.httpClient.get<EventModel[]>(this.endpoint);
+    return response;
   }
 }

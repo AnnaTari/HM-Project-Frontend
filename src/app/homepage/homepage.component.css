@@ -9,6 +9,12 @@ h1 {
   color:  black;
 }
 
+.event-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .placeholder-event-boxes {
   height: 217px;
   width: 350px;

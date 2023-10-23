@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-current-event-box',
@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./current-event-box.component.css']
 })
 export class CurrentEventBoxComponent {
+ @Input()
+  event:string= "";
 
 }
