@@ -1,12 +1,12 @@
 <!--Current Events Title-->
 <div class="title-box"><h1>Aktuelle Events</h1></div>
 
-<!--Placeholder-->
-<div class="placeholder-event-boxes"></div>
 
 <!--Integrate CurrentEventBox Component-->
-<app-current-event-box> </app-current-event-box>
+<div class="event-container">
 
+<app-current-event-box *ngFor="let entry of (events$ | async)" event="{{entry}}"> </app-current-event-box>
+</div>
 
 <!--Distance Current/Future Events-->
 <div class="placeholder-large"></div>
