@@ -8,5 +8,5 @@ import {EventModel} from "../../models/event.model";
 })
 export class EventDetailComponent {
   @Input()
-  events?: EventModel ;
+  event?: EventModel ;
 }

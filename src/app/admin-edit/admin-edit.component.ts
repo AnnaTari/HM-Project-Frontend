@@ -12,16 +12,9 @@ export class AdminEditComponent {
   constructor(private currentStateService: CurrentStateService) {
   }
 
-   actualEvents = [
-    {id: 1, title:'Superman'},
-    {id: 2, title:'Batman'},
-    {id: 5, title:'BatGirl',}
-  ];
+   actualEvents: EventModel[] = [];
 
-  futureEvents= [
-    {id: 1, title:'HSV'},
-    {id: 2, title:'Football'},
-  ];
+  futureEvents: EventModel[] = [];
 
 
 }
