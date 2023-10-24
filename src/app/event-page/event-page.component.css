@@ -13,13 +13,24 @@
   height: 100%;
 }
 
-.matchinfo-box {
-  width: 15%;
-  height: 150px;
+.picture-placeholder {
+  width: 20%;
+  height: 230px;
   border-radius: 15px;
   border: 2px #00A075 solid;
   position: relative;
-  top: 320px;
+  left: 250px;
+  top: 120px;
+  margin-bottom: 20px;
+}
+
+.matchinfo-box {
+  width: 25%;
+  height: 280px;
+  border-radius: 15px;
+  border: 2px #00A075 solid;
+  position: relative;
+  top: 120px;
   left: 200px;
 }
 
@@ -34,21 +45,29 @@
 
 .matchinfo-box > p {
   color: black;
-  font-size: 14px;
+  font-size: 16px;
   margin-left: 20px;
   margin-top: -10px;
+}
+
+.matchdetails > p {
+  color: black;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 25px;
+  font-style: italic;
 }
 
 /*Box with the participation window*/
 .participation-box {
   width: 35%;
-  height: 500px;
+  height: 450px;
   border: 2px #00A075 solid;
   border-radius: 15px;
   box-shadow: 30px 20px 30px rgba(0, 0, 0, 0.2);
   position: relative;
   left: 1020px;
-  top: 0px;
+  margin-top: -370px;
 }
 
 .title-box{
@@ -69,21 +88,15 @@
 /*participation-box, where user can type in */
 .container {
   margin: 10px auto;
-  height: 5%;
   display: grid;
   grid-template-columns: 33% 66%;
-}
-
-.container > div {
   text-align: center;
-  font-size: 30px;
-  margin-bottom: 10px;
+  align-items: center;
 }
-
 
 .container p {
   color: black;
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .input-box{
@@ -98,14 +111,14 @@
 /*abschicken-button */
 .send-box{
   text-align: center;
-  margin: 250px auto;
+  margin-top: 50px;
 }
 
 button.send-button {
   width: 174px;
   height: 35px;
   background: #00A075;
-  margin-top: 10px;
+  margin-top: 0px;
   border-radius: 20px;
   border-color: black;
   transition: background-color 0.3s;
@@ -116,10 +129,20 @@ button.send-button:hover {
   font-weight: bold;
 }
 
-p.button-text{
+p.button-text {
   font-size: 15px;
   color: black;
   text-align: center;
   line-height: 0;
+  margin-top: 10px;
+}
+
+.message-text {
+  color: red;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 30px;
+  font-style: italic;
 }
 
