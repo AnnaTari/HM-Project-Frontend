@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {EventModel} from "../shared/models/event.model";
+import {CurrentStateService} from "../shared/services/current-state.service";
 
 @Component({
   selector: 'app-admin-edit',
@@ -8,15 +9,18 @@ import {EventModel} from "../shared/models/event.model";
 })
 export class AdminEditComponent {
 
-   actualEvents: EventModel[] = [
-   // {id: 1, title:'Superman'},
-    //{id: 2, title:'Batman'},
-    //{id: 5, title:'BatGirl',}
+  constructor(private currentStateService: CurrentStateService) {
+  }
+
+   actualEvents = [
+    {id: 1, title:'Superman'},
+    {id: 2, title:'Batman'},
+    {id: 5, title:'BatGirl',}
   ];
 
-  futureEvents: EventModel[] = [
-   // {id: 1, title:'HSV'},
-   // {id: 2, title:'Football'},
+  futureEvents= [
+    {id: 1, title:'HSV'},
+    {id: 2, title:'Football'},
   ];
 
 

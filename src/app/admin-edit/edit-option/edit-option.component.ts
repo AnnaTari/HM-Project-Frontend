@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {EventModel} from "../../shared/models/event.model";
 
 @Component({
   selector: 'app-edit-option',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./edit-option.component.css']
 })
 export class EditOptionComponent {
+  @Input()
+  event = {id: 0, title:""};
 
+  constructor() {
+  }
+
+  deleteEvent() {
+
+  }
+
+  editEvent() {
+
+  }
 }

@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
-import {UserApi} from "../api/user.api";
-import {UserModel} from "../shared/models/user.model";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {CurrentStateService} from "../shared/services/current-state.service";
+import {AdminApi} from "../api/admin.api";
+import {BehaviorSubject} from "rxjs";
 
 @Component({
   selector: 'app-login',
@@ -11,20 +12,30 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent {
   loginForm = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl('')
+    username: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required)
   })
 
-  constructor(private userService: UserApi, private router: Router) {
+  messageShow = new BehaviorSubject<boolean>(true);
+
+  constructor(private router: Router, private currentStateService: CurrentStateService, private adminApi: AdminApi) {
   }
 
   onSubmit() {
-    let user = {
-      id: null,
-      username: this.loginForm.value.username,
-      password: this.loginForm.value.password
+    console.log("Anfrage abgeschickt")
+    let admin: { adminName: string, adminPassword: string } = {
+      adminName: this.loginForm.value.username!,
+      adminPassword: this.loginForm.value.password!
     }
-    this.userService.check(<UserModel>user);
-    this.router.navigate(['admin-edit']);
+    this.adminApi.login(admin).subscribe((admin) => {
+      //need to check why admin_id comes written like this from backend
+      if (admin.admin_id != null) {
+        this.messageShow.next(true);
+        this.router.navigate(['admin-edit']);
+        this.currentStateService.setAdminObs(admin);
+      } else {
+        this.messageShow.next(false);
+      }
+    })
   }
 }

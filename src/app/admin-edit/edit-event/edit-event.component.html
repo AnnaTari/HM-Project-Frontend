@@ -1,1 +1,17 @@
-<p>edit-event works!</p>
+<div class="container">
+  <div class="container-header">
+    <p>Füge die Event-Details hinzu:</p>
+  </div>
+  <form class="container-body" [formGroup]="eventForm" (ngSubmit)="updateEvent()">
+    <input type="text" formControlName="gameTitle" required>
+    <input type="date" formControlName="gameDate" required>
+    <input type="time" formControlName="gameTime" required>
+    <input type="text" formControlName="gamePlace" required>
+    <input type="number" formControlName="ticketAmount" required>
+    <input type="number" formControlName="tickerKind" required>
+    <input type="date" formControlName="registrationDeadline" required>
+    <input type="file" formControlName="gamePicture">
+    <button type="submit" [disabled]="!eventForm.valid">Erstellen</button>
+    <button [routerLink]="['../']">Abbrechen</button>
+  </form>
+</div>
