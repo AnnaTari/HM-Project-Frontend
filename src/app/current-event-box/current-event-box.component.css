@@ -15,6 +15,7 @@
   flex-direction: column;
   position: relative;
   align-items: center;
+  margin-right: 40px;
   height: 217px;
   width: 373px;
   border: 2px solid black;
