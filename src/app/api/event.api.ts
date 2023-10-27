@@ -13,6 +13,7 @@ export class EventApi {
   }
   public check() {
     let response = this.httpClient.get<EventModel[]>(this.endpoint);
+    response.subscribe((data =>console.log(data)))
     return response;
   }
 }
