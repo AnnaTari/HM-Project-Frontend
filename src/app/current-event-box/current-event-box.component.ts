@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Router} from "@angular/router";
+import {EventModel} from "../shared/models/event.model";
 
 @Component({
   selector: 'app-current-event-box',
@@ -14,6 +15,6 @@ export class CurrentEventBoxComponent {
   }
 
  @Input()
-  event:string= "";
+  event: EventModel[]= [];
 
 }
