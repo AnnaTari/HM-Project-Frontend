@@ -12,5 +12,5 @@ export interface EventModel {
   picture: File,
   deadline: Date,
   ticketAmount: number,
-
+  registrationDate: Date,
 }
