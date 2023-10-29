@@ -12,22 +12,22 @@
 <div class="eventbody-box">
 
   <div class="matchinfo-box">
-    <!--  <app-current-event-box *ngFor="let entry of (events$ | async)" event="{{entry}}"> </app-current-event-box> --->
+     <!-- <app-current-event-box *ngFor="let entry of (events$ | async)" event="{{entry}}"> </app-current-event-box> --->
 
-      <h3>HSV vs. Fortuna Düsseldorf</h3>
-      <p>Datum: <strong>14.07.2024</strong></p>
-      <p>Uhrzeit: <strong>14:00 uhr</strong></p>
-      <p>Ort: <strong>Volksparkstadion</strong></p>
-      <p>Anzahl zu gewinnende Tickets: <strong>2 mal 10</strong></p>
-      <p>Deadline: <strong>30.07.2024</strong></p>
+       <h3>HSV vs. Fortuna Düsseldorf</h3>
+       <p>Datum: <strong>14.07.2024</strong></p>
+       <p>Uhrzeit: <strong>14:00 uhr</strong></p>
+       <p>Ort: <strong>Volksparkstadion</strong></p>
+       <p>Anzahl zu gewinnende Tickets: <strong>2 mal 10</strong></p>
+       <p>Deadline: <strong>30.07.2024</strong></p>
 
-      <div class="matchdetails">
-        <p>Das Derby nach so vielen Jahren, welches sooo wichtig ist!!!</p>
-      </div>
-    </div>
+       <div class="matchdetails">
+         <p>Das Derby nach so vielen Jahren, welches sooo wichtig ist!!!</p>
+       </div>
+     </div>
 
 
-    <!--Teilnahmeformular--->
+     <!--Teilnahmeformular--->
   <div class="participation-box">
     <div class="title-box">
       <h2>Teilnahmeformular</h2>
@@ -61,12 +61,12 @@
       <button class="send-button" type="submit" [disabled]="!participationForm.valid">
         <p class="button-text">Abschicken</p>
       </button>
-    </div>
 
+    </div>
     <!--message-text, if user is already in attendance-table in db--->
 
     <div class="message-text">
-      <p>Sie haben sich bereits für dieses Event angemeldet.</p>
+      <p class="success-text" [hidden]="!(isLoggedIn | async)"> Sie haben sich bereits für dieses Event angemeldet.</p>
     </div>
 
   </div>
