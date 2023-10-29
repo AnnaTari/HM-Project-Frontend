@@ -22,8 +22,8 @@ h1 {
   flex-direction: column;
   position: relative;
   align-items: center;
-  height: 217px;
-  width: 373px;
+  height: 250px;
+  width: 390px;
   border: 2px solid black;
   border-radius: 5%;
   float: left;
@@ -42,7 +42,7 @@ h1 {
 .event-image {
   border: 1px solid black;
   width: 300px;
-  height: 120px;
+  height: 130px;
   float: left;
 }
 
