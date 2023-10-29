@@ -1,16 +1,15 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {UserModel} from "../models/user.model";
 import {EventModel} from "../models/event.model";
-import {Time} from "@angular/common";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CurrentStateService {
   private admin$: BehaviorSubject<UserModel>= new BehaviorSubject<UserModel>({admin_id: 0, adminname: "", password: ""});
-  private events$: BehaviorSubject<EventModel>= new BehaviorSubject<EventModel>({eventHsvId: 0, adminId: 0, matchName: "", matchDetails: "", eventDate: Date, eventTime: Time, location:"", picture:File, deadline: Date, ticketType: 0, ticketAmount: 0, registrationDate: Date});
-  constructor() {
+  private events$: BehaviorSubject<EventModel[]>= new BehaviorSubject<EventModel[]>([]);
+   constructor() {
   }
 
   setAdminObs(admin: UserModel) {
@@ -22,15 +21,11 @@ export class CurrentStateService {
   }
 
   //Events
-
-
-
-
-  setEventObs(event: EventModel) {
+  setEventObs(event: EventModel[]) {
     this.events$.next(event);
   }
 
-  getEventObs() {
+  getEventObs() : Observable<EventModel[]>{
     return this.events$.asObservable();
   }
 }

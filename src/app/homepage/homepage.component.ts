@@ -14,10 +14,7 @@ export class HomepageComponent {
   events$: Observable<EventModel[]>;
 
   constructor(private eventApi: EventApi, private currentStateService: CurrentStateService) {
-    this.events$ = this.eventApi.check();
-    this.currentStateService = currentStateService;
+    this.eventApi.check().subscribe((data)=> this.currentStateService.setEventObs(data));
+    this.events$ = this.currentStateService.getEventObs();
   }
-
-  //events: EventModel[] = [];
-
 }
