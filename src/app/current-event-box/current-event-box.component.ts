@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Router} from "@angular/router";
+import {EventModel} from "../shared/models/event.model";
 
 @Component({
   selector: 'app-current-event-box',
@@ -14,6 +15,6 @@ export class CurrentEventBoxComponent {
   }
 
  @Input()
-  event:string= "";
+  event: any= {eventHsvId: 0, adminId: 0, matchName: "", matchDetails: "", event_date: new Date(), location:"", deadline: new Date(), ticketType: 0, ticketAmount: 0, registrationDate: new Date()};
 
 }
