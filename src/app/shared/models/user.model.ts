@@ -3,3 +3,10 @@ export interface UserModel {
   adminname: string;
   password: string;
 }
+
+export interface EmployeeModel {
+
+  employee_id: number| null;
+  employeename: string;
+  email: string;
+}
