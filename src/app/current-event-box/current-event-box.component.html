@@ -1,11 +1,10 @@
 <!--Event Box-->
 <div class="event-box">
-  <div class="information-event-box"> {{event}}
+  <div class="information-event-box"> {{event.event_date}}
   </div>
-  <div class="event-image"> <!-- *ngFor="let picture of Event-HSV">
-      {{ picture }} -->
+  <div class="event-image"> <!-- {{ picture }} -->
   </div>
-  <div class="participation-button" routerLink=" ">Zur Teilnahme</div>
+  <button class="participation-button" (click)="navigateToEventPage()">Zur Teilnahme</button>
 </div>
 
 
