@@ -1,10 +1,7 @@
 import {Injectable} from '@angular/core';
 
-import {BehaviorSubject} from "rxjs";
-import {EmployeeModel, UserModel} from "../models/user.model";
-
 import {BehaviorSubject, Observable} from "rxjs";
-import {UserModel} from "../models/user.model";
+import {EmployeeModel, UserModel} from "../models/user.model";
 import {EventModel} from "../models/event.model";
 
 
@@ -15,8 +12,6 @@ export class CurrentStateService {
   private admin$: BehaviorSubject<UserModel>= new BehaviorSubject<UserModel>({admin_id: 0, adminname: "", password: ""});
 
   private employee$: BehaviorSubject<EmployeeModel>= new BehaviorSubject<EmployeeModel>({employee_id: 0, employeename: "", email: ""});
-
-  constructor() {
 
   private events$: BehaviorSubject<EventModel[]>= new BehaviorSubject<EventModel[]>([]);
    constructor() {
@@ -39,14 +34,14 @@ export class CurrentStateService {
 
   getEmployeeObs() {
     return this.employee$.asObservable();
-
+  }
   //Events
   setEventObs(event: EventModel[]) {
     this.events$.next(event);
   }
 
-  getEventObs() : Observable<EventModel[]>{
-    return this.events$.asObservable();
-
+  getEventObs() {
+     return this.events$.asObservable();
   }
+
 }
