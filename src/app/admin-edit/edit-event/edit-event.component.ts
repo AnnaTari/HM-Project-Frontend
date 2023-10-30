@@ -15,7 +15,7 @@ export class EditEventComponent {
       gameTime: ['', Validators.required],
       gamePlace: ['Volksparkstadion', Validators.required],
       ticketAmount: [0, Validators.required],
-      ticketKind: [0, Validators.required],
+      ticketKind: [2, Validators.required],
       registrationDeadline: [Date, Validators.required],
       gamePicture: [],
     })

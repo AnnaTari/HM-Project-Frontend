@@ -3,14 +3,48 @@
     <p>Füge die Event-Details hinzu:</p>
   </div>
   <form class="container-body" [formGroup]="eventForm">
-    <input type="text" formControlName="gameTitle" required>
-    <input type="date" formControlName="gameDate" required>
-    <input type="time" formControlName="gameTime" required>
-    <input type="text" formControlName="gamePlace" required>
-    <input type="number" formControlName="ticketAmount" required>
-    <input type="number" formControlName="ticketKind" required>
-    <input type="date" formControlName="registrationDeadline" required>
-    <input type="file" formControlName="gamePicture">
+    <!--Feld Spiel Name-->
+    <mat-form-field>
+      <mat-label>Spiel Name</mat-label>
+      <input matInput formControlName="gameTitle" required>
+      <mat-icon matTooltip="Spielname wie 'HSV vs. St.Pauli'" matPrefix>games</mat-icon>
+    </mat-form-field>
+    <!--Feld Spieldatum-->
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Spieldatum" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <!--Feld -->
+    <mat-form-field>
+      <textarea matTooltip="Einleitungstext" matInput placeholder="Spiel Details" required></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Standort</mat-label>
+      <input matInput formControlName="gamePlace" required>
+      <mat-icon matPrefix>location_on</mat-icon>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="number" formControlName="ticketKind" placeholder="Ticketart" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="number" placeholder="Ticketanzahl" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Deadline" required>
+      <mat-datepicker-toggle matTooltip="Datum bis wann man teilnehmen kann" matSuffix
+                             [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Freischaltdatum" required>
+      <mat-datepicker-toggle matTooltip="Datum ab wann das Event aktuell sein soll" matSuffix
+                             [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <div class="mat-input-element">
+      <input type="file" formControlName="gamePicture">
+    </div>
     <button type="submit" [disabled]="!eventForm.valid">Erstellen</button>
     <button [routerLink]="['../']">Abbrechen</button>
   </form>
