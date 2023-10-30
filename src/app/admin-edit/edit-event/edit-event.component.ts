@@ -1,7 +1,5 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {EventService} from "../event.service";
-
 @Component({
   selector: 'app-edit-event',
   templateUrl: './edit-event.component.html',
@@ -10,7 +8,7 @@ import {EventService} from "../event.service";
 export class EditEventComponent {
   eventForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private eventService: EventService) {
+  constructor(private fb: FormBuilder) {
     this.eventForm = this.fb.group({
       gameTitle: ['', Validators.required],
       gameDate: [Date, Validators.required],
@@ -34,7 +32,4 @@ export class EditEventComponent {
   }
    */
 
-  updateEvent() {
-    this.eventService.getDataFromBackend();
-  }
 }
