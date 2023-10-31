@@ -22,6 +22,10 @@ import { EditOptionComponent } from './admin-edit/edit-option/edit-option.compon
 import {MatIconModule} from "@angular/material/icon";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
+import {MatInputModule} from "@angular/material/input";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -39,18 +43,22 @@ import {MatButtonModule} from "@angular/material/button";
     CurrentEventBoxComponent,
     TermsAndConditionsComponent,
   ],
-    imports: [
-        HttpClientModule,
-        BrowserModule,
-        ReactiveFormsModule,
-        AppRoutingModule, //adds RoutingModule for use
-        BrowserAnimationsModule,
-        MatTabsModule,
-        MatIconModule,
-        FormsModule,
-        MatDialogModule,
-        MatButtonModule
-    ],
+  imports: [
+    HttpClientModule,
+    BrowserModule,
+    ReactiveFormsModule,
+    AppRoutingModule, //adds RoutingModule for use
+    BrowserAnimationsModule,
+    MatTabsModule,
+    MatIconModule,
+    FormsModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTooltipModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

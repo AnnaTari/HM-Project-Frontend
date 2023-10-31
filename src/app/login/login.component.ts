@@ -22,14 +22,12 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    console.log("Anfrage abgeschickt")
     let admin: { adminName: string, adminPassword: string } = {
       adminName: this.loginForm.value.username!,
       adminPassword: this.loginForm.value.password!
     }
     this.adminApi.login(admin).subscribe((admin) => {
-      //need to check why admin_id comes written like this from backend
-      if (admin.admin_id != null) {
+      if (admin.adminId != null) {
         this.messageShow.next(true);
         this.router.navigate(['admin-edit']);
         this.currentStateService.setAdminObs(admin);

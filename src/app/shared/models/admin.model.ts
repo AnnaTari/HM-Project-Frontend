@@ -1,7 +1,7 @@
-export interface UserModel {
-  admin_id: number| null;
-  adminname: string;
-  password: string;
+export interface AdminModel {
+  adminId: number| null;
+  adminName: string;
+  adminPassword: string;
 }
 
 export interface EmployeeModel {
