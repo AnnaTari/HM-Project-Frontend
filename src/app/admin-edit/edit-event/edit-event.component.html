@@ -2,7 +2,7 @@
   <div class="container-header">
     <p>Füge die Event-Details hinzu:</p>
   </div>
-  <form class="container-body" [formGroup]="eventForm">
+  <form class="container-body" [formGroup]="eventForm" (ngSubmit)="onSubmit()">
     <!--Feld Spiel Name-->
     <mat-form-field>
       <mat-label>Spiel Name</mat-label>
@@ -16,11 +16,13 @@
     </mat-form-field>
     <!--Feld Spieldatum-->
     <mat-form-field>
-      <input matInput formControlName="matchDate" [matDatepicker]="picker" placeholder="Spieldatum" required>
-      <mat-datepicker-toggle matTooltip="Wann findet das Spiel statt?" matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+      <input matInput formControlName="matchDate" [matDatepicker]="matchDate" placeholder="Spieldatum" required>
+      <mat-datepicker-toggle matTooltip="Wann findet das Spiel statt?" matSuffix
+                             [for]="matchDate"></mat-datepicker-toggle>
+      <mat-datepicker #matchDate></mat-datepicker>
     </mat-form-field>
     <!--Feld Zeit des Spiels-->
+    <input type="time" formControlName="matchTime">
     <!--Feld des Standortes-->
     <mat-form-field>
       <mat-label>Standort</mat-label>
@@ -33,10 +35,9 @@
     </div>
     <!--Deadline der Anmeldung-->
     <mat-form-field>
-      <input matInput formControlName="deadline" [matDatepicker]="picker" placeholder="Deadline" required>
-      <mat-datepicker-toggle matTooltip="Datum bis wann man teilnehmen kann" matSuffix
-                             [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+      <input matInput formControlName="deadline" [matDatepicker]="deadline" placeholder="Deadline" required>
+      <mat-datepicker-toggle matSuffix [for]="deadline"></mat-datepicker-toggle>
+      <mat-datepicker #deadline></mat-datepicker>
     </mat-form-field>
     <!--Art der Ticket wie 2x Tickets-->
     <mat-form-field>
@@ -48,11 +49,11 @@
     </mat-form-field>
     <!--Datum, ab wann man teilnehmen kann-->
     <mat-form-field>
-      <input matInput formControlName="registrationDate" [matDatepicker]="picker" placeholder="Freischaltdatum"
-             required>
+      <input matInput formControlName="registrationDate" [matDatepicker]="registrationDate"
+             placeholder="Freischaltdatum" required>
       <mat-datepicker-toggle matTooltip="Datum ab wann man teilnehmen kann" matSuffix
-                             [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+                             [for]="registrationDate"></mat-datepicker-toggle>
+      <mat-datepicker #registrationDate></mat-datepicker>
     </mat-form-field>
     <button type="submit" [disabled]="!eventForm.valid">Erstellen</button>
     <button [routerLink]="['../']">Abbrechen</button>
