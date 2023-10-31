@@ -1,7 +1,7 @@
 export interface EventModel {
   eventHsvId: number,
   adminId: number,
-  match_name: string,
+  matchName: string,
   matchDetails: string,
   eventDate: Date,
   location: string,
