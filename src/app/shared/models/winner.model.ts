@@ -7,5 +7,4 @@ export interface WinnerModel {
   escortName: string,
   substituteWinner: boolean,
   blacklistCounter: number,
-  //....
 }

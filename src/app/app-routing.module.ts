@@ -6,6 +6,7 @@ import {AdminEditComponent} from "./admin-edit/admin-edit.component";
 import {EditEventComponent} from "./admin-edit/edit-event/edit-event.component";
 import {TermsAndConditionsComponent} from "./terms-and-conditions/terms-and-conditions.component";
 import {EventPageComponent} from "./event-page/event-page.component";
+import {RafflePageComponent} from "./raffle-page/raffle-page.component";
 
 //defines your routes
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   },
   {path: 'terms-and-conditions', component: TermsAndConditionsComponent},
   {path: 'event-page', component: EventPageComponent},
+  {path: 'raffle-page', component: RafflePageComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}, //route that defaults to the home-component
   {path: '**', component: HomepageComponent}//wildcard route - in case the user attempt to navigate where nothing exists
 ];
