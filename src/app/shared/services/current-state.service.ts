@@ -80,9 +80,9 @@ export class CurrentStateService {
     events.forEach((event) => {
       let currentDateTime = new Date();
       let registrationDate = new Date(event.registrationDate);
-      if (registrationDate.getDate() < currentDateTime.getDate()) {
+      if (registrationDate.toISOString() <= currentDateTime.toISOString()) {
         actualEvents.push(event);
-      } else {
+      } else if (registrationDate.toISOString() > currentDateTime.toISOString()) {
         futureEvents.push(event);
       }
     })

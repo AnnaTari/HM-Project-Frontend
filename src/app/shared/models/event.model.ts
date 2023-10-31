@@ -1,9 +1,9 @@
 export interface EventModel {
   eventHsvId: number |null,
   adminId: number,
-  match_name: string,
+  matchName: string,
   matchDetails: string,
-  event_date: Date,
+  eventDate: Date,
   location: string,
   //picture: File,
   deadline: Date,
