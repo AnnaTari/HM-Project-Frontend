@@ -1,5 +1,5 @@
 export interface EventModel {
-  eventHsvId: number |null,
+  eventHsvId: number,
   adminId: number,
   matchName: string,
   matchDetails: string,

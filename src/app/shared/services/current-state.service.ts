@@ -2,17 +2,17 @@ import {Injectable} from '@angular/core';
 
 import {BehaviorSubject, Observable} from "rxjs";
 import {EventModel} from "../models/event.model";
-import {EmployeeModel, UserModel} from "../models/user.model";
+import {EmployeeModel, AdminModel} from "../models/admin.model";
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class CurrentStateService {
-  private admin$: BehaviorSubject<UserModel> = new BehaviorSubject<UserModel>({
-    admin_id: 0,
-    adminname: "",
-    password: ""
+  private admin$: BehaviorSubject<AdminModel> = new BehaviorSubject<AdminModel>({
+    adminId: 0,
+    adminName: "",
+    adminPassword: ""
   });
 
   private employee$: BehaviorSubject<EmployeeModel> = new BehaviorSubject<EmployeeModel>({
@@ -31,7 +31,7 @@ export class CurrentStateService {
 
   }
 
-  setAdminObs(admin: UserModel) {
+  setAdminObs(admin: AdminModel) {
     this.admin$.next(admin);
   }
 
