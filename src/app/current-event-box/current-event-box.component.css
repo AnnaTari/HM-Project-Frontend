@@ -16,18 +16,18 @@
   position: relative;
   align-items: center;
   margin-right: 40px;
-  height: 217px;
-  width: 373px;
+  height: 250px;
+  width: 390px;
   border: 2px solid black;
   border-radius: 5%;
   float: left;
-  padding-top: 5px;
+  padding-top: 15px;
 }
 
 .event-image {
   border: 1px solid black;
   width: 300px;
-  height: 120px;
+  height: 130px;
   float: left;
 
 }
@@ -46,9 +46,9 @@
   background-color: #005E52;
   color: #ffffff;
   border-radius: 10%;
-  width: 200px;
-  height: 39px;
-  bottom: 10px;
+  width: 220px;
+  height: 45px;
+  bottom: 15px;
   font-size: 20px;
   align-items: center; /*text vertically centered*/
   display: flex;
