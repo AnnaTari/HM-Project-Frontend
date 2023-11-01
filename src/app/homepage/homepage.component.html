@@ -4,7 +4,7 @@
 
 
 <!--Integrate CurrentEventBox Component-->
-<div class="event-container" *ngFor="let event of (events$ | async)">
+<div class="event-container" *ngFor="let event of (actualEvents$ | async)">
   <app-current-event-box [event]="event"></app-current-event-box>
   <div *ngIf="((events$ | async)?.length) === 0">Es gibt keine Events, für die Sie sich aktuell anmelden können.</div>
 </div>
@@ -15,18 +15,15 @@
 <!--Future Events-->
 <div class="title-box"><h1>Zukünftige Events</h1></div>
 
-<div class="event-container">
+<div class="event-container" *ngFor="let event of (futureEvents$ | async)">
 <div class="future-event-box" >
-  <div class="information-event-box" *ngFor="let event of (events$ | async)"> {{event.matchName}} am {{event.eventDate | date: 'dd.MM.yyyy'}}
-    <ng-container *ngIf="filterFutureEvents(event.registrationDate)">
-      {{event.matchName}} am {{event.eventDate | date: 'dd.MM.yyyy'}}
-    </ng-container>
+  <div class="information-event-box"> {{event.matchName}} am {{event.eventDate | date: 'dd.MM.yyyy'}}
   </div>
-  <!--<div *ngIf='(events$ | async)?.length === 0'>Es gibt keine Events, für die Sie sich aktuell anmelden können.</div>-->
+    <div class="event-image"> </div>
+</div>
+  <div *ngIf="((events$ | async)?.length) === 0">Es gibt keine Events, für die Sie sich aktuell anmelden können.</div>
+</div>
 
-  <div class="event-image"> </div>
-</div>
-</div>
 
 <!--Distance Future Events/End of Page-->
 <div class="placeholder-end"></div>

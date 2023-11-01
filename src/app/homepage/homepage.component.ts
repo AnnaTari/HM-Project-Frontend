@@ -12,28 +12,29 @@ import {CurrentStateService} from "../shared/services/current-state.service";
 export class HomepageComponent {
 
   events$: Observable<EventModel[]>;
+  actualEvents$: Observable<EventModel[]>;
+  futureEvents$: Observable<EventModel[]>;
   today: Date = new Date;
 
   constructor(private eventApi: EventApi, private currentStateService: CurrentStateService) {
     this.eventApi.check().subscribe((data)=> this.currentStateService.setEventObs(data));
+    this.actualEvents$ = this.currentStateService.getActualEvents();
+    this.futureEvents$ = this.currentStateService.getFutureEvents();
     this.events$ = this.currentStateService.getEventObs();
   }
 
   @Input()
   event: any= {eventHsvId: 0, adminId: 0, matchName: "", matchDetails: "", event_date: new Date(), location:"", deadline: new Date(), ticketType: 0, ticketAmount: 0, registrationDate: new Date()};
 
-  //Filter Current and Future Events
-  filterCurrentEvents(registrationDate: Date): boolean {
-    return registrationDate <= this.today;
-     }
-    filterFutureEvents (registrationDate: Date): boolean {
-    return registrationDate > this.today;
-    }
+  ngOnInit() {
+    this.eventApi.check().subscribe((data => {
+      this.currentStateService.separateActualAndFutureEvents(data);
+    }))
+  }
+  /*Automatische Initialisierung beim Starten der Komponente
+  ngOnInit () {
+    this.futureEvents();
+  }
+*/
 
- /* filterCurrentDates() {
-    this.events$ = this.events$.filter(event=> {
-      const eventDate = new Date(event.event_date);
-      return eventDate >= this.today;
-    });
-  } */
 }
