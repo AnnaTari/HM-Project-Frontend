@@ -1,5 +1,5 @@
 import {Component, Inject} from '@angular/core';
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-pop-up',
@@ -7,6 +7,7 @@ import {MAT_DIALOG_DATA} from "@angular/material/dialog";
   styleUrls: ['./pop-up.component.css']
 })
 export class PopUpComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(public dialogRef: MatDialogRef<PopUpComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
+    console.log(data);
   }
 }

@@ -1,5 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {EventModel} from "../../shared/models/event.model";
+import {MatDialog} from "@angular/material/dialog";
+import {PopUpComponent} from "../../shared/components/pop-up/pop-up.component";
 
 @Component({
   selector: 'app-edit-option',
@@ -9,11 +11,13 @@ import {EventModel} from "../../shared/models/event.model";
 export class EditOptionComponent {
   @Input()
   event?: EventModel;
-  constructor() {
+  constructor(public dialog: MatDialog) {
   }
 
-  deleteEvent() {
-
+  openDialog() {
+    let dialogRef = this.dialog.open(PopUpComponent, {
+      data: this.event
+    });
   }
 
   editEvent() {

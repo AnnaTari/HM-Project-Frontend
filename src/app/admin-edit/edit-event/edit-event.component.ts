@@ -41,6 +41,7 @@ export class EditEventComponent {
       matchName: this.eventForm.value.matchName,
       matchDetails: this.eventForm.value.matchDetails,
       eventDate: eventDate,
+      picture: this.eventForm.value.gamePicture,
       location: this.eventForm.value.location,
       deadline: this.eventForm.value.deadline,
       ticketType: this.eventForm.value.ticketType,
@@ -50,6 +51,7 @@ export class EditEventComponent {
     console.log(event);
     this.eventApi.addEvent(event).subscribe((events) => this.currentStateService.separateActualAndFutureEvents(events));
   }
+
 
   //When you edit events you need to patch the value --> name of form should be identical to EventModel
   /*
