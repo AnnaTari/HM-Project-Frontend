@@ -31,10 +31,6 @@ export class HomepageComponent {
       this.currentStateService.separateActualAndFutureEvents(data);
     }))
   }
-  /*Automatische Initialisierung beim Starten der Komponente
-  ngOnInit () {
-    this.futureEvents();
-  }
-*/
+
 
 }
