@@ -44,6 +44,7 @@
   position: absolute; /*placed at bottom*/
   background-color: #005E52;
   color: #ffffff;
+  border: 2px solid #005E52;
   border-radius: 10%;
   width: 220px;
   height: 45px;
