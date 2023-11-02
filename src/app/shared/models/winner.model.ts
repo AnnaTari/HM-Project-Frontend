@@ -5,6 +5,7 @@ export interface WinnerModel {
   name: string,
   email: string,
   escortName: string,
+  winner: boolean,
   substituteWinner: boolean,
   blacklistCounter: number,
 }
