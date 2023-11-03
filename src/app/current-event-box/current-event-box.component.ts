@@ -15,6 +15,6 @@ export class CurrentEventBoxComponent {
   }
 
  @Input()
-  event: EventModel= {eventHsvId: 0, adminId: 0, matchName: "", matchDetails: "", eventDate: new Date(), location:"", deadline: new Date(), ticketType: 0, ticketAmount: 0, registrationDate: new Date()};
+  event: EventModel= {eventHsvId: 0, adminId: 0, matchName: "", matchDetails: "", eventDate: new Date(), picture: null, location:"", deadline: new Date(), ticketType: 0, ticketAmount: 0, registrationDate: new Date()};
 
 }

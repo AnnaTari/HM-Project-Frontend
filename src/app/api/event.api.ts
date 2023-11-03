@@ -21,4 +21,8 @@ export class EventApi {
   public addEvent(event: EventModel) {
     return this.httpClient.post<EventModel[]>(this.endpoint + "/addEvent", event);
   }
+
+  public deleteEvent(event: EventModel) {
+    return this.httpClient.post<EventModel[]>(this.endpoint + "/deleteEvent", event);
+  }
 }
