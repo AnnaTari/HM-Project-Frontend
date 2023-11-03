@@ -11,7 +11,8 @@ h1 {
 
 .event-container {
   display: flex;
-  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
   justify-content: center;
 }
 
@@ -26,7 +27,6 @@ h1 {
   width: 390px;
   border: 2px solid black;
   border-radius: 5%;
-  float: left;
   padding-top: 25px;
 }
 
