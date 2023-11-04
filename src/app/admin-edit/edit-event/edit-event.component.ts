@@ -33,6 +33,7 @@ export class EditEventComponent {
   }
 
   onSubmit() {
+    console.log("Hallo")
     let adminId = 0;
     this.currentStateService.getAdminObs().subscribe((admin) => {
       adminId = admin.adminId ? admin.adminId : 0;
@@ -52,19 +53,32 @@ export class EditEventComponent {
       ticketAmount: this.eventForm.value.ticketAmount,
       registrationDate: this.eventForm.value.registrationDate
     }
-
-
-    const reader = new FileReader();
-    reader.onload = (event: any) => {
-      let arrayBuffer = event.target.result;
-      let byteArray = new Uint8Array(arrayBuffer);
-      this.eventApi.addEvent(event, Array.from(byteArray)).subscribe((events) => this.currentStateService.separateActualAndFutureEvents(events));
-    };
-    reader.readAsArrayBuffer(this.selectedFile!);
-
     console.log(event);
+    const reader = new FileReader();
+    reader.onload = (picture: any) => {
+      console.log("Hallo")
+      let arrayBuffer = picture.target.result;
+      let byteArray = new Uint8Array(arrayBuffer);
+      this.eventApi.addEvent(this.toJSON(event), Array.from(byteArray)).subscribe((events) => this.currentStateService.separateActualAndFutureEvents(events));
+    };
   }
 
+
+  //need to use this method because in the api i stringify this event
+  toJSON(event: EventModel) {
+    return {
+      eventHsvId: event.eventHsvId,
+      adminId: event.adminId,
+      matchName: event.matchName,
+      matchDetails: event.matchDetails,
+      eventDate: event.eventDate,
+      location: event.location,
+      deadline: event.deadline,
+      ticketType: event.ticketType,
+      ticketAmount: event.ticketAmount,
+      registrationDate: event.registrationDate
+    };
+  }
   //When you edit events you need to patch the value --> name of form should be identical to EventModel
   /*
   ngOnInit() {
