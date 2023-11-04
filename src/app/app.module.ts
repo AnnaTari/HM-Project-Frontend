@@ -23,6 +23,10 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import { RafflePageComponent } from './raffle-page/raffle-page.component';
+import {MatInputModule} from "@angular/material/input";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -41,18 +45,22 @@ import { RafflePageComponent } from './raffle-page/raffle-page.component';
     TermsAndConditionsComponent,
     RafflePageComponent,
   ],
-    imports: [
-        HttpClientModule,
-        BrowserModule,
-        ReactiveFormsModule,
-        AppRoutingModule, //adds RoutingModule for use
-        BrowserAnimationsModule,
-        MatTabsModule,
-        MatIconModule,
-        FormsModule,
-        MatDialogModule,
-        MatButtonModule
-    ],
+  imports: [
+    HttpClientModule,
+    BrowserModule,
+    ReactiveFormsModule,
+    AppRoutingModule, //adds RoutingModule for use
+    BrowserAnimationsModule,
+    MatTabsModule,
+    MatIconModule,
+    FormsModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTooltipModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
