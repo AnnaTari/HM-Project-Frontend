@@ -55,14 +55,17 @@ export class EditEventComponent {
     }
     console.log(event);
     const reader = new FileReader();
+    let byteArray = new Uint8Array();
     reader.onload = (picture: any) => {
-      console.log("Hallo")
-      let arrayBuffer = picture.target.result;
-      let byteArray = new Uint8Array(arrayBuffer);
-      this.eventApi.addEvent(this.toJSON(event), Array.from(byteArray)).subscribe((events) => console.log(events));
+        console.log("Hallo")
+        let arrayBuffer = picture.target.result;
+        byteArray = new Uint8Array(arrayBuffer);
     };
+    this.eventApi.addEvent(this.toJSON(event), Array.from(byteArray)).subscribe((events) => this.currentStateService.separateActualAndFutureEvents(events));
     //this is very important --> so that the picture can be read!
-    reader.readAsArrayBuffer(this.selectedFile!);
+    if (this.selectedFile) {
+      reader.readAsArrayBuffer(this.selectedFile);
+    }
   }
 
 
@@ -81,6 +84,7 @@ export class EditEventComponent {
       registrationDate: event.registrationDate
     };
   }
+
   //When you edit events you need to patch the value --> name of form should be identical to EventModel
   /*
   ngOnInit() {
