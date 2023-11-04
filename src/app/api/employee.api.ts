@@ -8,13 +8,13 @@ import {Observable} from "rxjs";
 })
 
 export class EmployeeApi {
-  private endpoint = '/api/employee';
+    private endpoint = '/api/employee';
   constructor(private httpClient: HttpClient) {
   }
 
-  public login(employee: { name: string; email: string }): Observable<EmployeeModel> {
+  public participate(employee: { name: string; email: string }): Observable<EmployeeModel> {
     console.log("Vor Abschicken" + employee.name, employee.email);
-    return this.httpClient.post <EmployeeModel>(this.endpoint, employee);
+    return this.httpClient.post<EmployeeModel>(this.endpoint, employee);
   }
 }
 
