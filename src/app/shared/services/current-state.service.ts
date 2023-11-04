@@ -93,15 +93,17 @@ export class CurrentStateService {
     events.forEach((event) => {
       let currentDateTime = new Date();
       let registrationDate = new Date(event.registrationDate);
+      let eventDate = new Date(event.eventDate);
       let deadline = new Date(event.deadline);
-      if (registrationDate.toISOString() <= currentDateTime.toISOString()) {
+      if (registrationDate.toISOString() <= currentDateTime.toISOString() && deadline.toISOString() > currentDateTime.toISOString()) {
         actualEvents.push(event);
       } else if (registrationDate.toISOString() > currentDateTime.toISOString()) {
         futureEvents.push(event);
-      } else if (deadline.toISOString() < currentDateTime.toISOString()) {
+      } else if (deadline.toISOString() < currentDateTime.toISOString() && eventDate.toISOString() > currentDateTime.toISOString()) {
         expiredEvents.push(event);
       }
     })
+    console.log(expiredEvents);
     this.setActualEvents(actualEvents);
     this.setFutureEvents(futureEvents);
     this.setExpiredEvents(expiredEvents);

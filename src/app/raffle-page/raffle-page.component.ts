@@ -15,12 +15,13 @@ export class RafflePageComponent {
   today: Date = new Date;
 
   constructor(private eventApi: EventApi, private winnerApi: WinnerApi, private currentStateService: CurrentStateService) {
-    this.eventApi.check().subscribe((data)=> this.currentStateService.setEventObs(data));
+    this.eventApi.check().subscribe((data)=> this.currentStateService.separateActualAndFutureEvents(data));
     this.expiredEvents$ = this.currentStateService.getExpiredEvents();
+    this.expiredEvents$.subscribe(events => {
+      console.log(events);
+    })
     //this.winnerApi.check().
   }
 
-  @Input()
-  event: any= {eventHsvId: 0, adminId: 0, matchName: "", matchDetails: "", event_date: new Date(), location:"", deadline: new Date(), ticketType: 0, ticketAmount: 0, registrationDate: new Date()};
 
 }
