@@ -22,7 +22,6 @@ export class EditOptionComponent {
     location: "",
     matchDetails: "",
     matchName: "",
-    picture: null,
     registrationDate: new Date(),
     ticketAmount: 0,
     ticketType: 0,

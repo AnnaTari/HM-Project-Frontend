@@ -5,7 +5,6 @@ export interface EventModel {
   matchDetails: string,
   eventDate: Date,
   location: string,
-  picture: File | null,
   deadline: Date,
   ticketType: number,
   ticketAmount: number,

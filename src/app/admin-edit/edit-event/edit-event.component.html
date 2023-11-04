@@ -31,7 +31,7 @@
     </mat-form-field>
     <!--Ein Bild für das Spiel-->
     <div class="mat-input-element">
-      <input type="file" formControlName="gamePicture">
+      <input type="file" (change)="onFileChange($event)">
     </div>
     <!--Deadline der Anmeldung-->
     <mat-form-field>
