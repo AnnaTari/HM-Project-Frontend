@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {BrowserModule, By} from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -26,6 +26,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {ByteArrayToImagePipe} from "./shared/pipes/ByteArrayToImagePipe";
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     EditOptionComponent,
     CurrentEventBoxComponent,
     TermsAndConditionsComponent,
+    ByteArrayToImagePipe
   ],
   imports: [
     HttpClientModule,
@@ -58,6 +60,9 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     MatDatepickerModule,
     MatNativeDateModule,
     MatTooltipModule,
+  ],
+  exports: [
+    ByteArrayToImagePipe
   ],
   providers: [],
   bootstrap: [AppComponent]

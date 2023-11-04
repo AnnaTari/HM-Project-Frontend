@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {EventModel} from "../shared/models/event.model";
+import {EventWithPictureModel} from "../shared/models/eventWithPicture.model";
 
 
 @Injectable({
@@ -13,7 +14,7 @@ export class EventApi {
   }
 
   public check() {
-    let response = this.httpClient.get<EventModel[]>(this.endpoint);
+    let response = this.httpClient.get<EventWithPictureModel[]>(this.endpoint);
     response.subscribe((data => console.log(data)))
     return response;
   }
@@ -31,11 +32,11 @@ export class EventApi {
     formData.append('picture', new Blob([new Uint8Array(byteArray)], {
       type: "application/octet-stream"
     }));
-    return this.httpClient.post<EventModel[]>(this.endpoint + "/addEvent", formData);
+    return this.httpClient.post<EventWithPictureModel[]>(this.endpoint + "/addEvent", formData);
   }
 
   public deleteEvent(event: EventModel) {
-    return this.httpClient.post<EventModel[]>(this.endpoint + "/deleteEvent", event);
+    return this.httpClient.post<EventWithPictureModel[]>(this.endpoint + "/deleteEvent", event);
   }
 
 }
