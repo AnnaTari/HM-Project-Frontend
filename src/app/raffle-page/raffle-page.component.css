@@ -17,6 +17,34 @@ h1 {
   position: relative;
 }
 
+.radio-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.radio-label {
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.radio-label input {
+  display: none;
+}
+
+.radio-label input:checked + span {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.radio-label span {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
 .raffle-button {
   height: 80px;
   width: 300px;

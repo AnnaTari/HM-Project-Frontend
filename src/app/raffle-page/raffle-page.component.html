@@ -1,6 +1,12 @@
 <div class="title-box"><h1>Hier geht es zur Auslosung: </h1></div>
 
 <div class="raffle-container">
+  <div class="radio-buttons">
+    <label *ngFor="let event of expiredEvents$" class="radio-label">
+      <input type="radio" name="expiredEvents" [(EventModel)]="selectedEvent" [value]="event">
+      {{ event }}
+    </label>
+  </div>
 <button class="raffle-button">Verlosung starten</button>
   <div class="winner-output">
     <p class="bold">Die Gewinner sind: </p>
