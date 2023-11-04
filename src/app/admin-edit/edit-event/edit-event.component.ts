@@ -61,6 +61,8 @@ export class EditEventComponent {
       let byteArray = new Uint8Array(arrayBuffer);
       this.eventApi.addEvent(this.toJSON(event), Array.from(byteArray)).subscribe((events) => this.currentStateService.separateActualAndFutureEvents(events));
     };
+    //this is very important --> so that the picture can be read!
+    reader.readAsArrayBuffer(this.selectedFile!);
   }
 
 

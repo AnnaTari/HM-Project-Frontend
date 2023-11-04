@@ -38,7 +38,4 @@ export class EventApi {
     return this.httpClient.post<EventModel[]>(this.endpoint + "/deleteEvent", event);
   }
 
-  public test(formData: FormData) {
-    return this.httpClient.post(this.endpoint + "/test", formData).subscribe();
-  }
 }
