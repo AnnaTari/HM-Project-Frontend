@@ -4,11 +4,6 @@
   float: left;
 }
 
-.small-placeholder-event-boxes {
-  height: 217px;
-  width: 36px;
-  float: left;
-}
 
 .event-box {
   display: flex;

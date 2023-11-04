@@ -1,0 +1,47 @@
+.title-box {
+  text-align: center;
+  width:100%;
+  margin: 100px auto;
+}
+
+h1 {
+  font-size: 32px;
+  color:  black;
+}
+
+.raffle-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.raffle-button {
+  height: 80px;
+  width: 300px;
+  background-color: #005E52;
+  color: white;
+  border-radius: 10%;
+  font-size: 28px;
+  float: left;
+}
+
+.raffle-button:hover {
+  cursor: pointer;
+}
+
+.winner-output {
+  margin-top: 50px;
+  width: 800px;
+  height: 1200px;
+  font-size: 24px;
+  border: #005E52 solid 2px;
+  float: left;
+  padding-top: 20px;
+  margin-bottom: 50px;
+}
+
+.bold {
+  font-weight: bold;
+}

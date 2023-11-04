@@ -22,6 +22,7 @@ import { EditOptionComponent } from './admin-edit/edit-option/edit-option.compon
 import {MatIconModule} from "@angular/material/icon";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
+import { RafflePageComponent } from './raffle-page/raffle-page.component';
 import {MatInputModule} from "@angular/material/input";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
@@ -42,6 +43,7 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     EditOptionComponent,
     CurrentEventBoxComponent,
     TermsAndConditionsComponent,
+    RafflePageComponent,
   ],
   imports: [
     HttpClientModule,
