@@ -105,4 +105,10 @@ export class CurrentStateService {
     this.setFutureEvents(futureEvents);
     this.setExpiredEvents(expiredEvents);
   }
+
+  isLoggedIn(): boolean {
+    let admin = this.admin$.getValue();
+    return admin && admin.adminId !== 0;
+  }
+
 }
