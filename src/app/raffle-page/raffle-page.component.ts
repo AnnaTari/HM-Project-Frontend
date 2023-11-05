@@ -28,4 +28,8 @@ export class RafflePageComponent {
       this.currentStateService.separateActualAndFutureEvents(data);
     }))
   }
+
+  startLottery (event:any): void {
+    this.winnerApi.findAllParticipants().subscribe
+  }
 }
