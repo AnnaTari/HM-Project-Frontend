@@ -13,11 +13,13 @@ export class WinnerApi {
   constructor(private httpClient: HttpClient) {
 
   }
-  public check() {
+  public findAllParticipants() {
     let response = this.httpClient.get<WinnerModel[]>(this.endpoint);
     response.subscribe((data => console.log(data)))
     return response;
   }
+
+
 
 
 }
