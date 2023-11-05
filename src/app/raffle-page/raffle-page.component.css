@@ -17,42 +17,48 @@ h1 {
   position: relative;
 }
 
-.radio-buttons {
+.event-container {
   display: flex;
+  flex-wrap: nowrap;
   flex-direction: row;
   justify-content: center;
+}
+
+.event-box {
+  display: flex;
+  flex-direction: column;
+  position: relative;
   align-items: center;
+  margin-right: 40px;
+  height: 100px;
+  width: 390px;
+  border: 2px solid black;
+  border-radius: 5%;
+  padding-top: 15px;
 }
 
-.radio-label {
-  margin: 0 10px;
-  cursor: pointer;
-}
-
-.radio-label input {
-  display: none;
-}
-
-.radio-label input:checked + span {
-  background-color: #007bff;
-  color: #fff;
-}
-
-.radio-label span {
-  padding: 8px 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  transition: background-color 0.3s, color 0.3s;
+.information-event-box {
+  height: 39px;
+  width: 373px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  float: left;
 }
 
 .raffle-button {
-  height: 80px;
-  width: 300px;
+  position: absolute; /*placed at bottom*/
   background-color: #005E52;
-  color: white;
+  color: #ffffff;
+  border: 2px solid #005E52;
   border-radius: 10%;
-  font-size: 28px;
-  float: left;
+  width: 220px;
+  height: 45px;
+  bottom: 15px;
+  font-size: 20px;
+  align-items: center; /*text vertically centered*/
+  display: flex;
+  justify-content: center; /*text horizontally centered*/
 }
 
 .raffle-button:hover {

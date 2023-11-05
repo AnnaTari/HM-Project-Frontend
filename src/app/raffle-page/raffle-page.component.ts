@@ -23,5 +23,9 @@ export class RafflePageComponent {
     //this.winnerApi.check().
   }
 
-
+  ngOnInit() {
+    this.eventApi.check().subscribe((data => {
+      this.currentStateService.separateActualAndFutureEvents(data);
+    }))
+  }
 }

@@ -1,15 +1,17 @@
 <div class="title-box"><h1>Hier geht es zur Auslosung: </h1></div>
 
+
 <div class="raffle-container">
-  <div class="radio-buttons">
-    <label *ngFor="let event of (expiredEvents$|async)" class="radio-label">
-      <input type="radio" name="expiredEvents" [value]="event">
-      {{ event }}
-    </label>
-    <button class="raffle-button" (click)="startLotter(eve)">Verlosung starten</button>
+<div class="event-container">
+  <div class="event-box" *ngFor="let event of (expiredEvents$ | async)" >
+    <div class="information-event-box"> {{event.matchName}} am {{event.eventDate | date: 'dd.MM.yyyy'}}
+    </div>
+    <button class="raffle-button"> <!--(click)="startLottery(eve)"-->Auslosung starten</button>
   </div>
-  <div class="winner-output">
-    <p class="bold">Die Gewinner sind: </p>
-    <p class="bold">Die Ersatzgewinner sind: </p>
-  </div>
+  <div *ngIf="((expiredEvents$ | async)?.length) === 0">Es gibt keine Events, für die Sie eine Auslosung starten können.</div>
+</div>
+<div class="winner-output">
+  <p class="bold">Die Gewinner sind: </p>
+  <p class="bold">Die Ersatzgewinner sind: </p>
+</div>
 </div>
