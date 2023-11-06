@@ -26,6 +26,8 @@ export class CurrentStateService {
 
   private futureEvents$: BehaviorSubject<EventWithPictureModel[]> = new BehaviorSubject<EventWithPictureModel[]>([]);
 
+  private expiredEvents$: BehaviorSubject<EventModel[]> = new BehaviorSubject<EventModel[]>([]);
+
   private events$: BehaviorSubject<EventModel[]> = new BehaviorSubject<EventModel[]>([]);
 
   constructor() {
@@ -75,19 +77,33 @@ export class CurrentStateService {
     return this.futureEvents$.asObservable();
   }
 
+  setExpiredEvents(expiredEvents: EventModel[]) {
+    this.expiredEvents$.next(expiredEvents);
+  }
+
+  getExpiredEvents(): Observable<EventModel[]> {
+    return this.expiredEvents$.asObservable();
+  }
+
+
   separateActualAndFutureEvents(events: EventWithPictureModel[]) {
-    let actualEvents: EventWithPictureModel[] = [];
-    let futureEvents: EventWithPictureModel[] = [];
+    let actualEvents: EventModel[] = [];
+    let futureEvents: EventModel[] = [];
+    let expiredEvents: EventModel[] = [];
     events.forEach((event) => {
       let currentDateTime = new Date();
       let registrationDate = new Date(event.registrationDate);
+      let deadline = new Date(event.deadline);
       if (registrationDate.toISOString() <= currentDateTime.toISOString()) {
         actualEvents.push(event);
       } else if (registrationDate.toISOString() > currentDateTime.toISOString()) {
         futureEvents.push(event);
+      } else if (deadline.toISOString() < currentDateTime.toISOString()) {
+        expiredEvents.push(event);
       }
     })
     this.setActualEvents(actualEvents);
     this.setFutureEvents(futureEvents);
+    this.setExpiredEvents(expiredEvents);
   }
 }

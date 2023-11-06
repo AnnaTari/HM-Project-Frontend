@@ -1,12 +1,9 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {CurrentStateService} from "../shared/services/current-state.service";
 import {EmployeeApi} from "../api/employee.api";
-import {BehaviorSubject, Observable} from "rxjs";
-
-import {EventModel} from "../shared/models/event.model";
-import {EventApi} from "../api/event.api";
+import {BehaviorSubject} from "rxjs";
 
 
 @Component({
@@ -17,28 +14,29 @@ import {EventApi} from "../api/event.api";
 export class EventPageComponent {
 
   participationForm = new FormGroup({
-    employeename: new FormControl('', Validators.required),
+    name: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
-   // escortname: new FormControl(``),
+    escortName: new FormControl(``),
   })
 
   isLoggedIn = new BehaviorSubject<boolean>(true);
+
   constructor(private router: Router, private currentStateService: CurrentStateService, private employeeApi: EmployeeApi) {
   }
 
- /* events$: Observable<EventModel[]>;
-  constructor(private eventApi: EventApi) {
-    this.events$ = this.eventApi.check();
-  } */
+  /* events$: Observable<EventModel[]>;
+   constructor(private eventApi: EventApi) {
+     this.events$ = this.eventApi.check();
+   } */
 
 
   onSubmit() {
     console.log("Teilnahme bestätigt")
     let employee: { name: string, email: string } = {
-      name: this.participationForm.value.employeename!,
-      email: this.participationForm.value.email!
+      name: this.participationForm.value.name ? this.participationForm.value.name : "",
+      email: this.participationForm.value.email ? this.participationForm.value.email : ""
     }
-    this.employeeApi.login(employee).subscribe(employee => {
+    this.employeeApi.participate(employee).subscribe(employee => {
       //need to check why hm_user_id comes written like this from backend
       if (employee.employee_id != null) {
         this.isLoggedIn.next(true);
