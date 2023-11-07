@@ -20,16 +20,12 @@ export class RafflePageComponent {
     this.expiredEvents$.subscribe(events => {
       console.log(events);
     })
-    //this.winnerApi.check().
+
   }
 
-  ngOnInit() {
-    this.eventApi.check().subscribe((data => {
-      this.currentStateService.separateActualAndFutureEvents(data);
-    }))
-  }
 
-  startLottery (event:any): void {
-    this.winnerApi.findAllParticipants().subscribe
+
+  startLottery (event:): void {
+    this.winnerApi.startLottery().subscribe
   }
 }
