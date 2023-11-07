@@ -87,9 +87,9 @@ export class CurrentStateService {
 
 
   separateActualAndFutureEvents(events: EventWithPictureModel[]) {
-    let actualEvents: EventModel[] = [];
-    let futureEvents: EventModel[] = [];
-    let expiredEvents: EventModel[] = [];
+    let actualEvents: EventWithPictureModel[] = [];
+    let futureEvents: EventWithPictureModel[] = [];
+    let expiredEvents: EventWithPictureModel[] = [];
     events.forEach((event) => {
       let currentDateTime = new Date();
       let registrationDate = new Date(event.registrationDate);

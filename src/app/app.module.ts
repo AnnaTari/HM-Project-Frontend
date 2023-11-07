@@ -62,9 +62,7 @@ import {ByteArrayToImagePipe} from "./shared/pipes/ByteArrayToImagePipe";
     MatNativeDateModule,
     MatTooltipModule,
   ],
-  exports: [
-    ByteArrayToImagePipe
-  ],
+
   providers: [],
   bootstrap: [AppComponent]
 })
