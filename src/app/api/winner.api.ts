@@ -19,7 +19,9 @@ export class WinnerApi {
     return response;
   }
 
+  public nameWinner() {
 
+  }
 
 
 }
