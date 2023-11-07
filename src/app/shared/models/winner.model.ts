@@ -1,5 +1,5 @@
 export interface WinnerModel {
-  userId: number,
+  employee_id: number,
   eventHsvId: number,
   blacklistId: number,
   name: string,
