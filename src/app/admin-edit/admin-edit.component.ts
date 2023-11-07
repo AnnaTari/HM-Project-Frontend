@@ -3,6 +3,7 @@ import {EventModel} from "../shared/models/event.model";
 import {CurrentStateService} from "../shared/services/current-state.service";
 import {Observable} from "rxjs";
 import {EventApi} from "../api/event.api";
+import {EventWithPictureModel} from "../shared/models/eventWithPicture.model";
 
 @Component({
   selector: 'app-admin-edit',
@@ -10,8 +11,8 @@ import {EventApi} from "../api/event.api";
   styleUrls: ['./admin-edit.component.css']
 })
 export class AdminEditComponent implements OnInit {
-  actualEvents$: Observable<EventModel[]>;
-  futureEvents$: Observable<EventModel[]>;
+  actualEvents$: Observable<EventWithPictureModel[]>;
+  futureEvents$: Observable<EventWithPictureModel[]>;
 
   constructor(private currentStateService: CurrentStateService, private eventApi: EventApi) {
     this.actualEvents$ = this.currentStateService.getActualEvents();
@@ -21,6 +22,7 @@ export class AdminEditComponent implements OnInit {
   ngOnInit() {
     this.eventApi.check().subscribe((data => {
       this.currentStateService.separateActualAndFutureEvents(data);
+      console.log(data);
     }))
   }
 

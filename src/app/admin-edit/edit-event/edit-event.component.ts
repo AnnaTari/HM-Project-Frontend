@@ -12,6 +12,8 @@ import {EventApi} from "../../api/event.api";
 export class EditEventComponent {
   eventForm: FormGroup;
 
+  selectedFile: File | undefined;
+
   constructor(private fb: FormBuilder, private currentStateService: CurrentStateService, private eventApi: EventApi) {
     this.eventForm = this.fb.group({
       matchName: ['', Validators.required],
@@ -19,7 +21,6 @@ export class EditEventComponent {
       matchDate: [Date, Validators.required],
       matchTime: [''],
       location: ['Volksparkstadion', Validators.required],
-      gamePicture: [],
       deadline: [Date, Validators.required],
       ticketType: [2, Validators.required],
       ticketAmount: [0, Validators.required],
@@ -27,21 +28,25 @@ export class EditEventComponent {
     })
   }
 
+  onFileChange(event: any) {
+    this.selectedFile = event.target.files[0];
+  }
+
   onSubmit() {
-    console.log("Hallo");
+    console.log("Hallo")
     let adminId = 0;
     this.currentStateService.getAdminObs().subscribe((admin) => {
       adminId = admin.adminId ? admin.adminId : 0;
     })
     let eventDate = new Date(this.eventForm.value.matchDate);
     //eventDate.setTime(this.eventForm.value.matchTime);
+
     let event: EventModel = {
       eventHsvId: 0,
       adminId: adminId,
       matchName: this.eventForm.value.matchName,
       matchDetails: this.eventForm.value.matchDetails,
       eventDate: eventDate,
-      picture: this.eventForm.value.gamePicture,
       location: this.eventForm.value.location,
       deadline: this.eventForm.value.deadline,
       ticketType: this.eventForm.value.ticketType,
@@ -49,9 +54,36 @@ export class EditEventComponent {
       registrationDate: this.eventForm.value.registrationDate
     }
     console.log(event);
-    this.eventApi.addEvent(event).subscribe((events) => this.currentStateService.separateActualAndFutureEvents(events));
+    const reader = new FileReader();
+    let byteArray = new Uint8Array();
+    reader.onload = (picture: any) => {
+      console.log("Hallo")
+      let arrayBuffer = picture.target.result;
+      byteArray = new Uint8Array(arrayBuffer);
+      this.eventApi.addEvent(this.toJSON(event), Array.from(byteArray)).subscribe((events) => this.currentStateService.separateActualAndFutureEvents(events));
+    };
+    //this is very important --> so that the picture can be read!
+    if (this.selectedFile) {
+      reader.readAsArrayBuffer(this.selectedFile);
+    }
   }
 
+
+  //need to use this method because in the api i stringify this event
+  toJSON(event: EventModel) {
+    return {
+      eventHsvId: event.eventHsvId,
+      adminId: event.adminId,
+      matchName: event.matchName,
+      matchDetails: event.matchDetails,
+      eventDate: event.eventDate,
+      location: event.location,
+      deadline: event.deadline,
+      ticketType: event.ticketType,
+      ticketAmount: event.ticketAmount,
+      registrationDate: event.registrationDate
+    };
+  }
 
   //When you edit events you need to patch the value --> name of form should be identical to EventModel
   /*

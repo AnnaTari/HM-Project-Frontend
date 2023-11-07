@@ -22,3 +22,35 @@
 div, form {
   /*border: 1px solid black;*/
 }
+
+
+.input-wrapper {
+  position: relative;
+  display: inline-block;
+  border-bottom:2px solid rgba(0, 0, 0, 0.12);
+}
+
+.input-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #3f51b5;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
+}
+
+.input-wrapper input:focus::after {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+.input-wrapper input {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 10px 0;
+}

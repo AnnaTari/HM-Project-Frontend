@@ -1,4 +1,4 @@
-export interface EventModel {
+export interface EventWithPictureModel {
   eventHsvId: number,
   adminId: number,
   matchName: string,
@@ -9,4 +9,5 @@ export interface EventModel {
   ticketType: number,
   ticketAmount: number,
   registrationDate: Date,
+  picture: Uint8Array;
 }

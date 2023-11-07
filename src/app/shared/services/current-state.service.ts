@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
 import {EventModel} from "../models/event.model";
 import {EmployeeModel, AdminModel} from "../models/admin.model";
+import {EventWithPictureModel} from "../models/eventWithPicture.model";
 
 
 @Injectable({
@@ -21,9 +22,9 @@ export class CurrentStateService {
     email: ""
   });
 
-  private actualEvents$: BehaviorSubject<EventModel[]> = new BehaviorSubject<EventModel[]>([]);
+  private actualEvents$: BehaviorSubject<EventWithPictureModel[]> = new BehaviorSubject<EventWithPictureModel[]>([]);
 
-  private futureEvents$: BehaviorSubject<EventModel[]> = new BehaviorSubject<EventModel[]>([]);
+  private futureEvents$: BehaviorSubject<EventWithPictureModel[]> = new BehaviorSubject<EventWithPictureModel[]>([]);
 
   private expiredEvents$: BehaviorSubject<EventModel[]> = new BehaviorSubject<EventModel[]>([]);
 
@@ -60,19 +61,19 @@ export class CurrentStateService {
     return this.events$.asObservable();
   }
 
-  setActualEvents(actualEvents: EventModel[]) {
+  setActualEvents(actualEvents: EventWithPictureModel[]) {
     this.actualEvents$.next(actualEvents);
   }
 
-  getActualEvents(): Observable<EventModel[]> {
+  getActualEvents(): Observable<EventWithPictureModel[]> {
     return this.actualEvents$.asObservable();
   }
 
-  setFutureEvents(futureEvents: EventModel[]) {
+  setFutureEvents(futureEvents: EventWithPictureModel[]) {
     this.futureEvents$.next(futureEvents);
   }
 
-  getFutureEvents(): Observable<EventModel[]> {
+  getFutureEvents(): Observable<EventWithPictureModel[]> {
     return this.futureEvents$.asObservable();
   }
 
@@ -85,7 +86,7 @@ export class CurrentStateService {
   }
 
 
-  separateActualAndFutureEvents(events: EventModel[]) {
+  separateActualAndFutureEvents(events: EventWithPictureModel[]) {
     let actualEvents: EventModel[] = [];
     let futureEvents: EventModel[] = [];
     let expiredEvents: EventModel[] = [];
