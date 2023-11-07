@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {EventModel} from "../../shared/models/event.model";
 import {CurrentStateService} from "../../shared/services/current-state.service";
 import {EventApi} from "../../api/event.api";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-edit-event',
@@ -14,7 +15,7 @@ export class EditEventComponent {
 
   selectedFile: File | undefined;
 
-  constructor(private fb: FormBuilder, private currentStateService: CurrentStateService, private eventApi: EventApi) {
+  constructor(private fb: FormBuilder, private currentStateService: CurrentStateService, private eventApi: EventApi, private router:Router) {
     this.eventForm = this.fb.group({
       matchName: ['', Validators.required],
       matchDetails: ['', Validators.required],
@@ -66,6 +67,7 @@ export class EditEventComponent {
     if (this.selectedFile) {
       reader.readAsArrayBuffer(this.selectedFile);
     }
+    this.router.navigate(['admin-edit'])
   }
 
 

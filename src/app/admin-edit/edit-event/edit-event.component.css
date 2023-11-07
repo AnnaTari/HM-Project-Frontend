@@ -1,11 +1,12 @@
 .container {
   background-color: #fff5;
-  width: 90%;
+  width: 80%;
   backdrop-filter: blur(7px);
   box-shadow: 0 0.4rem .8rem #0005;
   border-radius: .8rem;
-  margin: 10px auto auto;
+  margin: 50px auto auto;
   padding-bottom: 20px;
+  padding-top: 20px;
 }
 
 .container-header {
@@ -15,19 +16,44 @@
 }
 
 .container-body {
-  padding-top: 20px;
-  padding-left: 20px;
+  padding: 20px 20px 0;
 }
 
-div, form {
-  /*border: 1px solid black;*/
+/*Zeilen im Formular mit Flex Layout*/
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
+/*Im Flex-Layout gibt es drei Spalten*/
+.row .form-group {
+  flex: 0 0 30%;
+  text-align: center;
+}
 
+/*Design des Erstellen und Abbrechen Buttons*/
+.container-body .form-group button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #00A075;
+  color: white;
+  cursor: pointer;
+  margin-right: 5%;
+}
+
+.container-body .form-group button:disabled {
+  background-color: #8d827d;
+  opacity: 80%;
+  cursor: pointer;
+}
+
+/*Design vom Zeitpunkt Input Feld*/
 .input-wrapper {
   position: relative;
   display: inline-block;
-  border-bottom:2px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.12);
 }
 
 .input-wrapper::after {
@@ -37,7 +63,6 @@ div, form {
   left: 0;
   right: 0;
   height: 2px;
-  background-color: #3f51b5;
   visibility: hidden;
   transform: scaleX(0);
   transition: all 0.3s ease-in-out;

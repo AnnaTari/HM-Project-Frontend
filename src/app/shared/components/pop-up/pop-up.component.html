@@ -2,8 +2,8 @@
   <h1 mat-dialog-title>{{data.message}}</h1>
   <div [hidden]="(this.actualRoute !== 'admin-edit')">
     <div mat-dialog-actions>
-      <button mat-button (click)="deleteEvent()">Löschen</button>
-      <button mat-button mat-dialog-close>Abbrechen</button>
+      <button mat-button mat-stroked-button (click)="deleteEvent()">Löschen</button>
+      <button mat-button mat-stroked-button mat-dialog-close cdkFocusInitial>Abbrechen</button>
     </div>
   </div>
 </div>
