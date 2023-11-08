@@ -10,8 +10,9 @@ import {EventModel} from "../shared/models/event.model";
 export class CurrentEventBoxComponent {
 
   constructor (private router: Router) { }
-  navigateToEventPage() {
-    this.router.navigate(['./event-page']);
+
+  navigateToEventPage(eventHsvId: number) {
+    this.router.navigate(['./event-page', eventHsvId],);
   }
 
  @Input()
