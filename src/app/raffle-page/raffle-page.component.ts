@@ -4,6 +4,7 @@ import {EventModel} from "../shared/models/event.model";
 import {WinnerApi} from "../api/winner.api";
 import {EventApi} from "../api/event.api";
 import {CurrentStateService} from "../shared/services/current-state.service";
+import {EventWithPictureModel} from "../shared/models/eventWithPicture.model";
 
 @Component({
   selector: 'app-raffle-page',
@@ -25,7 +26,7 @@ export class RafflePageComponent {
 
 
 
-  startLottery (event:): void {
+  startLottery (event:EventWithPictureModel): void {
     this.winnerApi.startLottery().subscribe
   }
 }

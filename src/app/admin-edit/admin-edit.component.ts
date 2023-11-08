@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {EventApi} from "../api/event.api";
 import {EventWithPictureModel} from "../shared/models/eventWithPicture.model";
 
+
 @Component({
   selector: 'app-admin-edit',
   templateUrl: './admin-edit.component.html',
