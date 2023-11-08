@@ -30,9 +30,9 @@ export class HeaderComponent {
     this.router.navigate(['./raffle-page']);
   }
 
-  //navigateTo... {
-  //this.router.navigate(['./raffle-page']);
-// }
+  navigateToAdminEdit() {
+  this.router.navigate(['./admin-edit']);
+   }
 
 }
 
