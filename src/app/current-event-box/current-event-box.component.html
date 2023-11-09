@@ -2,7 +2,8 @@
 <div class="event-box">
   <div class="information-event-box"> {{event.matchName}} am {{event.eventDate | date: 'dd.MM.yyyy'}}
   </div>
-  <div class="event-image"> <!-- {{ picture }} -->
+  <div class ="event-image" *ngIf="event.picture">
+    <img [src]="showImage" alt="Event Image">
   </div>
   <button class="participation-button" (click)="navigateToEventPage(event.eventHsvId)">Zur Teilnahme</button>
 </div>

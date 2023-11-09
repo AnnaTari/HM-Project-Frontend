@@ -26,9 +26,9 @@ export class CurrentStateService {
 
   private futureEvents$: BehaviorSubject<EventWithPictureModel[]> = new BehaviorSubject<EventWithPictureModel[]>([]);
 
-  private expiredEvents$: BehaviorSubject<EventModel[]> = new BehaviorSubject<EventModel[]>([]);
+  private expiredEvents$: BehaviorSubject<EventWithPictureModel[]> = new BehaviorSubject<EventWithPictureModel[]>([]);
 
-  private events$: BehaviorSubject<EventModel[]> = new BehaviorSubject<EventModel[]>([]);
+  private events$: BehaviorSubject<EventWithPictureModel[]> = new BehaviorSubject<EventWithPictureModel[]>([]);
 
   constructor() {
 
@@ -53,7 +53,7 @@ export class CurrentStateService {
   }
 
   //Events
-  setEventObs(event: EventModel[]) {
+  setEventObs(event: EventWithPictureModel[]) {
     this.events$.next(event);
   }
 
@@ -77,11 +77,11 @@ export class CurrentStateService {
     return this.futureEvents$.asObservable();
   }
 
-  setExpiredEvents(expiredEvents: EventModel[]) {
+  setExpiredEvents(expiredEvents: EventWithPictureModel[]) {
     this.expiredEvents$.next(expiredEvents);
   }
 
-  getExpiredEvents(): Observable<EventModel[]> {
+  getExpiredEvents(): Observable<EventWithPictureModel[]> {
     return this.expiredEvents$.asObservable();
   }
 
