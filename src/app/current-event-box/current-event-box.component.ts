@@ -12,7 +12,7 @@ export class CurrentEventBoxComponent {
   constructor (private router: Router) { }
 
   navigateToEventPage(eventHsvId: number) {
-    this.router.navigate(['./event-page', eventHsvId],);
+    this.router.navigate(['./event-page', eventHsvId]);
   }
 
  @Input()
