@@ -1,7 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {EventApi} from "../api/event.api";
 import {Observable} from "rxjs";
-import {EventModel} from "../shared/models/event.model";
 import {CurrentStateService} from "../shared/services/current-state.service";
 import {EventWithPictureModel} from "../shared/models/eventWithPicture.model";
 import {DomSanitizer} from "@angular/platform-browser";
@@ -11,7 +10,7 @@ import {DomSanitizer} from "@angular/platform-browser";
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.css']
 })
-export class HomepageComponent {
+export class HomepageComponent implements OnInit{
 
   events$: Observable<EventWithPictureModel[]>;
   actualEvents$: Observable<EventWithPictureModel[]>;
@@ -33,10 +32,11 @@ export class HomepageComponent {
     return this.sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + base64Image);
   }
   ngOnInit() {
+    this.showImage = this.transform(this.event.picture);
     this.eventApi.check().subscribe((data => {
       this.currentStateService.separateActualAndFutureEvents(data);
     }))
-    this.showImage = this.showImage(this.event.picture);
+
   }
 
 
