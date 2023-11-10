@@ -13,8 +13,8 @@ export class WinnerApi {
   constructor(private httpClient: HttpClient) {
 
   }
-  public startLottery() {
-    let response = this.httpClient.get<WinnerModel[]>(this.endpoint);
+  public startLottery(eventHsvId: number) {
+    let response = this.httpClient.post<WinnerModel[]>(`${this.endpoint}/${eventHsvId}`);
     response.subscribe((data => console.log(data)))
     return response;
   }
