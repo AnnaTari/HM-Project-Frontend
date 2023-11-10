@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {EventApi} from "../../api/event.api";
 import {EventModel} from "../../shared/models/event.model";
 import {MatDialog} from "@angular/material/dialog";
@@ -29,7 +29,7 @@ export class EditOptionComponent {
 
   deleteText: string = "Möchten Sie dieses Event wirklich löschen?";
 
-  constructor(public dialog: MatDialog, private route: ActivatedRoute, private eventApi: EventApi, private currentStateService: CurrentStateService) {
+  constructor(public dialog: MatDialog, private route: ActivatedRoute, private eventApi: EventApi, private currentStateService: CurrentStateService, private router: Router) {
   }
 
   openDialog() {
@@ -47,6 +47,6 @@ export class EditOptionComponent {
   }
 
   editEvent() {
-
+    this.router.navigate(['admin-edit/edit-event', this.event.eventHsvId]);
   }
 }

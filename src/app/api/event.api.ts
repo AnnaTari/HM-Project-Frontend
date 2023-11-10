@@ -35,6 +35,10 @@ export class EventApi {
     return this.httpClient.post<EventWithPictureModel[]>(this.endpoint + "/addEvent", formData);
   }
 
+  public updateEvent(event: EventModel) {
+    return this.httpClient.post<EventWithPictureModel[]>(this.endpoint + "/updateEvent", event);
+  }
+
   public deleteEvent(event: EventModel) {
     return this.httpClient.post<EventWithPictureModel[]>(this.endpoint + "/deleteEvent", event);
   }

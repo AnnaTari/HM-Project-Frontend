@@ -14,7 +14,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {
     path: 'admin-edit', component: AdminEditComponent, children: [
-      {path: 'edit-event', component: EditEventComponent}
+      {path: 'edit-event', component: EditEventComponent},
+      {path: 'edit-event/:id', component: EditEventComponent}
     ]
   },
   {path: 'terms-and-conditions', component: TermsAndConditionsComponent},
@@ -30,5 +31,3 @@ const routes: Routes = [
 })
 export class AppRoutingModule {
 }
-
-
