@@ -6,7 +6,7 @@
   <div class="event-box" *ngFor="let event of (expiredEvents$ | async)" >
     <div class="information-event-box"> {{event.matchName}} am {{event.eventDate | date: 'dd.MM.yyyy'}}
     </div>
-    <button class="raffle-button"> <!--(click)="startLottery(event)"-->Auslosung starten</button>
+    <button class="raffle-button" (click)="startLottery(event)">Auslosung starten</button>
   </div>
   <div *ngIf="((expiredEvents$ | async)?.length) === 0">Es gibt keine Events, für die Sie eine Auslosung starten können.</div>
 </div>

@@ -26,7 +26,7 @@ export class RafflePageComponent {
 
 
 
-  startLottery (event:EventWithPictureModel): void {
-    this.winnerApi.startLottery().subscribe
+  startLottery (event: EventModel): void {
+    this.winnerApi.startLottery(event);
   }
 }
