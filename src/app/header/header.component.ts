@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Router} from "@angular/router";
+import {CurrentStateService} from "../shared/services/current-state.service";
 
 
 @Component({
@@ -9,7 +10,8 @@ import {Router} from "@angular/router";
 })
 export class HeaderComponent {
 
-  constructor (private router: Router) { }
+  constructor(private router: Router, public currentStateService: CurrentStateService) {
+  }
 
 //Methods to navigate to...
   navigateToTermsAndConditions() {
@@ -23,6 +25,15 @@ export class HeaderComponent {
   navigateToLogin() {
     this.router.navigate(['./login']);
   }
+
+  navigateToRafflePage() {
+    this.router.navigate(['./raffle-page']);
+  }
+
+  navigateToAdminEdit() {
+  this.router.navigate(['./admin-edit']);
+   }
+
 }
 
 
