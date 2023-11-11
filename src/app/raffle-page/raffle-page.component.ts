@@ -12,7 +12,7 @@ import {EventWithPictureModel} from "../shared/models/eventWithPicture.model";
   styleUrls: ['./raffle-page.component.css']
 })
 export class RafflePageComponent {
-  expiredEvents$: Observable<EventModel[]>;
+  expiredEvents$: Observable<EventWithPictureModel[]>;
   today: Date = new Date;
 
   constructor(private eventApi: EventApi, private winnerApi: WinnerApi, private currentStateService: CurrentStateService) {
@@ -26,7 +26,7 @@ export class RafflePageComponent {
 
 
 
-  startLottery (event: EventModel): void {
+  startLottery (event: EventWithPictureModel): void {
     this.winnerApi.startLottery(event);
   }
 }

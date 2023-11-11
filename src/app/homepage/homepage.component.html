@@ -7,7 +7,7 @@
 <div class="event-container">
  <div *ngFor="let event of (actualEvents$ | async)">
   <app-current-event-box [event]="event"></app-current-event-box>
-  <div *ngIf="((events$ | async)?.length) === 0">Es gibt keine Events, für die Sie sich aktuell anmelden können.</div>
+  <div *ngIf="((actualEvents$ | async)?.length) === 0">Es gibt keine Events, für die Sie sich aktuell anmelden können.</div>
  </div>
 </div>
 
