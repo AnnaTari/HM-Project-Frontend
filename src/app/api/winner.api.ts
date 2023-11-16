@@ -14,6 +14,8 @@ export class WinnerApi {
   constructor(private httpClient: HttpClient) {
 
   }
+
+//startLottery method
   public startLottery(event: EventWithPictureModel) {
     let response = this.httpClient.post<WinnerModel[]>(this.endpoint, event.eventHsvId);
     response.subscribe((data => console.log(data)))

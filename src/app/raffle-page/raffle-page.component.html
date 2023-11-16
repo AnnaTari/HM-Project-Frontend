@@ -3,15 +3,19 @@
 
 <div class="raffle-container">
 <div class="event-container">
-  <div class="event-box" *ngFor="let event of (expiredEvents$ | async)" >
+  <!--expired events ready for raffling-->
+  <div class="event-box" *ngFor="let event of (expiredEvents$ | async)">
     <div class="information-event-box"> {{event.matchName}} am {{event.eventDate | date: 'dd.MM.yyyy'}}
     </div>
+    <!--clicking button calls startLottery method-->
     <button class="raffle-button" (click)="startLottery(event)">Auslosung starten</button>
   </div>
+  <!--message if there are no events to be raffled-->
   <div *ngIf="((expiredEvents$ | async)?.length) === 0">Es gibt keine Events, für die Sie eine Auslosung starten können.</div>
 </div>
-<div class="winner-output">
-  <p class="bold">Die Gewinner sind: </p>
-  <p class="bold">Die Ersatzgewinner sind: </p>
+  <!--winner output after raffling-->
+<div class="winner-output" *ngFor="let winner of (winner$ |async)">
+  <p class="bold" *ngIf="winner.winner === 1">Die Gewinner sind: {{winner.name}} </p>
+  <p class="bold" *ngIf="winner.substitute_winner === 1">Die Ersatzgewinner sind: {{{winner.name}}</p>
 </div>
 </div>

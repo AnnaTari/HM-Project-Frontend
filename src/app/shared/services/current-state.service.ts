@@ -4,6 +4,7 @@ import {BehaviorSubject, Observable} from "rxjs";
 import {EventModel} from "../models/event.model";
 import {EmployeeModel, AdminModel} from "../models/admin.model";
 import {EventWithPictureModel} from "../models/eventWithPicture.model";
+import {WinnerModel} from "../models/winner.model";
 
 
 @Injectable({
@@ -29,6 +30,7 @@ export class CurrentStateService {
   private expiredEvents$: BehaviorSubject<EventWithPictureModel[]> = new BehaviorSubject<EventWithPictureModel[]>([]);
 
   private events$: BehaviorSubject<EventWithPictureModel[]> = new BehaviorSubject<EventWithPictureModel[]>([]);
+  private winner$: BehaviorSubject<WinnerModel[]> = new BehaviorSubject<WinnerModel[]>([]);
 
   constructor() {
 
@@ -108,4 +110,14 @@ export class CurrentStateService {
     this.setFutureEvents(futureEvents);
     this.setExpiredEvents(expiredEvents);
   }
+
+  // winner
+  setWinner(winner: WinnerModel[]) {
+    this.winner$.next(winner);
+  }
+
+  getWinner(): Observable<WinnerModel[]> {
+    return this.winner$.asObservable();
+  }
+
 }
