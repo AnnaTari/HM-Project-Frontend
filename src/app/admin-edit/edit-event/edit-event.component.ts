@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Observable, Subscription} from "rxjs";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {Observable} from "rxjs";
 import {EventModel} from "../../shared/models/event.model";
 import {EventWithPictureModel} from "../../shared/models/eventWithPicture.model";
 import {CurrentStateService} from "../../shared/services/current-state.service";
@@ -36,15 +36,15 @@ export class EditEventComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private currentStateService: CurrentStateService, private eventApi: EventApi, private router: Router, private route: ActivatedRoute) {
     this.eventForm = this.fb.group({
-      matchName: ['', Validators.required],
-      matchDetails: ['', Validators.required],
-      matchDate: [Date, Validators.required],
+      matchName: [''],
+      matchDetails: [''],
+      matchDate: [Date],
       matchTime: [''],
-      location: ['Volksparkstadion', Validators.required],
-      deadline: [Date, Validators.required],
-      ticketType: [2, Validators.required],
-      ticketAmount: [0, Validators.required],
-      registrationDate: [Date, Validators.required],
+      location: ['Volksparkstadion'],
+      deadline: [Date],
+      ticketType: [2],
+      ticketAmount: [0],
+      registrationDate: [Date],
     })
     this.$actualEvents = this.currentStateService.getActualEvents()
     this.$futureEvents = this.currentStateService.getFutureEvents();
@@ -55,13 +55,18 @@ export class EditEventComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log("Hallo")
     let adminId = 0;
     this.currentStateService.getAdminObs().subscribe((admin) => {
       adminId = admin.adminId ? admin.adminId : 0;
     })
+    //Preparing the date and time fields
     let eventDate = new Date(this.eventForm.value.matchDate);
-    //eventDate.setTime(this.eventForm.value.matchTime);
+    let matchTime = this.eventForm.value.matchTime.split(':'); // splitting the time string into hours and minutes
+    let hours = matchTime[0];
+    let minutes = matchTime[1];
+    eventDate.setHours(hours);
+    eventDate.setMinutes(minutes);
+    eventDate.setSeconds(0); // set seconds to 0 if not provided
 
     let event: EventModel = {
       eventHsvId: this.event.eventHsvId,
@@ -75,7 +80,7 @@ export class EditEventComponent implements OnInit {
       ticketAmount: this.eventForm.value.ticketAmount,
       registrationDate: this.eventForm.value.registrationDate,
     }
-    console.log(event);
+    //Inside the method I update only if there is an id in the url which matches the selected event
     this.updateEvent(event);
     const reader = new FileReader();
     let byteArray = new Uint8Array();
@@ -83,6 +88,7 @@ export class EditEventComponent implements OnInit {
       console.log("Hallo")
       let arrayBuffer = picture.target.result;
       byteArray = new Uint8Array(arrayBuffer);
+      //adds event into the database
       this.eventApi.addEvent(this.toJSON(event), Array.from(byteArray)).subscribe((events) => this.currentStateService.separateActualAndFutureEvents(events));
     };
     //this is very important --> so that the picture can be read!
@@ -148,16 +154,4 @@ export class EditEventComponent implements OnInit {
       this.eventApi.updateEvent(event).subscribe((data) => this.currentStateService.separateActualAndFutureEvents(data));
     }
   }
-
-  //When you edit events you need to patch the value --> name of form should be identical to EventModel
-  /*
-  ngOnInit() {
-    this.eventService.getDataFromBackend().subscribe(
-      data => {
-        this.eventForm.patchValue(data)
-      }
-    )
-  }
-   */
-
 }

@@ -12,7 +12,7 @@ export class AdminApi {
   constructor(private httpClient: HttpClient) {
   }
 
-  public login(admin: { adminName: string, adminPassword: string }): Observable<AdminModel> {
+  public login(admin:AdminModel): Observable<AdminModel> {
     console.log("Vor Abschicken" + admin.adminName, admin.adminPassword);
     return this.httpClient.post <AdminModel>(this.endpoint, admin);
   }

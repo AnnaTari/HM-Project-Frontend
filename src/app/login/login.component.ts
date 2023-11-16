@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {CurrentStateService} from "../shared/services/current-state.service";
 import {AdminApi} from "../api/admin.api";
 import {BehaviorSubject} from "rxjs";
+import {AdminModel} from "../shared/models/admin.model";
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,8 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    let admin: { adminName: string, adminPassword: string } = {
+    let admin: AdminModel = {
+      adminId: 0,
       adminName: this.loginForm.value.username!,
       adminPassword: this.loginForm.value.password!
     }
