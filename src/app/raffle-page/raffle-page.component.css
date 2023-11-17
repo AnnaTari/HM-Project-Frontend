@@ -33,7 +33,7 @@ h1 {
   margin-right: 40px;
   height: 100px;
   width: 390px;
-  border: 2px solid black;
+  border: #005E52 solid 2px;
   border-radius: 5%;
   padding-top: 15px;
 }
@@ -75,6 +75,7 @@ h1 {
   float: left;
   padding-top: 20px;
   margin-bottom: 50px;
+  border-radius: 10%;
 }
 
 .bold {
