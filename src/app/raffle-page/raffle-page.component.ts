@@ -35,6 +35,7 @@ export class RafflePageComponent {
 
 //Creating Observables Winners and Substitute Winners to display two different groups in html file
   startLottery (event: EventWithPictureModel): void {
+    console.log();
     this.winnerApi.startLottery(event).subscribe(winners => {
       this.mainWinners$ = of(winners).pipe(
         map(winners => winners.filter(winner => winner.winner === true))
