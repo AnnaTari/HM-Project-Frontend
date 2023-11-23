@@ -13,10 +13,11 @@ import {WinnerModel} from "../shared/models/winner.model";
   styleUrls: ['./raffle-page.component.css']
 })
 export class RafflePageComponent {
+
+  //create Observables
   expiredEvents$: Observable<EventWithPictureModel[]>;
   mainWinners$: Observable<WinnerModel[]>;
   substituteWinners$: Observable<WinnerModel[]>;
-  today: Date = new Date;
   winner$:any;
 
   constructor(private eventApi: EventApi, private winnerApi: WinnerApi, private currentStateService: CurrentStateService) {
@@ -33,11 +34,11 @@ export class RafflePageComponent {
 
   }
 
-//Creating Observables Winners and Substitute Winners to display two different groups in html file
+//call winnerApi.startLottery method to start lottery
   startLottery (event: EventWithPictureModel): void {
-    console.log("##########");
    this.winnerApi.startLottery(event).subscribe(winners => {
      console.log(winners);
+     //filter winner in main winner and susbstitute winner and assign to Observables to give them out separately
       this.mainWinners$ = of(winners).pipe(
         map(winners => winners.filter(winner => winner.winner === true))
       );
