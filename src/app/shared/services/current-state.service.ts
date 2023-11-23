@@ -111,7 +111,7 @@ export class CurrentStateService {
     this.setExpiredEvents(expiredEvents);
   }
 
-  // winner
+  //manage state of winners within the application
   setWinner(winner: WinnerModel[]) {
     this.winner$.next(winner);
   }
