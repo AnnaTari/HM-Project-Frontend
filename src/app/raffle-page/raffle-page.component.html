@@ -27,7 +27,7 @@
   <div class="winner-output"> <!--*ngIf="((substituteWinners$ |async)?.length > 0)"-->
     <p class="bold">Die Ersatzgewinner sind:</p>
     <div *ngFor="let winner of (substituteWinners$ | async)">
-      <p>Name: {{winner.name}}, E-Mailadresse: {{winner.email}}</p>
+      <p class="winner-names">Name: {{winner.name}}, E-Mailadresse: {{winner.email}} </p>
     </div>
   </div>
 

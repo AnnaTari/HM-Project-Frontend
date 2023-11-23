@@ -69,7 +69,7 @@ h1 {
 
 .winner-output {
   margin-top: 50px;
-  width: 800px;
+  width: auto;
   height: auto;
   padding: 15px;
   font-size: 24px;
@@ -82,8 +82,10 @@ h1 {
 
 .bold {
   font-weight: bold;
+  margin-bottom: 20px;
 }
 
 p.winner-names {
   color: black;
+  margin-bottom: 20px;
 }
