@@ -68,12 +68,13 @@ h1 {
 }
 
 .winner-output {
+
+  justify-content: flex-start;
   margin-top: 50px;
   width: auto;
   height: auto;
   padding: 15px;
   font-size: 24px;
-  border: #005E52 solid 2px;
   float: left;
   padding-top: 20px;
   margin-bottom: 50px;
