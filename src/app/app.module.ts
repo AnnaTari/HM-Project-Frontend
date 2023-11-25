@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import {BrowserModule, By} from '@angular/platform-browser';
+import {BrowserModule} from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -8,7 +8,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './login/login.component';
 import { AdminEditComponent } from './admin-edit/admin-edit.component';
 import { EventPageComponent } from './event-page/event-page.component';
-import { EventDetailComponent } from './shared/components/event-detail/event-detail.component';
+import { EventDetailComponent } from './admin-edit/event-detail/event-detail.component';
 import { PopUpComponent } from './shared/components/pop-up/pop-up.component';
 import { CurrentEventBoxComponent} from "./current-event-box/current-event-box.component";
 import {TermsAndConditionsComponent} from "./terms-and-conditions/terms-and-conditions.component";
@@ -27,8 +27,8 @@ import {MatInputModule} from "@angular/material/input";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatTooltipModule} from "@angular/material/tooltip";
-import {ByteArrayToImagePipe} from "./shared/pipes/ByteArrayToImagePipe";
-import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
   declarations: [
@@ -62,7 +62,8 @@ import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
     MatDatepickerModule,
     MatNativeDateModule,
     MatTooltipModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatExpansionModule
   ],
 
   providers: [],

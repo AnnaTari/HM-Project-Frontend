@@ -40,13 +40,8 @@
   background-color: #00A075;
   color: white;
   cursor: pointer;
-  margin-right: 5%;
-}
-
-.container-body .form-group button:disabled {
-  background-color: #8d827d;
-  opacity: 80%;
-  cursor: pointer;
+  margin-right: 2%;
+  width: 40%;
 }
 
 /*Design vom Zeitpunkt Input Feld*/

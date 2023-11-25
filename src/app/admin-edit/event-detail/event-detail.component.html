@@ -1,0 +1,86 @@
+<div class="content-container">
+  <h2>{{event.matchName}}</h2>
+  <div class="row">
+    <div class="information-field">
+      <div class="information-header">
+        <p>Datum:</p>
+      </div>
+      <div class="information-data">
+        <p>{{event.eventDate ? (event.eventDate | date: 'dd.MM.yyyy') : "Keine Angabe"}}</p>
+      </div>
+    </div>
+    <div class="information-field">
+      <div class="information-header">
+        <p>Zeit:</p>
+      </div>
+      <div class="information-data">
+        <p>{{event.eventDate | date: 'HH:mm'}} Uhr </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-description>
+      Klicke für weitere Informationen
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <div class="row">
+    <div class="information-field">
+      <div class="information-header">
+        <p>Standort:</p>
+      </div>
+      <div class="information-data">
+        <p>{{event.location ? event.location : "Keine Angabe"}}</p>
+      </div>
+    </div>
+    <div class="information-field">
+      <div class="information-header">
+        <p>Tickets:</p>
+      </div>
+      <div class="information-data">
+        <p>{{event.ticketType ? event.ticketType : "Keine Angabe"}}
+          x {{event.ticketAmount ? event.ticketAmount : "Keine Angabe"}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="information-field">
+      <div class="information-header">
+        <p>Deadline:</p>
+      </div>
+      <div class="information-data">
+        <p>{{event.deadline ? (event.deadline | date: 'dd.MM.yyyy') : "Keine Angabe"}}</p>
+      </div>
+    </div>
+    <div class="information-field">
+      <div class="information-header">
+        <p>Freischaltdatum:</p>
+      </div>
+      <div class="information-data">
+        <p>{{event.registrationDate ? (event.registrationDate | date: 'dd.MM.yyyy') : "Keine Angabe"}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="information-field">
+      <div class="information-header-description">
+        <p>Event Details:</p>
+      </div>
+      <div class="information-data-description">
+        <p>{{event.matchDetails ? event.matchDetails : "Keine Angabe"}}</p>
+      </div>
+    </div>
+    <div class="information-field">
+      <div class="information-header-description">
+        <p>Bild:</p>
+      </div>
+      <div class="information-data-description">
+        <div *ngIf="event.picture">
+          <img [src]="imageToShow" alt="Event Image">
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-expansion-panel>

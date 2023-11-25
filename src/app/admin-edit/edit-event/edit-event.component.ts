@@ -80,8 +80,6 @@ export class EditEventComponent implements OnInit {
       ticketAmount: this.eventForm.value.ticketAmount,
       registrationDate: this.eventForm.value.registrationDate,
     }
-    //Inside the method I update only if there is an id in the url which matches the selected event
-    this.updateEvent(event);
     const reader = new FileReader();
     let byteArray = new Uint8Array();
     reader.onload = (picture: any) => {
@@ -89,6 +87,7 @@ export class EditEventComponent implements OnInit {
       let arrayBuffer = picture.target.result;
       byteArray = new Uint8Array(arrayBuffer);
       //adds event into the database
+      console.log(event);
       this.eventApi.addEvent(this.toJSON(event), Array.from(byteArray)).subscribe((events) => this.currentStateService.separateActualAndFutureEvents(events));
     };
     //this is very important --> so that the picture can be read!
@@ -116,8 +115,9 @@ export class EditEventComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //When editing an event
     let id = Number(this.route.snapshot.paramMap.get('id'));
-    if (id != null) {
+    if (id != null && id != 0) {
       this.$actualEvents.subscribe((actualEvents) => {
         actualEvents.forEach(actualEvent => {
           if (actualEvent.eventHsvId == id) {
@@ -132,24 +132,30 @@ export class EditEventComponent implements OnInit {
           }
         })
       })
+    }else {
+      this.setForm(this.event);
+      this.updateEvent(this.event, id);
     }
-    this.setFormular(this.event)
   }
 
-  setFormular(event: EventWithPictureModel) {
+  setForm(event: EventWithPictureModel) {
     this.eventForm.controls['matchName'].setValue(event.matchName);
     this.eventForm.controls['matchDetails'].setValue(event.matchDetails);
     this.eventForm.controls['matchDate'].setValue(event.eventDate);
+    let date = new Date(event.eventDate);
+    console.log(date);
+    this.eventForm.controls['matchTime'].setValue(`${date.getHours()}:${date.getMinutes()}`);
     this.eventForm.controls['location'].setValue(event.location);
     this.eventForm.controls['deadline'].setValue(event.deadline);
     this.eventForm.controls['ticketType'].setValue(event.ticketType);
     this.eventForm.controls['ticketAmount'].setValue(event.ticketAmount);
     this.eventForm.controls['registrationDate'].setValue(event.registrationDate);
+    this.eventForm.controls['deadline'].setValue(event.deadline);
+    this.eventForm.controls['eventDate'].setValue(date);
   }
 
-  updateEvent(event: EventModel) {
-    let id = Number(this.route.snapshot.paramMap.get('id'));
-    if (id == event.eventHsvId) {
+  updateEvent(event: EventModel, id : number) {
+    if (id != 0) {
       console.log(event);
       this.eventApi.updateEvent(event).subscribe((data) => this.currentStateService.separateActualAndFutureEvents(data));
     }

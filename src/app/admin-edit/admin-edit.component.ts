@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {EventModel} from "../shared/models/event.model";
 import {CurrentStateService} from "../shared/services/current-state.service";
 import {Observable} from "rxjs";
 import {EventApi} from "../api/event.api";
