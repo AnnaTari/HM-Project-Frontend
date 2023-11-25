@@ -83,11 +83,9 @@ export class EditEventComponent implements OnInit {
     const reader = new FileReader();
     let byteArray = new Uint8Array();
     reader.onload = (picture: any) => {
-      console.log("Hallo")
       let arrayBuffer = picture.target.result;
       byteArray = new Uint8Array(arrayBuffer);
       //adds event into the database
-      console.log(event);
       this.eventApi.addEvent(this.toJSON(event), Array.from(byteArray)).subscribe((events) => this.currentStateService.separateActualAndFutureEvents(events));
     };
     //this is very important --> so that the picture can be read!
@@ -132,10 +130,9 @@ export class EditEventComponent implements OnInit {
           }
         })
       })
-    }else {
-      this.setForm(this.event);
-      this.updateEvent(this.event, id);
     }
+    this.setForm(this.event);
+    this.updateEvent(this.event, id);
   }
 
   setForm(event: EventWithPictureModel) {
@@ -143,7 +140,6 @@ export class EditEventComponent implements OnInit {
     this.eventForm.controls['matchDetails'].setValue(event.matchDetails);
     this.eventForm.controls['matchDate'].setValue(event.eventDate);
     let date = new Date(event.eventDate);
-    console.log(date);
     this.eventForm.controls['matchTime'].setValue(`${date.getHours()}:${date.getMinutes()}`);
     this.eventForm.controls['location'].setValue(event.location);
     this.eventForm.controls['deadline'].setValue(event.deadline);
@@ -154,9 +150,8 @@ export class EditEventComponent implements OnInit {
     this.eventForm.controls['eventDate'].setValue(date);
   }
 
-  updateEvent(event: EventModel, id : number) {
+  updateEvent(event: EventModel, id: number) {
     if (id != 0) {
-      console.log(event);
       this.eventApi.updateEvent(event).subscribe((data) => this.currentStateService.separateActualAndFutureEvents(data));
     }
   }
