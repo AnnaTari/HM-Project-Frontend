@@ -5,6 +5,7 @@ import {EventModel} from "../models/event.model";
 import {AdminModel} from "../models/admin.model";
 import {EmployeeModel} from "../models/employee.model";
 import {EventWithPictureModel} from "../models/eventWithPicture.model";
+import {WinnerModel} from "../models/winner.model";
 
 
 @Injectable({
@@ -30,6 +31,8 @@ export class CurrentStateService {
   private expiredEvents$: BehaviorSubject<EventWithPictureModel[]> = new BehaviorSubject<EventWithPictureModel[]>([]);
 
   private events$: BehaviorSubject<EventWithPictureModel[]> = new BehaviorSubject<EventWithPictureModel[]>([]);
+  
+  private winner$: BehaviorSubject<WinnerModel[]> = new BehaviorSubject<WinnerModel[]>([]);
 
   constructor() {
 
@@ -94,19 +97,29 @@ export class CurrentStateService {
     events.forEach((event) => {
       let currentDateTime = new Date();
       let registrationDate = new Date(event.registrationDate);
+      let eventDate = new Date(event.eventDate);
       let deadline = new Date(event.deadline);
-      if (registrationDate.toISOString() <= currentDateTime.toISOString()) {
+      if (registrationDate.toISOString() <= currentDateTime.toISOString() && deadline.toISOString() > currentDateTime.toISOString()) {
         actualEvents.push(event);
       } else if (registrationDate.toISOString() > currentDateTime.toISOString()) {
         futureEvents.push(event);
-      } else if (deadline.toISOString() < currentDateTime.toISOString()) {
+      } else if (deadline.toISOString() < currentDateTime.toISOString() && eventDate.toISOString() > currentDateTime.toISOString()) {
         expiredEvents.push(event);
       }
     })
+    console.log(expiredEvents);
     this.setActualEvents(actualEvents);
     this.setFutureEvents(futureEvents);
     this.setExpiredEvents(expiredEvents);
   }
+
+  //manage state of winners within the application
+  setWinner(winner: WinnerModel[]) {
+    this.winner$.next(winner);
+  }
+
+  getWinner(): Observable<WinnerModel[]> {
+    return this.winner$.asObservable();
 
   isLoggedIn(): boolean {
     let admin = this.admin$.getValue();

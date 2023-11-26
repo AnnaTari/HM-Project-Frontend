@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {WinnerModel} from "../shared/models/winner.model";
+import {EventModel} from "../shared/models/event.model";
+import {EventWithPictureModel} from "../shared/models/eventWithPicture.model";
+import {share} from "rxjs/operators";
 
 
 @Injectable({
@@ -12,8 +15,12 @@ export class WinnerApi {
   constructor(private httpClient: HttpClient) {
 
   }
- /* public check() {
-    let response = this.httpClient.get<WinnerModel[]>(this.endpoint);
+
+//startLottery method
+  public startLottery(event: EventWithPictureModel) {
+    let response = this.httpClient.post<WinnerModel[]>(this.endpoint, event.eventHsvId).pipe(share());
+    response.subscribe((data => console.log(data)));
     return response;
-  }*/
+  }
+
 }

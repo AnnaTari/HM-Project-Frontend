@@ -1,9 +1,34 @@
 <div class="title-box"><h1>Hier geht es zur Auslosung: </h1></div>
 
+
 <div class="raffle-container">
-<button class="raffle-button">Verlosung starten</button>
-  <div class="winner-output">
-    <p class="bold">Die Gewinner sind: </p>
-    <p class="bold">Die Ersatzgewinner sind: </p>
+<div class="event-container">
+  <!--expired events ready for raffling-->
+  <div class="event-box" *ngFor="let event of (expiredEvents$ | async)">
+    <div class="information-event-box"> {{event.matchName}} am {{event.eventDate | date: 'dd.MM.yyyy'}}
+    </div>
+    <!--clicking button calls startLottery method-->
+    <button class="raffle-button" (click)="startLottery(event)">Auslosung starten</button>
   </div>
+
+  <!--message if there are no events to be raffled-->
+  <div *ngIf="((expiredEvents$ | async)?.length) === 0">Es gibt keine Events, für die Sie eine Auslosung starten können.</div>
+</div>
+
+  <!--output of main winner after raffling-->
+<div class="winner-output"> <!--*ngIf="((mainWinners$ | async)?.length) > 0"-->
+  <p class="bold">Die Gewinner sind:</p>
+  <div *ngFor="let winner of (mainWinners$ | async)">
+    <p class="winner-names">{{winner.name}}, {{winner.email}} </p>
+  </div>
+</div>
+
+  <!--output of substitute winner after raffling-->
+  <div class="winner-output"> <!--*ngIf="((substituteWinners$ |async)?.length > 0)"-->
+    <p class="bold">Die Ersatzgewinner sind:</p>
+    <div *ngFor="let winner of (substituteWinners$ | async)">
+      <p class="winner-names">{{winner.name}}, {{winner.email}} </p>
+    </div>
+  </div>
+
 </div>
