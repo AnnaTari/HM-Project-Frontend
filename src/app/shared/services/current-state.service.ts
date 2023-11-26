@@ -2,7 +2,8 @@ import {Injectable} from '@angular/core';
 
 import {BehaviorSubject, Observable} from "rxjs";
 import {EventModel} from "../models/event.model";
-import {EmployeeModel, AdminModel} from "../models/admin.model";
+import {AdminModel} from "../models/admin.model";
+import {EmployeeModel} from "../models/employee.model";
 import {EventWithPictureModel} from "../models/eventWithPicture.model";
 import {WinnerModel} from "../models/winner.model";
 
@@ -18,9 +19,9 @@ export class CurrentStateService {
   });
 
   private employee$: BehaviorSubject<EmployeeModel> = new BehaviorSubject<EmployeeModel>({
-    employee_id: 0,
-    employeename: "",
-    email: ""
+    employeeId: 0,
+    employeeName: "",
+    employeeEmail: ""
   });
 
   private actualEvents$: BehaviorSubject<EventWithPictureModel[]> = new BehaviorSubject<EventWithPictureModel[]>([]);
@@ -30,6 +31,7 @@ export class CurrentStateService {
   private expiredEvents$: BehaviorSubject<EventWithPictureModel[]> = new BehaviorSubject<EventWithPictureModel[]>([]);
 
   private events$: BehaviorSubject<EventWithPictureModel[]> = new BehaviorSubject<EventWithPictureModel[]>([]);
+  
   private winner$: BehaviorSubject<WinnerModel[]> = new BehaviorSubject<WinnerModel[]>([]);
 
   constructor() {
@@ -46,7 +48,7 @@ export class CurrentStateService {
 
 
   setEmployeeObs(employee: EmployeeModel) {
-    this.employee$.asObservable();
+    this.employee$.next(employee);
 
   }
 
@@ -118,6 +120,10 @@ export class CurrentStateService {
 
   getWinner(): Observable<WinnerModel[]> {
     return this.winner$.asObservable();
+
+  isLoggedIn(): boolean {
+    let admin = this.admin$.getValue();
+    return admin && admin.adminId !== 0;
   }
 
 }
