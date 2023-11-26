@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 
 import {BehaviorSubject, Observable} from "rxjs";
-import {EventModel} from "../models/event.model";
 import {AdminModel} from "../models/admin.model";
 import {EmployeeModel} from "../models/employee.model";
 import {EventWithPictureModel} from "../models/eventWithPicture.model";
@@ -31,7 +30,7 @@ export class CurrentStateService {
   private expiredEvents$: BehaviorSubject<EventWithPictureModel[]> = new BehaviorSubject<EventWithPictureModel[]>([]);
 
   private events$: BehaviorSubject<EventWithPictureModel[]> = new BehaviorSubject<EventWithPictureModel[]>([]);
-  
+
   private winner$: BehaviorSubject<WinnerModel[]> = new BehaviorSubject<WinnerModel[]>([]);
 
   constructor() {
@@ -120,6 +119,7 @@ export class CurrentStateService {
 
   getWinner(): Observable<WinnerModel[]> {
     return this.winner$.asObservable();
+  }
 
   isLoggedIn(): boolean {
     let admin = this.admin$.getValue();
