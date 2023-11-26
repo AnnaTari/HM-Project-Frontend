@@ -2,10 +2,10 @@
   <div></div>
   <!--list of events-->
   <div>
+    <router-outlet></router-outlet>
     <mat-tab-group mat-align-tabs="center">
       <!--going through all actual events-->
       <mat-tab label="Aktuelle Events">
-        <router-outlet></router-outlet>
         <div *ngIf="((actualEvents$ | async)?.length) === 0"><h3>Es sind keine aktuellen Events vorhanden</h3></div>
         <div class="event-list" *ngFor="let actualEvent of (actualEvents$ | async)">
           <app-edit-option [event]=actualEvent></app-edit-option>
@@ -24,8 +24,8 @@
   </div>
   <!--button for adding events-->
   <div>
-    <button class="button-icon" [routerLink]="['edit-event']">
-      <mat-icon>add_circle_outline</mat-icon>
+    <button class="addButton" [routerLink]="['edit-event']">
+      Event hinzufügen
     </button>
   </div>
 </div>

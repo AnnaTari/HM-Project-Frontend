@@ -50,14 +50,39 @@ export class EditEventComponent implements OnInit {
     this.$futureEvents = this.currentStateService.getFutureEvents();
   }
 
+
+  ngOnInit(): void {
+    //When editing an event
+    let id = Number(this.route.snapshot.paramMap.get('id'));
+    if (id != null && id != 0) {
+      this.$actualEvents.subscribe((actualEvents) => {
+        actualEvents.forEach(actualEvent => {
+          if (actualEvent.eventHsvId == id) {
+            this.event = actualEvent;
+          }
+        })
+      })
+      this.$futureEvents.subscribe((futureEvents) => {
+        futureEvents.forEach(futureEvent => {
+          if (futureEvent.eventHsvId == id) {
+            this.event = futureEvent;
+          }
+        })
+      })
+    }
+    this.setForm(this.event);
+  }
+
+
   onFileChange(event: any) {
     this.selectedFile = event.target.files[0];
   }
 
   onSubmit() {
+    let id = Number(this.route.snapshot.paramMap.get('id'));
     let adminId = 0;
     this.currentStateService.getAdminObs().subscribe((admin) => {
-      adminId = admin.adminId ? admin.adminId : 0;
+      adminId = admin.adminId ? admin.adminId : 1;
     })
     //Preparing the date and time fields
     let eventDate = new Date(this.eventForm.value.matchDate);
@@ -92,6 +117,12 @@ export class EditEventComponent implements OnInit {
     if (this.selectedFile) {
       reader.readAsArrayBuffer(this.selectedFile);
     }
+    if (id != null && id != 0) {
+      console.log(event);
+      this.updateEvent(event, id);
+    } else {
+
+    }
     this.router.navigate(['admin-edit']);
   }
 
@@ -112,34 +143,13 @@ export class EditEventComponent implements OnInit {
     };
   }
 
-  ngOnInit(): void {
-    //When editing an event
-    let id = Number(this.route.snapshot.paramMap.get('id'));
-    if (id != null && id != 0) {
-      this.$actualEvents.subscribe((actualEvents) => {
-        actualEvents.forEach(actualEvent => {
-          if (actualEvent.eventHsvId == id) {
-            this.event = actualEvent;
-          }
-        })
-      })
-      this.$futureEvents.subscribe((futureEvents) => {
-        futureEvents.forEach(futureEvent => {
-          if (futureEvent.eventHsvId == id) {
-            this.event = futureEvent;
-          }
-        })
-      })
-    }
-    this.setForm(this.event);
-    this.updateEvent(this.event, id);
-  }
-
   setForm(event: EventWithPictureModel) {
     this.eventForm.controls['matchName'].setValue(event.matchName);
     this.eventForm.controls['matchDetails'].setValue(event.matchDetails);
     this.eventForm.controls['matchDate'].setValue(event.eventDate);
     let date = new Date(event.eventDate);
+    console.log(event.picture);
+    this.eventForm.controls['picture'].setValue(event.picture);
     this.eventForm.controls['matchTime'].setValue(`${date.getHours()}:${date.getMinutes()}`);
     this.eventForm.controls['location'].setValue(event.location);
     this.eventForm.controls['deadline'].setValue(event.deadline);

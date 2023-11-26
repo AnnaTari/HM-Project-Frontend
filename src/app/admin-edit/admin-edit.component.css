@@ -28,6 +28,13 @@ mat-icon {
   background-color: white;
 }
 
+.addButton{
+  width: 50%;
+  height:50px;
+  cursor: pointer;
+  border: 1px solid;
+}
+
 h3 {
   text-align: center;
   margin:10% 0 10% 0;
