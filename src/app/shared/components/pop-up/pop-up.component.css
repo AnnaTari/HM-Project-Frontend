@@ -11,3 +11,11 @@ div [mat-dialog-actions] {
   display: flex;
   justify-content: center;
 }
+
+:host >>> snack-bar-container.custom-class {
+  background: white;
+}
+
+:host >>> .custom-class .mat-simple-snackbar {
+  color: #00A075;
+}

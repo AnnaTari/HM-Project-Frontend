@@ -11,8 +11,7 @@ mat-tab-group {
 .event-list {
   backdrop-filter: blur(7px);
   box-shadow: 0 0.4rem .8rem #0005;
-  width: 50%;
-  height: 200px;
+  width: 60%;
   border-radius: 15px;
   border: 2px solid #005E52;
   margin: 5% auto 5% auto;
@@ -27,4 +26,16 @@ mat-icon {
   margin: 2%;
   cursor:pointer;
   background-color: white;
+}
+
+.addButton{
+  width: 50%;
+  height:50px;
+  cursor: pointer;
+  border: 1px solid;
+}
+
+h3 {
+  text-align: center;
+  margin:10% 0 10% 0;
 }

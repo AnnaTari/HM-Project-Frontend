@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Observable, Subscription} from "rxjs";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {Observable} from "rxjs";
 import {EventModel} from "../../shared/models/event.model";
 import {EventWithPictureModel} from "../../shared/models/eventWithPicture.model";
 import {CurrentStateService} from "../../shared/services/current-state.service";
@@ -36,32 +36,62 @@ export class EditEventComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private currentStateService: CurrentStateService, private eventApi: EventApi, private router: Router, private route: ActivatedRoute) {
     this.eventForm = this.fb.group({
-      matchName: ['', Validators.required],
-      matchDetails: ['', Validators.required],
-      matchDate: [Date, Validators.required],
+      matchName: [''],
+      matchDetails: [''],
+      matchDate: [Date],
       matchTime: [''],
-      location: ['Volksparkstadion', Validators.required],
-      deadline: [Date, Validators.required],
-      ticketType: [2, Validators.required],
-      ticketAmount: [0, Validators.required],
-      registrationDate: [Date, Validators.required],
+      location: ['Volksparkstadion'],
+      deadline: [Date],
+      ticketType: [2],
+      ticketAmount: [0],
+      registrationDate: [Date],
     })
     this.$actualEvents = this.currentStateService.getActualEvents()
     this.$futureEvents = this.currentStateService.getFutureEvents();
   }
+
+
+  ngOnInit(): void {
+    //When editing an event
+    let id = Number(this.route.snapshot.paramMap.get('id'));
+    if (id != null && id != 0) {
+      this.$actualEvents.subscribe((actualEvents) => {
+        actualEvents.forEach(actualEvent => {
+          if (actualEvent.eventHsvId == id) {
+            this.event = actualEvent;
+          }
+        })
+      })
+      this.$futureEvents.subscribe((futureEvents) => {
+        futureEvents.forEach(futureEvent => {
+          if (futureEvent.eventHsvId == id) {
+            this.event = futureEvent;
+          }
+        })
+      })
+    }
+    this.setForm(this.event);
+  }
+
 
   onFileChange(event: any) {
     this.selectedFile = event.target.files[0];
   }
 
   onSubmit() {
-    console.log("Hallo")
+    let id = Number(this.route.snapshot.paramMap.get('id'));
     let adminId = 0;
     this.currentStateService.getAdminObs().subscribe((admin) => {
-      adminId = admin.adminId ? admin.adminId : 0;
+      adminId = admin.adminId ? admin.adminId : 1;
     })
+    //Preparing the date and time fields
     let eventDate = new Date(this.eventForm.value.matchDate);
-    //eventDate.setTime(this.eventForm.value.matchTime);
+    let matchTime = this.eventForm.value.matchTime.split(':'); // splitting the time string into hours and minutes
+    let hours = matchTime[0];
+    let minutes = matchTime[1];
+    eventDate.setHours(hours);
+    eventDate.setMinutes(minutes);
+    eventDate.setSeconds(0); // set seconds to 0 if not provided
 
     let event: EventModel = {
       eventHsvId: this.event.eventHsvId,
@@ -75,19 +105,23 @@ export class EditEventComponent implements OnInit {
       ticketAmount: this.eventForm.value.ticketAmount,
       registrationDate: this.eventForm.value.registrationDate,
     }
-    console.log(event);
-    this.updateEvent(event);
     const reader = new FileReader();
     let byteArray = new Uint8Array();
     reader.onload = (picture: any) => {
-      console.log("Hallo")
       let arrayBuffer = picture.target.result;
       byteArray = new Uint8Array(arrayBuffer);
+      //adds event into the database
       this.eventApi.addEvent(this.toJSON(event), Array.from(byteArray)).subscribe((events) => this.currentStateService.separateActualAndFutureEvents(events));
     };
     //this is very important --> so that the picture can be read!
     if (this.selectedFile) {
       reader.readAsArrayBuffer(this.selectedFile);
+    }
+    if (id != null && id != 0) {
+      console.log(event);
+      this.updateEvent(event, id);
+    } else {
+
     }
     this.router.navigate(['admin-edit']);
   }
@@ -109,55 +143,26 @@ export class EditEventComponent implements OnInit {
     };
   }
 
-  ngOnInit(): void {
-    let id = Number(this.route.snapshot.paramMap.get('id'));
-    if (id != null) {
-      this.$actualEvents.subscribe((actualEvents) => {
-        actualEvents.forEach(actualEvent => {
-          if (actualEvent.eventHsvId == id) {
-            this.event = actualEvent;
-          }
-        })
-      })
-      this.$futureEvents.subscribe((futureEvents) => {
-        futureEvents.forEach(futureEvent => {
-          if (futureEvent.eventHsvId == id) {
-            this.event = futureEvent;
-          }
-        })
-      })
-    }
-    this.setFormular(this.event)
-  }
-
-  setFormular(event: EventWithPictureModel) {
+  setForm(event: EventWithPictureModel) {
     this.eventForm.controls['matchName'].setValue(event.matchName);
     this.eventForm.controls['matchDetails'].setValue(event.matchDetails);
     this.eventForm.controls['matchDate'].setValue(event.eventDate);
+    let date = new Date(event.eventDate);
+    console.log(event.picture);
+    this.eventForm.controls['picture'].setValue(event.picture);
+    this.eventForm.controls['matchTime'].setValue(`${date.getHours()}:${date.getMinutes()}`);
     this.eventForm.controls['location'].setValue(event.location);
     this.eventForm.controls['deadline'].setValue(event.deadline);
     this.eventForm.controls['ticketType'].setValue(event.ticketType);
     this.eventForm.controls['ticketAmount'].setValue(event.ticketAmount);
     this.eventForm.controls['registrationDate'].setValue(event.registrationDate);
+    this.eventForm.controls['deadline'].setValue(event.deadline);
+    this.eventForm.controls['eventDate'].setValue(date);
   }
 
-  updateEvent(event: EventModel) {
-    let id = Number(this.route.snapshot.paramMap.get('id'));
-    if (id == event.eventHsvId) {
-      console.log(event);
+  updateEvent(event: EventModel, id: number) {
+    if (id != 0) {
       this.eventApi.updateEvent(event).subscribe((data) => this.currentStateService.separateActualAndFutureEvents(data));
     }
   }
-
-  //When you edit events you need to patch the value --> name of form should be identical to EventModel
-  /*
-  ngOnInit() {
-    this.eventService.getDataFromBackend().subscribe(
-      data => {
-        this.eventForm.patchValue(data)
-      }
-    )
-  }
-   */
-
 }

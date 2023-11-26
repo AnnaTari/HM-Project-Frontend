@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {EventWithPictureModel} from "../../models/eventWithPicture.model";
+import {EventWithPictureModel} from "../../shared/models/eventWithPicture.model";
 import {DomSanitizer} from "@angular/platform-browser";
 
 
@@ -13,6 +13,8 @@ export class EventDetailComponent implements OnInit{
   event: EventWithPictureModel = {eventHsvId:0, picture: new Uint8Array(), location: "", matchDetails: "", matchName:"", eventDate: new Date(), registrationDate: new Date(), ticketAmount: 0, ticketType: 0, adminId: 0, deadline: new Date()};
 
   imageToShow: any;
+
+  panelIsOpen: boolean = false;
 
   constructor(private sanitizer:DomSanitizer) {
   }

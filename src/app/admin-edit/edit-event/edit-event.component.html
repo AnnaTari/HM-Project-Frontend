@@ -6,24 +6,23 @@
     <div class="row">
       <mat-form-field class="form-group">
         <mat-label>Spiel Name</mat-label>
-        <input matInput id="matchName" formControlName="matchName" required>
+        <input matInput id="matchName" formControlName="matchName">
         <mat-icon matTooltip="Spielname wie 'HSV vs. St.Pauli'" matPrefix>games</mat-icon>
       </mat-form-field>
       <mat-form-field class="form-group">
         <mat-label>Spiel Details</mat-label>
-        <textarea matInput id="matchDetails" matTooltip="Einleitungstext" formControlName="matchDetails"
-                  required></textarea>
+        <textarea matInput id="matchDetails" matTooltip="Einleitungstext" formControlName="matchDetails"></textarea>
       </mat-form-field>
       <mat-form-field class="form-group">
         <mat-label>Standort</mat-label>
-        <input matInput id="location" formControlName="location" required>
+        <input matInput id="location" formControlName="location">
         <mat-icon matPrefix>location_on</mat-icon>
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field class="form-group">
         <mat-label>Spieldatum</mat-label>
-        <input matInput id="matchDate" [matDatepicker]="matchDate" formControlName="matchDate" required>
+        <input matInput id="matchDate" [matDatepicker]="matchDate" formControlName="matchDate">
         <mat-datepicker-toggle matTooltip="Wann findet das Spiel statt?" matSuffix
                                [for]="matchDate"></mat-datepicker-toggle>
         <mat-datepicker #matchDate></mat-datepicker>
@@ -36,7 +35,7 @@
       </div>
       <mat-form-field class="form-group">
         <mat-label>Deadline</mat-label>
-        <input matInput id="deadline" [matDatepicker]="deadline" formControlName="deadline" required>
+        <input matInput id="deadline" [matDatepicker]="deadline" formControlName="deadline">
         <mat-datepicker-toggle matSuffix [for]="deadline"></mat-datepicker-toggle>
         <mat-datepicker #deadline></mat-datepicker>
       </mat-form-field>
@@ -44,16 +43,15 @@
     <div class="row">
       <mat-form-field class="form-group">
         <mat-label>Art der Tickets</mat-label>
-        <input matInput id="ticketType" type="number" formControlName="ticketType" required>
+        <input matInput id="ticketType" type="number" formControlName="ticketType">
       </mat-form-field>
       <mat-form-field class="form-group">
         <mat-label>Anzahl der Tickets</mat-label>
-        <input matInput id="ticketAmount" type="number" formControlName="ticketAmount" required>
+        <input matInput id="ticketAmount" type="number" formControlName="ticketAmount">
       </mat-form-field>
       <mat-form-field class="form-group">
         <mat-label>Freischaltdatum</mat-label>
-        <input matInput id="registrationDate" [matDatepicker]="registrationDate" formControlName="registrationDate"
-               required>
+        <input matInput id="registrationDate" [matDatepicker]="registrationDate" formControlName="registrationDate">
         <mat-datepicker-toggle matTooltip="Datum ab wann man teilnehmen kann" matSuffix
                                [for]="registrationDate"></mat-datepicker-toggle>
         <mat-datepicker #registrationDate></mat-datepicker>
@@ -65,8 +63,8 @@
         <input id="file" type="file" (change)="onFileChange($event)">
       </div>
       <div class="form-group">
-        <button mat-raised-button color="primary" type="submit" [disabled]="!eventForm.valid">Erstellen</button>
-        <button mat-raised-button color="accent" [routerLink]="['../']">Abbrechen</button>
+        <button mat-raised-button color="primary" type="submit">Erstellen</button>
+        <button mat-raised-button color="accent" [routerLink]="['/admin-edit']">Abbrechen</button>
       </div>
     </div>
   </form>
