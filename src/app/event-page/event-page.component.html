@@ -1,6 +1,6 @@
 <!--Matchname--->
 <div class="matchname-box">
-  <h1>HSV vs. Fortuna Düsseldorf</h1>
+  <h1>{{event.matchName}}</h1>
 </div>
 
 <!--eventbody-box is whole body with participation and event--->
@@ -11,8 +11,9 @@
 
 <div class="eventbody-box">
 
+  <!-- eventdetails from homepage in box--->
+
   <div class="matchinfo-box">
-    <!-- <app-current-event-box *ngFor="let entry of (events$ | async)" event="{{entry}}"> </app-current-event-box> --->
 
      <h3>{{event.matchName}}</h3>
      <p>Datum: <strong>14.07.2024</strong></p>
@@ -28,8 +29,7 @@
 
 
 
-
-  <!--Teilnahmeformular--->
+  <!--participation --->
   <div class="participation-box">
     <div class="title-box">
       <h2>Teilnahmeformular</h2>
@@ -55,7 +55,8 @@
       <div>
         <input class="input-box" type="text" formControlName="escortName">
       </div>
-      <!--Abschicken-button, disable if type invalid--->
+
+      <!--Abschicken-button, to register user in db --->
       <div class="send-box">
         <button (click) = "openDialog()" class="send-button" type="submit" [disabled]="!participationForm.valid">
           <p class="button-text">Abschicken</p>
@@ -63,6 +64,7 @@
 
       </div>
     </form>
+
     <!--message-text, if user is already in attendance-table in db--->
 
     <div class="message-text">

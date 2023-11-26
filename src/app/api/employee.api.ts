@@ -1,20 +1,22 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {EmployeeModel} from "../shared/models/admin.model";
+import {EmployeeModel} from "../shared/models/employee.model";
 import {Observable} from "rxjs";
+import {RegistrationDtoModel} from "../shared/models/registrationDto-model";
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class EmployeeApi {
-    private endpoint = '/api/employee';
+  private endpoint = '/api/employee';
+
   constructor(private httpClient: HttpClient) {
   }
 
-  public participate(employee: { name: string; email: string }): Observable<EmployeeModel> {
-    console.log("Vor Abschicken" + employee.name, employee.email);
-    return this.httpClient.post<EmployeeModel>(this.endpoint, employee);
+  public participate(registrationDtoModel: RegistrationDtoModel): Observable<EmployeeModel> {
+    console.log(registrationDtoModel.escortName, registrationDtoModel.eventHsvId);
+    return this.httpClient.post<EmployeeModel>(this.endpoint, registrationDtoModel);
   }
 }
 

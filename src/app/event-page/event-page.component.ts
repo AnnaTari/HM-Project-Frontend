@@ -7,6 +7,7 @@ import {BehaviorSubject} from "rxjs";
 import {EventWithPictureModel} from "../shared/models/eventWithPicture.model";
 import {PopUpComponent} from "../shared/components/pop-up/pop-up.component";
 import {MatDialog} from "@angular/material/dialog";
+import {RegistrationDtoModel} from "../shared/models/registrationDto-model";
 
 
 @Component({
@@ -14,7 +15,11 @@ import {MatDialog} from "@angular/material/dialog";
   templateUrl: './event-page.component.html',
   styleUrls: ['./event-page.component.css']
 })
+
+/* eventdetails */
+
 export class EventPageComponent implements OnInit {
+
   eventHsvId: number = 0;
   event: EventWithPictureModel = {
     eventHsvId: 0,
@@ -28,6 +33,8 @@ export class EventPageComponent implements OnInit {
     ticketAmount: 0,
     registrationDate: new Date(),
     picture: new Uint8Array([])
+
+
   }
   private messageText: string = 'Teilnahme erfolgreich!';
 
@@ -35,8 +42,9 @@ export class EventPageComponent implements OnInit {
   constructor(private currentStateService: CurrentStateService, private employeeApi: EmployeeApi, private route: ActivatedRoute, private dialog: MatDialog) {
   }
 
+  /* getting eventHSVId */
+
   ngOnInit() {
-    console.log("Hallo");
     let idParam = Number(this.route.snapshot.paramMap.get('eventHsvId'));
     console.log(idParam);
     if (idParam) {
@@ -53,12 +61,16 @@ export class EventPageComponent implements OnInit {
     }
   }
 
-  openDialog(){
-    let dialogRef = this.dialog.open(PopUpComponent, {
+  /* popup with message */
+
+  openDialog() {
+    this.route.snapshot.url.map(segments => segments.path);
+    this.dialog.open(PopUpComponent, {
       data: {action: false, message: this.messageText, route: []},
     });
   }
 
+  /* name, email required to submit */
 
   participationForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -69,30 +81,23 @@ export class EventPageComponent implements OnInit {
   isLoggedIn = new BehaviorSubject<boolean>(true);
 
 
-  /* events$: Observable<EventModel[]>;
-   constructor(private eventApi: EventApi) {
-     this.events$ = this.eventApi.check();
-   } */
-
-
   onSubmit() {
-    console.log("Teilnahme bestätigt")
-    let employee: { name: string, email: string } = {
-      name: this.participationForm.value.name ? this.participationForm.value.name : "",
-      email: this.participationForm.value.email ? this.participationForm.value.email : ""
+        console.log("Teilnahme bestätigt")
+    let registrationDto: RegistrationDtoModel = {
+      employee: {
+        employeeId: 0,
+        employeeName: this.participationForm.value.name ? this.participationForm.value.name : "",
+        employeeEmail: this.participationForm.value.email ? this.participationForm.value.email : ""
+      },
+      eventHsvId: this.eventHsvId,
+      escortName: this.participationForm.value.escortName ? this.participationForm.value.escortName : "",
+      substituteWinner: false,
+      winner: false
     }
 
-    /*
-    this.employeeApi.participate(employee).subscribe(employee => {
-      //need to check why hm_user_id comes written like this from backend
-      if (employee.employee_id != null) {
-        this.isLoggedIn.next(true);
-        this.router.navigate(['employee-edit']);
-        this.currentStateService.setEmployeeObs(employee);
-      } else {
-        this.isLoggedIn.next(false);
-      }
-    } )
-  } */
+
+   this.employeeApi.participate(registrationDto).subscribe()
+
+
   }
 }

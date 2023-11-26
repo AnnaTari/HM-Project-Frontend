@@ -2,7 +2,8 @@ import {Injectable} from '@angular/core';
 
 import {BehaviorSubject, Observable} from "rxjs";
 import {EventModel} from "../models/event.model";
-import {EmployeeModel, AdminModel} from "../models/admin.model";
+import {AdminModel} from "../models/admin.model";
+import {EmployeeModel} from "../models/employee.model";
 import {EventWithPictureModel} from "../models/eventWithPicture.model";
 
 
@@ -17,9 +18,9 @@ export class CurrentStateService {
   });
 
   private employee$: BehaviorSubject<EmployeeModel> = new BehaviorSubject<EmployeeModel>({
-    employee_id: 0,
-    employeename: "",
-    email: ""
+    employeeId: 0,
+    employeeName: "",
+    employeeEmail: ""
   });
 
   private actualEvents$: BehaviorSubject<EventWithPictureModel[]> = new BehaviorSubject<EventWithPictureModel[]>([]);
@@ -44,7 +45,7 @@ export class CurrentStateService {
 
 
   setEmployeeObs(employee: EmployeeModel) {
-    this.employee$.asObservable();
+    this.employee$.next(employee);
 
   }
 
