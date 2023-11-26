@@ -1,3 +1,5 @@
+/* title */
+
 .matchname-box > h1 {
   color: black;
   font-size: 30px;
@@ -7,6 +9,8 @@
   margin-top: 100px;
   margin-bottom: -80px;
 }
+
+/* event-body complete */
 
 .eventbody-box {
   width: 100%;
@@ -23,6 +27,8 @@
   top: 120px;
   margin-bottom: 20px;
 }
+
+/* matchdetails-style */
 
 .matchinfo-box {
   width: 25%;
@@ -68,6 +74,7 @@
   position: relative;
   left: 1020px;
   margin-top: -370px;
+  margin-bottom: 150px;
 }
 
 .title-box{
@@ -110,7 +117,7 @@
 
 /*abschicken-button */
 .send-box{
-  text-align: center;
+  margin-left: 240px;
   margin-top: 50px;
 }
 
@@ -118,7 +125,6 @@ button.send-button {
   width: 174px;
   height: 35px;
   background: #00A075;
-  margin-top: 0px;
   border-radius: 20px;
   border-color: black;
   transition: background-color 0.3s;

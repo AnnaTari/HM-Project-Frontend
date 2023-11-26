@@ -14,7 +14,7 @@ export class CurrentEventBoxComponent implements OnInit{
   constructor (private router: Router, private sanitizer:DomSanitizer) { }
 
   navigateToEventPage(eventHsvId: number) {
-    this.router.navigate(['./event-page', eventHsvId],);
+    this.router.navigate(['./event-page', eventHsvId]);
   }
 
  @Input()
