@@ -1,20 +1,25 @@
 import {Injectable} from '@angular/core';
 
-import {BehaviorSubject, of} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  //Boolean value if an admin is logged in
-  isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-
   // redirect after logging in
   redirectUrl: string = "admin-edit";
 
+  //Boolean value if an admin is logged in
+  private isLoggedIn: BehaviorSubject<boolean>;
+
+  constructor() {
+    const storedLoggedInState = localStorage.getItem('isLoggedIn');
+    this.isLoggedIn = new BehaviorSubject<boolean>(storedLoggedInState === 'true');
+  }
+
   login() {
     this.isLoggedIn.next(true);
-    console.log("login: " + this.isLoggedIn);
+    localStorage.setItem('isLoggedIn', 'true');
   }
 
   getLoggedIn() {
@@ -23,5 +28,6 @@ export class AuthService {
 
   logout(): void {
     this.isLoggedIn.next(false);
+    localStorage.setItem('isLoggedIn', 'false');
   }
 }

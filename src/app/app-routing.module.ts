@@ -7,13 +7,14 @@ import {EditEventComponent} from "./admin-edit/edit-event/edit-event.component";
 import {TermsAndConditionsComponent} from "./terms-and-conditions/terms-and-conditions.component";
 import {EventPageComponent} from "./event-page/event-page.component";
 import {RafflePageComponent} from "./raffle-page/raffle-page.component";
+import {authGuard} from "./shared/auth/auth.guard";
 
 //defines your routes
 const routes: Routes = [
   {path: 'home', title: "Homepage", component: HomepageComponent},
   {path: 'login', component: LoginComponent},
   {
-    path: 'admin-edit', component: AdminEditComponent, children: [
+    path: 'admin-edit', component: AdminEditComponent,  canActivate: [authGuard], children: [
       {path: 'edit-event', component: EditEventComponent},
       {path: 'edit-event/:id', component: EditEventComponent}
     ]

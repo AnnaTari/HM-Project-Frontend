@@ -23,6 +23,7 @@ export class LoginComponent {
   messageShow = new BehaviorSubject<boolean>(true);
 
   constructor(private router: Router, private currentStateService: CurrentStateService, private adminApi: AdminApi, private authService: AuthService) {
+    this.authService.getLoggedIn().subscribe((login) => console.log(login));
   }
 
   onSubmit() {
