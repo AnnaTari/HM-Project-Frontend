@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {EventModel} from "../shared/models/event.model";
 import {EventWithPictureModel} from "../shared/models/eventWithPicture.model";
+import {Observable} from "rxjs";
 
 
 @Injectable({
