@@ -1,9 +1,9 @@
 mat-tab-group {
   width: 80%;
-  margin:auto;
+  margin: auto;
 }
 
-.grid-container{
+.grid-container {
   display: grid;
   grid-template-columns: 15% 70% 15%;
 }
@@ -18,24 +18,31 @@ mat-tab-group {
 }
 
 mat-icon {
-  color:#00A075;
+  color: #00A075;
 }
 
 .button-icon {
   border: none;
   margin: 2%;
-  cursor:pointer;
+  cursor: pointer;
   background-color: white;
 }
 
-.addButton{
+.addButton {
   width: 50%;
-  height:50px;
+  height: 50px;
   cursor: pointer;
-  border: 1px solid;
+  border: 1px solid #C0C0C0;
+  border-radius: 15px;
+  background-color: white;
 }
+
+.addButton:hover {
+  background-color: #F5F5F5;
+}
+
 
 h3 {
   text-align: center;
-  margin:10% 0 10% 0;
+  margin: 10% 0 10% 0;
 }

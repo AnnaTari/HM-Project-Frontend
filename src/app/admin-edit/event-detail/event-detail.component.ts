@@ -8,23 +8,33 @@ import {DomSanitizer} from "@angular/platform-browser";
   templateUrl: './event-detail.component.html',
   styleUrls: ['./event-detail.component.css']
 })
-export class EventDetailComponent implements OnInit{
+export class EventDetailComponent implements OnInit {
   @Input()
-  event: EventWithPictureModel = {eventHsvId:0, picture: new Uint8Array(), location: "", matchDetails: "", matchName:"", eventDate: new Date(), registrationDate: new Date(), ticketAmount: 0, ticketType: 0, adminId: 0, deadline: new Date()};
+  event: EventWithPictureModel = {
+    eventHsvId: 0,
+    picture: new Uint8Array(),
+    location: "",
+    matchDetails: "",
+    matchName: "",
+    eventDate: new Date(),
+    registrationDate: new Date(),
+    ticketAmount: 0,
+    ticketType: 0,
+    adminId: 0,
+    deadline: new Date()
+  };
 
-  imageToShow: any;
-
-  panelIsOpen: boolean = false;
-
-  constructor(private sanitizer:DomSanitizer) {
-  }
-
-  transform(base64Image: Uint8Array) {
-    return this.sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + base64Image);
+  constructor(private sanitizer: DomSanitizer) {
   }
 
   ngOnInit() {
     this.imageToShow = this.transform(this.event.picture);
+  }
+
+  imageToShow: any;
+
+  transform(base64Image: Uint8Array) {
+    return this.sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + base64Image);
   }
 
 }

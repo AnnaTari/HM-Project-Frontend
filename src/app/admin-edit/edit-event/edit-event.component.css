@@ -1,3 +1,4 @@
+/*Container of the form*/
 .container {
   background-color: #fff5;
   width: 90%;
@@ -19,20 +20,20 @@
   padding: 20px 20px 0;
 }
 
-/*Zeilen im Formular mit Flex Layout*/
+/*Rows in the form with flex layout*/
 .row {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
 }
 
-/*Im Flex-Layout gibt es drei Spalten*/
+/*In the flex layout there are three columns*/
 .row .form-group {
   flex: 0 0 30%;
   text-align: center;
 }
 
-/*Design des Erstellen und Abbrechen Buttons*/
+/*Design of the "Erstellen" and "Abbrechen" Buttons*/
 .container-body .form-group button {
   padding: 10px 20px;
   border: none;
@@ -44,7 +45,7 @@
   width: 40%;
 }
 
-/*Design vom Zeitpunkt Input Feld*/
+/*Design of the time input field --> angular material doesn't deliver design for this input*/
 .input-wrapper {
   position: relative;
   display: inline-block;

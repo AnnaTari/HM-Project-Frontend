@@ -2,6 +2,7 @@
   <div class="container-header">
     <p>Füge die Event-Details hinzu:</p>
   </div>
+  <!--Starts the form for an event-->
   <form class="container-body" [formGroup]="eventForm" (ngSubmit)="onSubmit()">
     <div class="row">
       <mat-form-field class="form-group">
@@ -23,7 +24,7 @@
       <mat-form-field class="form-group">
         <mat-label>Spieldatum</mat-label>
         <input matInput id="matchDate" [matDatepicker]="matchDate" formControlName="matchDate">
-        <mat-datepicker-toggle matTooltip="Wann findet das Spiel statt?" matSuffix
+        <mat-datepicker-toggle matTooltip="Datum wann das Spiel stattfindet" matSuffix
                                [for]="matchDate"></mat-datepicker-toggle>
         <mat-datepicker #matchDate></mat-datepicker>
       </mat-form-field>
@@ -36,7 +37,7 @@
       <mat-form-field class="form-group">
         <mat-label>Deadline</mat-label>
         <input matInput id="deadline" [matDatepicker]="deadline" formControlName="deadline">
-        <mat-datepicker-toggle matSuffix [for]="deadline"></mat-datepicker-toggle>
+        <mat-datepicker-toggle matTooltip="Datum bis man sich anmelden kann" matSuffix [for]="deadline"></mat-datepicker-toggle>
         <mat-datepicker #deadline></mat-datepicker>
       </mat-form-field>
     </div>

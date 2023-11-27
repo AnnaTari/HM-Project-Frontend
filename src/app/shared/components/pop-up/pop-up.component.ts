@@ -12,6 +12,7 @@ export class PopUpComponent {
   actualRoute: string;
 
   constructor(public dialogRef: MatDialogRef<PopUpComponent>, @Inject(MAT_DIALOG_DATA) public data: PopupActionModel, private snackBar: MatSnackBar) {
+    //determines the route from where the popup is opened because the popup component is shared
     this.actualRoute = this.data.route[this.data.route.length - 1];
     console.log(this.actualRoute);
   }
@@ -19,6 +20,7 @@ export class PopUpComponent {
   deleteEvent() {
     let config = new MatSnackBarConfig();
     config.panelClass = ['custom-class'];
+    //Message appears for 2 seconds
     this.snackBar.open("Das Event wurde gelöscht", "", {duration: 2000})
     this.data.action = true;
     this.dialogRef.close(this.data);

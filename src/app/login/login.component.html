@@ -2,7 +2,7 @@
   <div class="title-box">
     <h1>Admin-Anmeldung</h1>
   </div>
-  <!--Formular-Box-->
+  <!--Form-Box-->
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="grid-container">
       <div class="label-container">
@@ -18,11 +18,12 @@
         <input class="input-box" type="password" formControlName="password">
       </div>
     </div>
-    <!--Anmelde-Button--->
+    <!--Login-Button--->
     <div class="send-box">
       <button class="send-button" type="submit">
         <p class="button-text">Anmelden</p>
       </button>
+      <!--Message when you use false credentials-->
       <p class="warn-text" [hidden]="(messageShow | async)">Die Anmeldedaten sind falsch.</p>
     </div>
   </form>

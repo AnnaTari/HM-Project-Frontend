@@ -11,6 +11,7 @@ import {DomSanitizer} from "@angular/platform-browser";
 @Injectable({
   providedIn: 'root'
 })
+//Service where all objects are shared through the application
 export class CurrentStateService {
   private admin$: BehaviorSubject<AdminModel> = new BehaviorSubject<AdminModel>({
     adminId: 0,
@@ -80,7 +81,7 @@ export class CurrentStateService {
     return this.expiredEvents$.asObservable();
   }
 
-
+  //Separates all events if they are actual, future or expired events
   separateActualAndFutureEvents(events: EventWithPictureModel[]) {
     let actualEvents: EventWithPictureModel[] = [];
     let futureEvents: EventWithPictureModel[] = [];

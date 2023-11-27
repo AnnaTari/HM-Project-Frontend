@@ -10,14 +10,14 @@
 
 .information-field {
   flex: 0 0 50%;
-  max-width: 50%; /* Set the maximum width to 50% */
+  max-width: 50%;
   flex-wrap: wrap; /* Allows the content to wrap to the next line */
 }
 
 
 .information-header {
   border-bottom: 1px solid grey;
-  width: 40%;
+  width: 45%;
   text-align: center;
   float: left;
 }
@@ -30,7 +30,7 @@
 .information-header-description {
   margin-bottom: 5%;
   border-bottom: 1px solid grey;
-  width: 35%;
+  width: 45%;
   text-align: center;
 }
 

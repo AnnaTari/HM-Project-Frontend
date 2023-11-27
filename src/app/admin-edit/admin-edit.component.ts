@@ -20,9 +20,9 @@ export class AdminEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.eventApi.check().subscribe((data => {
-      this.currentStateService.separateActualAndFutureEvents(data);
-      console.log(data);
+    this.eventApi.getAllEvents().subscribe((events => {
+      this.currentStateService.separateActualAndFutureEvents(events);
+      console.log(events);
     }))
   }
 

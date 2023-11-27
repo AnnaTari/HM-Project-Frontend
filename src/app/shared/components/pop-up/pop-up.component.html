@@ -1,5 +1,8 @@
+<!--Frame of the pop up-->
 <div class="pop-up">
+  <!--Dynamic data-->
   <h1 mat-dialog-title>{{data.message}}</h1>
+  <!--If the route is admin-edit then specific content appears-->
   <div [hidden]="(this.actualRoute !== 'admin-edit')">
     <div mat-dialog-actions>
       <button mat-button mat-stroked-button (click)="deleteEvent()">Löschen</button>

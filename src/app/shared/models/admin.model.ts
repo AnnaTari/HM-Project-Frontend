@@ -3,5 +3,3 @@ export interface AdminModel {
   adminName: string;
   adminPassword: string;
 }
-
-

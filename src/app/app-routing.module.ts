@@ -22,7 +22,7 @@ const routes: Routes = [
   {path: 'event-page/:eventHsvId', component: EventPageComponent},
   {path: 'raffle-page', component: RafflePageComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}, //route that defaults to the home-component
-  {path: '**', component: HomepageComponent}//wildcard route - in case the user attempt to navigate where nothing exists
+  {path: '**', component: HomepageComponent}//wildcard route - in case the user attempts to navigate where nothing exists
 ];
 
 @NgModule({

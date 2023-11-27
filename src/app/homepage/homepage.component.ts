@@ -19,7 +19,7 @@ export class HomepageComponent implements OnInit{
   showImage: any;
 
   constructor(private eventApi: EventApi, private currentStateService: CurrentStateService, private sanitizer:DomSanitizer) {
-    this.eventApi.check().subscribe((data)=> this.currentStateService.setEventObs(data));
+    this.eventApi.getAllEvents().subscribe((data)=> this.currentStateService.setEventObs(data));
     this.actualEvents$ = this.currentStateService.getActualEvents();
     this.futureEvents$ = this.currentStateService.getFutureEvents();
     this.events$ = this.currentStateService.getEventObs();
@@ -33,7 +33,7 @@ export class HomepageComponent implements OnInit{
   }
   ngOnInit() {
     this.showImage = this.transform(this.event.picture);
-    this.eventApi.check().subscribe((data => {
+    this.eventApi.getAllEvents().subscribe((data => {
       this.currentStateService.separateActualAndFutureEvents(data);
     }))
 

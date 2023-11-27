@@ -22,7 +22,7 @@ export class RafflePageComponent {
 
   constructor(private eventApi: EventApi, private winnerApi: WinnerApi, private currentStateService: CurrentStateService) {
     this.winner$ = this.currentStateService.getWinner();
-    this.eventApi.check().subscribe((data)=> this.currentStateService.separateActualAndFutureEvents(data));
+    this.eventApi.getAllEvents().subscribe((data)=> this.currentStateService.separateActualAndFutureEvents(data));
     this.expiredEvents$ = this.currentStateService.getExpiredEvents();
     this.expiredEvents$.subscribe(events => {
       console.log(events);
