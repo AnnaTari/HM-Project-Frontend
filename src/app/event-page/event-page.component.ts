@@ -8,6 +8,7 @@ import {EventWithPictureModel} from "../shared/models/eventWithPicture.model";
 import {PopUpComponent} from "../shared/components/pop-up/pop-up.component";
 import {MatDialog} from "@angular/material/dialog";
 import {RegistrationDtoModel} from "../shared/models/registrationDto-model";
+import {DomSanitizer} from "@angular/platform-browser";
 
 
 @Component({
@@ -33,18 +34,21 @@ export class EventPageComponent implements OnInit {
     ticketAmount: 0,
     registrationDate: new Date(),
     picture: new Uint8Array([])
-
-
   }
+
+  messageShow = new BehaviorSubject<boolean>(false);
+
   private messageText: string = 'Teilnahme erfolgreich!';
 
+  showImage: any;
 
-  constructor(private currentStateService: CurrentStateService, private employeeApi: EmployeeApi, private route: ActivatedRoute, private dialog: MatDialog) {
+  constructor(private currentStateService: CurrentStateService, private employeeApi: EmployeeApi, private route: ActivatedRoute, private dialog: MatDialog, private sanitizer:DomSanitizer) {
   }
 
   /* getting eventHSVId */
 
   ngOnInit() {
+    this.showImage = this.transform(this.event.picture);
     let idParam = Number(this.route.snapshot.paramMap.get('eventHsvId'));
     console.log(idParam);
     if (idParam) {
@@ -59,6 +63,10 @@ export class EventPageComponent implements OnInit {
         });
       });
     }
+  }
+
+  transform(base64Image: Uint8Array) {
+    return this.sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + base64Image);
   }
 
   /* popup with message */
@@ -80,24 +88,35 @@ export class EventPageComponent implements OnInit {
 
   isLoggedIn = new BehaviorSubject<boolean>(true);
 
+   onSubmit() {
+    console.log("Teilnahme bestätigt");
+          let registrationDto: RegistrationDtoModel = {
+            employee: {
+              employeeId: 0,
+              employeeName: this.participationForm.value.name ? this.participationForm.value.name : "",
+              employeeEmail: this.participationForm.value.email ? this.participationForm.value.email : ""
+            },
+            eventHsvId: this.eventHsvId,
+            escortName: this.participationForm.value.escortName ? this.participationForm.value.escortName : "",
+            substituteWinner: false,
+            winner: false
+          };
 
-  onSubmit() {
-        console.log("Teilnahme bestätigt")
-    let registrationDto: RegistrationDtoModel = {
-      employee: {
-        employeeId: 0,
-        employeeName: this.participationForm.value.name ? this.participationForm.value.name : "",
-        employeeEmail: this.participationForm.value.email ? this.participationForm.value.email : ""
-      },
-      eventHsvId: this.eventHsvId,
-      escortName: this.participationForm.value.escortName ? this.participationForm.value.escortName : "",
-      substituteWinner: false,
-      winner: false
-    }
+          this.employeeApi.participate(registrationDto).subscribe((employee) => {
+            console.log(employee)
+            if (employee.employeeEmail != null) {
+              this.messageShow.next(false);
+              // Erfolgreich teilgenommen
+              this.isLoggedIn.next(true);
+              this.openDialog();
+            }else {
+              // employee is already logged
+              console.log("Benutzer hat sich bereits angemeldet.");
+              this.messageShow.next(true);
+            }
+          });
 
+      };
 
-   this.employeeApi.participate(registrationDto).subscribe()
-
-
-  }
 }
+

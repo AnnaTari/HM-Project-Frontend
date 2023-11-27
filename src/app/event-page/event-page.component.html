@@ -6,8 +6,12 @@
 <!--eventbody-box is whole body with participation and event--->
 
 <div class="picture-placeholder">
-  <p>{{event.picture}}</p>
+  <div *ngIf="event.picture">
+    <img [src]="showImage" alt="Event Image">
+  </div>
 </div>
+
+
 
 <div class="eventbody-box">
 
@@ -16,11 +20,11 @@
   <div class="matchinfo-box">
 
      <h3>{{event.matchName}}</h3>
-     <p>Datum: <strong>14.07.2024</strong></p>
-     <p>Uhrzeit: <strong></strong></p>
+     <p>Datum: <strong>{{event.eventDate | date: 'dd.MM.yyyy'}}</strong></p>
+     <p>Uhrzeit: <strong>{{event.eventDate | date: 'HH:mm'}}</strong></p>
      <p>Ort: <strong>{{event.location}}</strong></p>
      <p>Anzahl zu gewinnende Tickets: <strong>{{event.ticketType}} mal {{event.ticketAmount}}</strong></p>
-     <p>Deadline: <strong>{{event.eventDate | date: 'dd.MM.yyyy'}}</strong></p>
+     <p>Deadline: <strong>{{event.deadline | date: 'dd.MM.yyyy'}}</strong></p>
 
      <div class="matchdetails">
        <p>{{event.matchDetails}}</p>
@@ -58,7 +62,7 @@
 
       <!--Abschicken-button, to register user in db --->
       <div class="send-box">
-        <button (click) = "openDialog()" class="send-button" type="submit" [disabled]="!participationForm.valid">
+        <button class="send-button" type="submit" [disabled]="!participationForm.valid">
           <p class="button-text">Abschicken</p>
         </button>
 
@@ -68,7 +72,7 @@
     <!--message-text, if user is already in attendance-table in db--->
 
     <div class="message-text">
-      <p class="success-text" [hidden]="!(isLoggedIn | async)"> Sie haben sich bereits für dieses Event angemeldet.</p>
+      <p class="success-text" [hidden]="!(messageShow | async)"> Sie haben sich bereits für dieses Event angemeldet.</p>
     </div>
 
   </div>
