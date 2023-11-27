@@ -114,11 +114,6 @@ export class CurrentStateService {
     return this.winner$.asObservable();
   }
 
-  isLoggedIn(): boolean {
-    let admin = this.admin$.getValue();
-    return admin && admin.adminId !== 0;
-  }
-
   transform(base64Image: Uint8Array) {
     return this.sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + base64Image);
   }

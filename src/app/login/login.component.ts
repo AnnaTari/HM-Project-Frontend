@@ -35,9 +35,9 @@ export class LoginComponent {
       //checks if an admin with these credentials exists
       if (admin.adminId != null) {
         this.messageShow.next(true);
-        this.router.navigate([this.authService.redirectUrl]);
         this.currentStateService.setAdminObs(admin);
         this.authService.login();
+        this.router.navigate([this.authService.redirectUrl]);
       } else {
         this.messageShow.next(false);
       }

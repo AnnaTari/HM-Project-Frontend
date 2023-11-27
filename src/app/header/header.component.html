@@ -1,10 +1,10 @@
-<div class="headerbar" *ngIf="!currentStateService.isLoggedIn()">
+<div class="headerbar" *ngIf="!(authService.getLoggedIn() | async)">
   <button class="events-button" (click)="navigateToTermsAndConditions()">Teilnahmebedingungen</button>
   <div class="logo-box"><img class="logo" alt="logo" src="/assets/images/logo.jpg" (click)="navigateToHomepage()"></div>
-    <button class="events-button" (click)="navigateToLogin()">Adminanmeldung</button>
-  </div>
+  <button class="events-button" (click)="navigateToLogin()">Adminanmeldung</button>
+</div>
 
-<div class="headerbar" *ngIf="currentStateService.isLoggedIn()">
+<div class="headerbar" *ngIf="authService.getLoggedIn()| async">
   <button class="events-button" (click)="navigateToRafflePage()">Auslosungen</button>
   <div class="logo-box"><img class="logo" alt="logo" src="/assets/images/logo.jpg" (click)="navigateToHomepage()"></div>
   <button class="events-button" (click)="navigateToAdminEdit()">Adminbereich</button>

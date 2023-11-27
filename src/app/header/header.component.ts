@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Router} from "@angular/router";
 import {CurrentStateService} from "../shared/services/current-state.service";
+import {AuthService} from "../shared/auth/auth.service";
 
 
 @Component({
@@ -10,7 +11,7 @@ import {CurrentStateService} from "../shared/services/current-state.service";
 })
 export class HeaderComponent {
 
-  constructor(private router: Router, public currentStateService: CurrentStateService) {
+  constructor(private router: Router, public authService: AuthService) {
   }
 
 //Methods to navigate to...
