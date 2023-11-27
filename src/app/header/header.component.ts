@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 import {CurrentStateService} from "../shared/services/current-state.service";
 import {AuthService} from "../shared/auth/auth.service";
@@ -32,8 +32,13 @@ export class HeaderComponent {
   }
 
   navigateToAdminEdit() {
-  this.router.navigate(['./admin-edit']);
-   }
+    this.router.navigate(['./admin-edit']);
+  }
+
+  logout() {
+    this.router.navigate([""]);
+    this.authService.logout();
+  }
 
 }
 

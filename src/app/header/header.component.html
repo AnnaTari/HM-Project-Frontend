@@ -7,7 +7,13 @@
 <div class="headerbar" *ngIf="authService.getLoggedIn()| async">
   <button class="events-button" (click)="navigateToRafflePage()">Auslosungen</button>
   <div class="logo-box"><img class="logo" alt="logo" src="/assets/images/logo.jpg" (click)="navigateToHomepage()"></div>
-  <button class="events-button" (click)="navigateToAdminEdit()">Adminbereich</button>
+  <div class="dropdown">
+    <button class="events-button">Adminbereich</button>
+    <div class="dropdown-content">
+      <button class="events-button" (click)="navigateToAdminEdit()">Event bearbeiten</button>
+      <button class="events-button" (click)="logout()">Abmelden</button>
+    </div>
+  </div>
 </div>
 
 
