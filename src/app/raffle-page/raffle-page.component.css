@@ -5,7 +5,7 @@
 }
 
 h1 {
-  font-size: 32px;
+  font-size: 30px;
   color:  black;
 }
 
@@ -31,7 +31,6 @@ h1 {
   flex-direction: column;
   position: relative;
   align-items: center;
-  margin-right: 40px;
   height: 100px;
   width: 390px;
   border: #005E52 solid 2px;
@@ -68,11 +67,10 @@ h1 {
 }
 
 .winner-output {
-  justify-content: flex-start;
+  text-align: center;
   margin-top: 50px;
   width: auto;
   height: auto;
-  padding: 15px;
   font-size: 24px;
   float: left;
   padding-left: 50px;
@@ -88,4 +86,8 @@ h1 {
 p.winner-names {
   color: black;
   margin-bottom: 20px;
+}
+
+.spacer {
+
 }
