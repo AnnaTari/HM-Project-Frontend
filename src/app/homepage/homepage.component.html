@@ -7,6 +7,8 @@
 <div class="event-container">
  <div *ngFor="let event of (actualEvents$ | async)">
   <app-current-event-box [event]="event"></app-current-event-box>
+
+   <!--infotext when there are no future events-->
   <div class="infotext" *ngIf="((actualEvents$ | async)?.length) === 0">Es gibt keine Events, für die Sie sich aktuell anmelden können.</div>
  </div>
 </div>
@@ -25,6 +27,7 @@
     <img [src]="transform(event.picture)" alt="Event Image">
   </div>
 
+  <!--infotext when there are no future events-->
 </div>
   <div class="infotext" *ngIf="((events$ | async)?.length) === 0">Bald wird es wieder eine Eventvorschau geben.</div>
 </div>
