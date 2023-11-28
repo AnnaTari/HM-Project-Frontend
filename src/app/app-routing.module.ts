@@ -21,7 +21,7 @@ const routes: Routes = [
   },
   {path: 'terms-and-conditions', component: TermsAndConditionsComponent},
   {path: 'event-page/:eventHsvId', component: EventPageComponent},
-  {path: 'raffle-page', component: RafflePageComponent},
+  {path: 'raffle-page', component: RafflePageComponent, canActivate: [authGuard]},
   {path: '', redirectTo: '/home', pathMatch: 'full'}, //route that defaults to the home-component
   {path: '**', component: HomepageComponent}//wildcard route - in case the user attempts to navigate where nothing exists
 ];

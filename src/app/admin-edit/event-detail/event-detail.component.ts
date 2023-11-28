@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {EventWithPictureModel} from "../../shared/models/eventWithPicture.model";
 import {DomSanitizer} from "@angular/platform-browser";
+import {CurrentStateService} from "../../shared/services/current-state.service";
 
 
 @Component({
@@ -24,17 +25,12 @@ export class EventDetailComponent implements OnInit {
     deadline: new Date()
   };
 
-  constructor(private sanitizer: DomSanitizer) {
+  constructor(private currentStateService: CurrentStateService) {
   }
 
   ngOnInit() {
-    this.imageToShow = this.transform(this.event.picture);
+    this.imageToShow = this.currentStateService.transform(this.event.picture);
   }
 
   imageToShow: any;
-
-  transform(base64Image: Uint8Array) {
-    return this.sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + base64Image);
-  }
-
 }
