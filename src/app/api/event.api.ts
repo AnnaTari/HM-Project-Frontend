@@ -14,6 +14,7 @@ export class EventApi {
   constructor(private httpClient: HttpClient) {
   }
 
+  //fetch a list of EventWithPictureModel objects from the endpoint and provide response
   public check() {
     let response = this.httpClient.get<EventWithPictureModel[]>(this.endpoint);
     response.subscribe((data => console.log(data)))

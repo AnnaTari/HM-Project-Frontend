@@ -10,10 +10,11 @@ import {CurrentStateService} from "../shared/services/current-state.service";
 })
 export class HeaderComponent {
 
+  //constructor injects Router and CurrentStateService dependencies
   constructor(private router: Router, public currentStateService: CurrentStateService) {
   }
 
-//Methods to navigate to...
+//methods to navigate to...
   navigateToTermsAndConditions() {
     this.router.navigate(['./terms-and-conditions']);
   }

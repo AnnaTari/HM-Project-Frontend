@@ -121,6 +121,7 @@ export class CurrentStateService {
     return this.winner$.asObservable();
   }
 
+  //check if admin is logged in
   isLoggedIn(): boolean {
     let admin = this.admin$.getValue();
     return admin && admin.adminId !== 0;

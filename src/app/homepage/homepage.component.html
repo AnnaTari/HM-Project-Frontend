@@ -27,7 +27,7 @@
     <img [src]="transform(event.picture)" alt="Event Image">
   </div>
 
-  <!--infotext when there are no future events-->
+  <!--Infotext when there are no future events-->
 </div>
   <div class="infotext" *ngIf="((events$ | async)?.length) === 0">Bald wird es wieder eine Eventvorschau geben.</div>
 </div>

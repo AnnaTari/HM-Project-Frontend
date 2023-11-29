@@ -1,3 +1,4 @@
+//structure of winner model with data types
 export interface WinnerModel {
   employeeId: number,
   eventHsvId: number,
@@ -8,4 +9,5 @@ export interface WinnerModel {
   winner: boolean,
   substituteWinner: boolean,
   blacklistCounter: number,
+  ticketAmount:number,
 }
