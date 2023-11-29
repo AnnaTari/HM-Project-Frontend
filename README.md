@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.4.
 
+## Setup
+
+When you want to use the Angular Frameworkm you need to set everything up according to the official site: https://angular.io/guide/setup-local. 
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
