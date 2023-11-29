@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Setup
 
-When you want to use the Angular Framework you need to set everything up according to the official site: https://angular.io/guide/setup-local. 
+If you want to use the Angular Framework, you need to set everything up according to the official website: https://angular.io/guide/setup-local. 
 
 ## Development server
 
