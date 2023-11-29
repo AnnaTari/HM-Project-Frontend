@@ -23,6 +23,20 @@ export class EventApi {
 
   //Sends the created event to the backend endpoint: api/events/addEvent
   public addEvent(event: any, byteArray: number[]) {
+    const formData = this.createFormData(event, byteArray);
+    return this.httpClient.post<EventWithPictureModel[]>(this.endpoint + "/addEvent", formData);
+  }
+
+  public updateEvent(event: any, byteArray: number[]) {
+    const formData = this.createFormData(event, byteArray);
+    return this.httpClient.post<EventWithPictureModel[]>(this.endpoint + "/updateEvent", formData);
+  }
+
+  public deleteEvent(event: EventModel) {
+    return this.httpClient.post<EventWithPictureModel[]>(this.endpoint + "/deleteEvent", event);
+  }
+
+  private createFormData(event: any, byteArray: number[]) {
     //When I use EventModel as typescript class in JSON stringify I get {"isTrusted":true}
     //-->maybe the properties of EventModel aren't enumerable. That's why I am using a plain object of event
     const eventJson = JSON.stringify(event);
@@ -35,15 +49,8 @@ export class EventApi {
     formData.append('picture', new Blob([new Uint8Array(byteArray)], {
       type: "application/octet-stream"
     }));
-    return this.httpClient.post<EventWithPictureModel[]>(this.endpoint + "/addEvent", formData);
+    return formData;
   }
 
-  public updateEvent(event: EventModel) {
-    return this.httpClient.post<EventWithPictureModel[]>(this.endpoint + "/updateEvent", event);
-  }
-
-  public deleteEvent(event: EventModel) {
-    return this.httpClient.post<EventWithPictureModel[]>(this.endpoint + "/deleteEvent", event);
-  }
 
 }

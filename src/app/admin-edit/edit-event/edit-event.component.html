@@ -7,7 +7,7 @@
     <div class="row">
       <mat-form-field class="form-group">
         <mat-label>Spiel Name</mat-label>
-        <input matInput id="matchName" formControlName="matchName">
+        <input matInput id="matchName" formControlName="matchName" required>
         <mat-icon matTooltip="Spielname wie 'HSV vs. St.Pauli'" matPrefix>games</mat-icon>
       </mat-form-field>
       <mat-form-field class="form-group">
@@ -23,7 +23,7 @@
     <div class="row">
       <mat-form-field class="form-group">
         <mat-label>Spieldatum</mat-label>
-        <input matInput id="matchDate" [matDatepicker]="matchDate" formControlName="matchDate">
+        <input matInput id="matchDate" [matDatepicker]="matchDate" formControlName="matchDate" required>
         <mat-datepicker-toggle matTooltip="Datum wann das Spiel stattfindet" matSuffix
                                [for]="matchDate"></mat-datepicker-toggle>
         <mat-datepicker #matchDate></mat-datepicker>
@@ -36,7 +36,7 @@
       </div>
       <mat-form-field class="form-group">
         <mat-label>Deadline</mat-label>
-        <input matInput id="deadline" [matDatepicker]="deadline" formControlName="deadline">
+        <input matInput id="deadline" [matDatepicker]="deadline" formControlName="deadline" required>
         <mat-datepicker-toggle matTooltip="Datum bis man sich anmelden kann" matSuffix [for]="deadline"></mat-datepicker-toggle>
         <mat-datepicker #deadline></mat-datepicker>
       </mat-form-field>
@@ -52,7 +52,7 @@
       </mat-form-field>
       <mat-form-field class="form-group">
         <mat-label>Freischaltdatum</mat-label>
-        <input matInput id="registrationDate" [matDatepicker]="registrationDate" formControlName="registrationDate">
+        <input matInput id="registrationDate" [matDatepicker]="registrationDate" formControlName="registrationDate" required>
         <mat-datepicker-toggle matTooltip="Datum ab wann man teilnehmen kann" matSuffix
                                [for]="registrationDate"></mat-datepicker-toggle>
         <mat-datepicker #registrationDate></mat-datepicker>

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Observable} from "rxjs";
 import {EventModel} from "../../shared/models/event.model";
 import {EventWithPictureModel} from "../../shared/models/eventWithPicture.model";
@@ -37,15 +37,15 @@ export class EditEventComponent implements OnInit {
   constructor(private fb: FormBuilder, private currentStateService: CurrentStateService, private eventApi: EventApi, private router: Router, private route: ActivatedRoute) {
     //Initialising the formGroup
     this.eventForm = this.fb.group({
-      matchName: [''],
+      matchName: ['', Validators.required],
       matchDetails: [''],
-      matchDate: [Date],
+      matchDate: [Date, Validators.required],
       matchTime: [''],
       location: ['Volksparkstadion'],
-      deadline: [Date],
+      deadline: [Date, Validators.required],
       ticketType: [2],
       ticketAmount: [0],
-      registrationDate: [Date],
+      registrationDate: [Date, Validators.required],
     })
     this.$actualEvents = this.currentStateService.getActualEvents()
     this.$futureEvents = this.currentStateService.getFutureEvents();
@@ -91,16 +91,14 @@ export class EditEventComponent implements OnInit {
       let arrayBuffer = picture.target.result;
       byteArray = new Uint8Array(arrayBuffer);
       //sends added event to the backend
-      this.eventApi.addEvent(this.toJSON(event), Array.from(byteArray)).subscribe((events) => this.currentStateService.separateActualAndFutureEvents(events));
+      //If the user updated an event
+      let id = Number(this.route.snapshot.paramMap.get('id'));
+      this.updateEvent(event, id, byteArray);
     };
     //this is very important --> so that the picture can be read!
     if (this.selectedFile) {
       reader.readAsArrayBuffer(this.selectedFile);
     }
-    //If the user updated an event
-    let id = Number(this.route.snapshot.paramMap.get('id'));
-    this.updateEvent(event, id);
-
     this.router.navigate(['admin-edit']);
   }
 
@@ -174,9 +172,11 @@ export class EditEventComponent implements OnInit {
     fileInput.dispatchEvent(new Event('change'));
   }
 
-  updateEvent(event: EventModel, id: number) {
+  updateEvent(event: EventModel, id: number, byteArray:Uint8Array) {
     if (id != 0 && id != null) {
-      this.eventApi.updateEvent(event).subscribe((data) => this.currentStateService.separateActualAndFutureEvents(data));
+      this.eventApi.updateEvent(this.toJSON(event), Array.from(byteArray)).subscribe((data) => this.currentStateService.separateActualAndFutureEvents(data));
+    }else {
+      this.eventApi.addEvent(this.toJSON(event), Array.from(byteArray)).subscribe((events) => this.currentStateService.separateActualAndFutureEvents(events));
     }
   }
 }
