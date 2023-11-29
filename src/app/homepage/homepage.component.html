@@ -3,12 +3,12 @@
 <div class="title-box"><h1>Aktuelle Events</h1></div>
 
 
-<!--Integrate CurrentEventBox Component-->
+<!--Integrated CurrentEventBox Component-->
 <div class="event-container">
  <div *ngFor="let event of (actualEvents$ | async)">
   <app-current-event-box [event]="event"></app-current-event-box>
 
-   <!--infotext when there are no future events-->
+   <!--Infotext when there are no future events-->
   <div class="infotext" *ngIf="((actualEvents$ | async)?.length) === 0">Es gibt keine Events, für die Sie sich aktuell anmelden können.</div>
  </div>
 </div>
@@ -31,7 +31,6 @@
 </div>
   <div class="infotext" *ngIf="((events$ | async)?.length) === 0">Bald wird es wieder eine Eventvorschau geben.</div>
 </div>
-
 
 <!--Distance Future Events/End of Page-->
 <div class="placeholder-end"></div>
