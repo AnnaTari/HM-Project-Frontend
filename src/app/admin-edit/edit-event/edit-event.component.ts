@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Observable} from "rxjs";
 import {EventModel} from "../../shared/models/event.model";
 import {EventWithPictureModel} from "../../shared/models/eventWithPicture.model";
@@ -35,16 +35,17 @@ export class EditEventComponent implements OnInit {
   selectedFile: File | undefined;
 
   constructor(private fb: FormBuilder, private currentStateService: CurrentStateService, private eventApi: EventApi, private router: Router, private route: ActivatedRoute) {
+    //Initialising the formGroup
     this.eventForm = this.fb.group({
-      matchName: [''],
+      matchName: ['', Validators.required],
       matchDetails: [''],
-      matchDate: [Date],
-      matchTime: [''],
+      matchDate: [Date, Validators.required],
+      matchTime: ['', Validators.required],
       location: ['Volksparkstadion'],
-      deadline: [Date],
+      deadline: [Date, Validators.required],
       ticketType: [2],
       ticketAmount: [0],
-      registrationDate: [Date],
+      registrationDate: [Date, Validators.required],
     })
     this.$actualEvents = this.currentStateService.getActualEvents()
     this.$futureEvents = this.currentStateService.getFutureEvents();
@@ -52,7 +53,7 @@ export class EditEventComponent implements OnInit {
 
 
   ngOnInit(): void {
-    //When editing an event
+    //When editing an event you have a value in id which is not null and not 0
     let id = Number(this.route.snapshot.paramMap.get('id'));
     if (id != null && id != 0) {
       this.$actualEvents.subscribe((actualEvents) => {
@@ -70,16 +71,36 @@ export class EditEventComponent implements OnInit {
         })
       })
     }
+    //When you extracted which event you edit, you can set the form with its values
     this.setForm(this.event);
   }
 
 
+  //Its activated when you choose a file in the form
   onFileChange(event: any) {
     this.selectedFile = event.target.files[0];
   }
 
   onSubmit() {
-    let id = Number(this.route.snapshot.paramMap.get('id'));
+    let event = this.preparingEvent();
+
+    //preparing picture field
+    const reader = new FileReader();
+    let byteArray = new Uint8Array();
+    reader.onload = (picture: any) => {
+      let arrayBuffer = picture.target.result;
+      byteArray = new Uint8Array(arrayBuffer);
+      this.sendEvent(event, byteArray);
+    };
+    //this is very important --> so that the picture can be read!
+    if (this.selectedFile) {
+      reader.readAsArrayBuffer(this.selectedFile);
+    }
+    this.router.navigate(['admin-edit']);
+  }
+
+
+  private preparingEvent(): EventModel {
     let adminId = 0;
     this.currentStateService.getAdminObs().subscribe((admin) => {
       adminId = admin.adminId ? admin.adminId : 1;
@@ -93,7 +114,9 @@ export class EditEventComponent implements OnInit {
     eventDate.setMinutes(minutes);
     eventDate.setSeconds(0); // set seconds to 0 if not provided
 
-    let event: EventModel = {
+    //an event object with all values from the form without the picture because its sent separately to backend (see eventApi)
+
+    return {
       eventHsvId: this.event.eventHsvId,
       adminId: adminId,
       matchName: this.eventForm.value.matchName,
@@ -104,30 +127,10 @@ export class EditEventComponent implements OnInit {
       ticketType: this.eventForm.value.ticketType,
       ticketAmount: this.eventForm.value.ticketAmount,
       registrationDate: this.eventForm.value.registrationDate,
-    }
-    const reader = new FileReader();
-    let byteArray = new Uint8Array();
-    reader.onload = (picture: any) => {
-      let arrayBuffer = picture.target.result;
-      byteArray = new Uint8Array(arrayBuffer);
-      //adds event into the database
-      this.eventApi.addEvent(this.toJSON(event), Array.from(byteArray)).subscribe((events) => this.currentStateService.separateActualAndFutureEvents(events));
     };
-    //this is very important --> so that the picture can be read!
-    if (this.selectedFile) {
-      reader.readAsArrayBuffer(this.selectedFile);
-    }
-    if (id != null && id != 0) {
-      console.log(event);
-      this.updateEvent(event, id);
-    } else {
-
-    }
-    this.router.navigate(['admin-edit']);
   }
 
-
-  //need to use this method because in the api i stringify this event
+//need to use this method because in the api I stringify this event
   toJSON(event: EventModel) {
     return {
       eventHsvId: event.eventHsvId,
@@ -147,22 +150,33 @@ export class EditEventComponent implements OnInit {
     this.eventForm.controls['matchName'].setValue(event.matchName);
     this.eventForm.controls['matchDetails'].setValue(event.matchDetails);
     this.eventForm.controls['matchDate'].setValue(event.eventDate);
-    let date = new Date(event.eventDate);
-    console.log(event.picture);
-    this.eventForm.controls['picture'].setValue(event.picture);
-    this.eventForm.controls['matchTime'].setValue(`${date.getHours()}:${date.getMinutes()}`);
     this.eventForm.controls['location'].setValue(event.location);
     this.eventForm.controls['deadline'].setValue(event.deadline);
     this.eventForm.controls['ticketType'].setValue(event.ticketType);
     this.eventForm.controls['ticketAmount'].setValue(event.ticketAmount);
     this.eventForm.controls['registrationDate'].setValue(event.registrationDate);
     this.eventForm.controls['deadline'].setValue(event.deadline);
-    this.eventForm.controls['eventDate'].setValue(date);
+    let date = new Date(event.eventDate);
+    this.eventForm.controls['matchTime'].setValue(`${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`);
+    const byteArray = new Uint8Array(event.picture);
+    const file = new File([byteArray], "", {type: 'image/jpeg'});
+
+    const fileInput = document.getElementById('fileInput') as HTMLInputElement;
+    const fileList = new DataTransfer();
+    fileList.items.add(file);
+
+    fileInput.files = fileList.files;
+    fileInput.dispatchEvent(new Event('change'));
   }
 
-  updateEvent(event: EventModel, id: number) {
-    if (id != 0) {
-      this.eventApi.updateEvent(event).subscribe((data) => this.currentStateService.separateActualAndFutureEvents(data));
+  sendEvent(event: EventModel, byteArray:Uint8Array) {
+    let id = Number(this.route.snapshot.paramMap.get('id'));
+    if (id != 0 && id != null) {
+      //sends updated event to the backend
+      this.eventApi.updateEvent(this.toJSON(event), Array.from(byteArray)).subscribe((data) => this.currentStateService.separateActualAndFutureEvents(data));
+    }else {
+      //sends added event to the backend
+      this.eventApi.addEvent(this.toJSON(event), Array.from(byteArray)).subscribe((events) => this.currentStateService.separateActualAndFutureEvents(events));
     }
   }
 }

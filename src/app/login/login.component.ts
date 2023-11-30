@@ -5,6 +5,7 @@ import {CurrentStateService} from "../shared/services/current-state.service";
 import {AdminApi} from "../api/admin.api";
 import {BehaviorSubject} from "rxjs";
 import {AdminModel} from "../shared/models/admin.model";
+import {AuthService} from "../shared/auth/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -12,14 +13,17 @@ import {AdminModel} from "../shared/models/admin.model";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  //Form for logging in as an Admin
   loginForm = new FormGroup({
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required)
   })
 
+  //Boolean value if the message should show that you logged in with false credentials
   messageShow = new BehaviorSubject<boolean>(true);
 
-  constructor(private router: Router, private currentStateService: CurrentStateService, private adminApi: AdminApi) {
+  constructor(private router: Router, private currentStateService: CurrentStateService, private adminApi: AdminApi, private authService: AuthService) {
+    this.authService.getLoggedIn().subscribe((loggedIn) => console.log(loggedIn));
   }
 
   onSubmit() {
@@ -29,10 +33,12 @@ export class LoginComponent {
       adminPassword: this.loginForm.value.password!
     }
     this.adminApi.login(admin).subscribe((admin) => {
+      //checks if an admin with these credentials exists
       if (admin.adminId != null) {
         this.messageShow.next(true);
-        this.router.navigate(['admin-edit']);
         this.currentStateService.setAdminObs(admin);
+        this.authService.login();
+        this.router.navigate([this.authService.redirectUrl]);
       } else {
         this.messageShow.next(false);
       }

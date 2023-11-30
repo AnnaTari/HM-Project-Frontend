@@ -11,6 +11,7 @@ import {DomSanitizer} from "@angular/platform-browser";
 @Injectable({
   providedIn: 'root'
 })
+//Service where all objects are shared through the application
 export class CurrentStateService {
   private admin$: BehaviorSubject<AdminModel> = new BehaviorSubject<AdminModel>({
     adminId: 0,
@@ -80,7 +81,7 @@ export class CurrentStateService {
     return this.expiredEvents$.asObservable();
   }
 
-
+  //Separates all events if they are actual, future or expired events
   separateActualAndFutureEvents(events: EventWithPictureModel[]) {
     let actualEvents: EventWithPictureModel[] = [];
     let futureEvents: EventWithPictureModel[] = [];
@@ -98,7 +99,6 @@ export class CurrentStateService {
         expiredEvents.push(event);
       }
     })
-    console.log(expiredEvents);
     this.setActualEvents(actualEvents);
     this.setFutureEvents(futureEvents);
     this.setExpiredEvents(expiredEvents);
@@ -111,11 +111,6 @@ export class CurrentStateService {
 
   getWinner(): Observable<WinnerModel[]> {
     return this.winner$.asObservable();
-  }
-
-  isLoggedIn(): boolean {
-    let admin = this.admin$.getValue();
-    return admin && admin.adminId !== 0;
   }
 
   transform(base64Image: Uint8Array) {

@@ -18,8 +18,8 @@ export class HomepageComponent implements OnInit{
   today: Date = new Date;
   showImage: any;
 
-  constructor(private eventApi: EventApi, private currentStateService: CurrentStateService, private sanitizer:DomSanitizer) {
-    this.eventApi.check().subscribe((data)=> this.currentStateService.setEventObs(data));
+  constructor(private eventApi: EventApi, public currentStateService: CurrentStateService) {
+    this.eventApi.getAllEvents().subscribe((data)=> this.currentStateService.setEventObs(data));
     this.actualEvents$ = this.currentStateService.getActualEvents();
     this.futureEvents$ = this.currentStateService.getFutureEvents();
     this.events$ = this.currentStateService.getEventObs();
@@ -28,12 +28,9 @@ export class HomepageComponent implements OnInit{
   @Input()
   event: EventWithPictureModel= {eventHsvId: 0, adminId: 0, matchName: "", matchDetails: "", eventDate: new Date(), location:"", deadline: new Date(), ticketType: 0, ticketAmount: 0, registrationDate: new Date(), picture: new Uint8Array([])};
 
-  transform(base64Image: Uint8Array) {
-    return this.sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + base64Image);
-  }
   ngOnInit() {
-    this.showImage = this.transform(this.event.picture);
-    this.eventApi.check().subscribe((data => {
+    this.showImage = this.currentStateService.transform(this.event.picture);
+    this.eventApi.getAllEvents().subscribe((data => {
       this.currentStateService.separateActualAndFutureEvents(data);
     }))
 

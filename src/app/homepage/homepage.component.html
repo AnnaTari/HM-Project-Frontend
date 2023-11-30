@@ -22,7 +22,7 @@
   <div class="information-event-box"> {{event.matchName}} am {{event.eventDate | date: 'dd.MM.yyyy'}}
   </div>
   <div class ="event-image" *ngIf="event.picture">
-    <img [src]="transform(event.picture)" alt="Event Image">
+    <img [src]="currentStateService.transform(event.picture)" alt="Event Image">
   </div>
 
 </div>
