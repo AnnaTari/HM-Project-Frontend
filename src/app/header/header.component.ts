@@ -11,10 +11,12 @@ import {AuthService} from "../shared/auth/auth.service";
 })
 export class HeaderComponent {
 
+
+  //constructor injects Router and AuthService dependencies
   constructor(private router: Router, public authService: AuthService) {
   }
 
-//Methods to navigate to...
+//methods to navigate to...
   navigateToTermsAndConditions() {
     this.router.navigate(['./terms-and-conditions']);
   }

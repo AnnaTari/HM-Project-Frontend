@@ -11,8 +11,8 @@ h1 {
 
 .event-container {
   display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
+  flex-wrap: nowrap; /*boxes remain in a single line*/
+  flex-direction: row; /*horizontally arranged*/
   justify-content: center;
 }
 
@@ -25,7 +25,7 @@ h1 {
   align-items: center;
   height: 250px;
   width: 390px;
-  border: 2px solid black;
+  border: 2px solid #005E52;
   border-radius: 5%;
   padding-top: 25px;
 }

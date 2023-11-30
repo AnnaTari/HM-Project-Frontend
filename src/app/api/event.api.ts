@@ -14,6 +14,7 @@ export class EventApi {
   constructor(private httpClient: HttpClient) {
   }
 
+
   //Get all events from the backend
   public getAllEvents(): Observable<EventWithPictureModel[]> {
     let response = this.httpClient.get<EventWithPictureModel[]>(this.endpoint);

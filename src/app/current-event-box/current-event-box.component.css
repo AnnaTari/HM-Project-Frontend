@@ -12,7 +12,7 @@
   margin-right: 40px;
   height: 290px;
   width: 390px;
-  border: 2px solid black;
+  border: 2px solid #005E52;
   border-radius: 5%;
   padding-top: 15px;
 }
@@ -56,3 +56,5 @@ img {
 .participation-button:hover {
   cursor: pointer;
 }
+
+
