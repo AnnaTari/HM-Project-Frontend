@@ -14,7 +14,6 @@ export class AdminApi {
 
   //login method that sends username and password to the localhost: 8200
   public login(admin:AdminModel): Observable<AdminModel> {
-    console.log("Vor Abschicken" + admin.adminName, admin.adminPassword);
     return this.httpClient.post <AdminModel>(this.endpoint, admin);
   }
 }

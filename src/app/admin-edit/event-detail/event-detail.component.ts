@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {EventWithPictureModel} from "../../shared/models/eventWithPicture.model";
-import {DomSanitizer} from "@angular/platform-browser";
 import {CurrentStateService} from "../../shared/services/current-state.service";
 
 

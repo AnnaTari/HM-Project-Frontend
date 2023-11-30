@@ -29,15 +29,15 @@
         <mat-datepicker #matchDate></mat-datepicker>
       </mat-form-field>
       <div class="form-group">
-        <label for="matchTime">Zeit des Spiels</label>
+        <label for="matchTime">Zeit des Spiels*</label>
         <div class="input-wrapper">
-          <input id="matchTime" type="time" formControlName="matchTime">
+          <input id="matchTime" type="time" formControlName="matchTime" required>
         </div>
       </div>
       <mat-form-field class="form-group">
         <mat-label>Deadline</mat-label>
         <input matInput id="deadline" [matDatepicker]="deadline" formControlName="deadline" required>
-        <mat-datepicker-toggle matTooltip="Datum bis man sich anmelden kann" matSuffix [for]="deadline"></mat-datepicker-toggle>
+        <mat-datepicker-toggle matTooltip="Datum bis wann man sich anmelden kann" matSuffix [for]="deadline"></mat-datepicker-toggle>
         <mat-datepicker #deadline></mat-datepicker>
       </mat-form-field>
     </div>
@@ -64,7 +64,7 @@
         <input id="fileInput" type="file" (change)="onFileChange($event)">
       </div>
       <div class="form-group">
-        <button mat-raised-button color="primary" type="submit">Erstellen</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!eventForm.valid">Erstellen</button>
         <button mat-raised-button color="accent" [routerLink]="['/admin-edit']">Abbrechen</button>
       </div>
     </div>

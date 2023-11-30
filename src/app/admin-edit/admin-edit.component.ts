@@ -20,6 +20,7 @@ export class AdminEditComponent implements OnInit {
   }
 
   ngOnInit() {
+    //gets all Events which are distinguished in the currentStateService to show the list of actual and future Events
     this.eventApi.getAllEvents().subscribe((events => {
       this.currentStateService.separateActualAndFutureEvents(events);
       console.log(events);

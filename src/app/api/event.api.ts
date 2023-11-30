@@ -17,7 +17,7 @@ export class EventApi {
   //Get all events from the backend
   public getAllEvents(): Observable<EventWithPictureModel[]> {
     let response = this.httpClient.get<EventWithPictureModel[]>(this.endpoint);
-    response.subscribe((data => console.log(data)))
+    response.subscribe((events => console.log(events)))
     return response;
   }
 
@@ -38,7 +38,7 @@ export class EventApi {
 
   private createFormData(event: any, byteArray: number[]) {
     //When I use EventModel as typescript class in JSON stringify I get {"isTrusted":true}
-    //-->maybe the properties of EventModel aren't enumerable. That's why I am using a plain object of event
+    //-->That's why I am using a plain object of event
     const eventJson = JSON.stringify(event);
     console.log(eventJson)
     const formData = new FormData();

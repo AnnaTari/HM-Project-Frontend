@@ -99,7 +99,6 @@ export class CurrentStateService {
         expiredEvents.push(event);
       }
     })
-    console.log(expiredEvents);
     this.setActualEvents(actualEvents);
     this.setFutureEvents(futureEvents);
     this.setExpiredEvents(expiredEvents);

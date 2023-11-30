@@ -40,7 +40,7 @@ export class EditEventComponent implements OnInit {
       matchName: ['', Validators.required],
       matchDetails: [''],
       matchDate: [Date, Validators.required],
-      matchTime: [''],
+      matchTime: ['', Validators.required],
       location: ['Volksparkstadion'],
       deadline: [Date, Validators.required],
       ticketType: [2],
@@ -90,10 +90,7 @@ export class EditEventComponent implements OnInit {
     reader.onload = (picture: any) => {
       let arrayBuffer = picture.target.result;
       byteArray = new Uint8Array(arrayBuffer);
-      //sends added event to the backend
-      //If the user updated an event
-      let id = Number(this.route.snapshot.paramMap.get('id'));
-      this.updateEvent(event, id, byteArray);
+      this.sendEvent(event, byteArray);
     };
     //this is very important --> so that the picture can be read!
     if (this.selectedFile) {
@@ -172,10 +169,13 @@ export class EditEventComponent implements OnInit {
     fileInput.dispatchEvent(new Event('change'));
   }
 
-  updateEvent(event: EventModel, id: number, byteArray:Uint8Array) {
+  sendEvent(event: EventModel, byteArray:Uint8Array) {
+    let id = Number(this.route.snapshot.paramMap.get('id'));
     if (id != 0 && id != null) {
+      //sends updated event to the backend
       this.eventApi.updateEvent(this.toJSON(event), Array.from(byteArray)).subscribe((data) => this.currentStateService.separateActualAndFutureEvents(data));
     }else {
+      //sends added event to the backend
       this.eventApi.addEvent(this.toJSON(event), Array.from(byteArray)).subscribe((events) => this.currentStateService.separateActualAndFutureEvents(events));
     }
   }
