@@ -6,4 +6,9 @@
       <button mat-button mat-stroked-button mat-dialog-close cdkFocusInitial>Abbrechen</button>
     </div>
   </div>
+
+  <!-- popup works but popup works, but finished button is left -->
+  <div [hidden]="(this.actualRoute !== 'event-page')">
+    <button mat-button color="primary" (click)="onFinish()">Fertig</button>
+  </div>
 </div>
