@@ -5,6 +5,7 @@ import {AdminModel} from "../models/admin.model";
 import {EmployeeModel} from "../models/employee.model";
 import {EventWithPictureModel} from "../models/eventWithPicture.model";
 import {WinnerModel} from "../models/winner.model";
+import {DomSanitizer} from "@angular/platform-browser";
 
 
 @Injectable({
@@ -33,7 +34,7 @@ export class CurrentStateService {
 
   private winner$: BehaviorSubject<WinnerModel[]> = new BehaviorSubject<WinnerModel[]>([]);
 
-  constructor() {
+  constructor(private sanitizer:DomSanitizer) {
 
   }
 
@@ -45,15 +46,6 @@ export class CurrentStateService {
     return this.admin$.asObservable();
   }
 
-
-  setEmployeeObs(employee: EmployeeModel) {
-    this.employee$.next(employee);
-
-  }
-
-  getEmployeeObs() {
-    return this.employee$.asObservable();
-  }
 
   //Events
   setEventObs(event: EventWithPictureModel[]) {
@@ -126,4 +118,7 @@ export class CurrentStateService {
     return admin && admin.adminId !== 0;
   }
 
+  transform(base64Image: Uint8Array) {
+    return this.sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + base64Image);
+  }
 }
