@@ -1,7 +1,7 @@
 /*Box with the login window*/
 .login-box {
   width: 55%;
-  margin: 5% auto;
+  margin: 1.5% auto;
   height: 600px;
   border: 1px #4F4343 solid;
   border-radius: 15px;
@@ -24,7 +24,7 @@
   line-height: 60px;
 }
 
-/*Box, where the data is typed in*/
+/*Box with the labels and inputs*/
 .grid-container {
   margin-top: 6%;
   display: grid;
@@ -34,16 +34,12 @@
 .label-container {
   padding: 40px 0 40px 80px;
   font-size: 30px;
+  color: #A3A1A1;
 }
 
 .input-container {
   text-align: center;
   padding: 20px 0;
-}
-
-.grid-container p {
-  color: #A3A1A1;
-  font-size: 28px;
 }
 
 .input-box {
@@ -67,16 +63,10 @@ button.send-button {
   cursor: pointer;
   width: 274px;
   height: 65px;
-  background: #00A075;
+  background: #005E52;
   border-radius: 5%;
   border: none;
   box-shadow: 0 0.4rem .8rem #0005;
-}
-
-.warn-text {
-  color: red;
-  font-size: 24px;
-  margin-top: 2%;
 }
 
 p.button-text {
@@ -85,3 +75,9 @@ p.button-text {
   font-size: 30px;
 }
 
+/*Text when you use false credentials*/
+.warn-text {
+  color: red;
+  font-size: 24px;
+  margin-top: 2%;
+}

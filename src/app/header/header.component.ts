@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 import {CurrentStateService} from "../shared/services/current-state.service";
+import {AuthService} from "../shared/auth/auth.service";
 
 
 @Component({
@@ -10,8 +11,9 @@ import {CurrentStateService} from "../shared/services/current-state.service";
 })
 export class HeaderComponent {
 
-  //constructor injects Router and CurrentStateService dependencies
-  constructor(private router: Router, public currentStateService: CurrentStateService) {
+
+  //constructor injects Router and AuthService dependencies
+  constructor(private router: Router, public authService: AuthService) {
   }
 
 //methods to navigate to...
@@ -32,8 +34,13 @@ export class HeaderComponent {
   }
 
   navigateToAdminEdit() {
-  this.router.navigate(['./admin-edit']);
-   }
+    this.router.navigate(['./admin-edit']);
+  }
+
+  logout() {
+    this.router.navigate([""]);
+    this.authService.logout();
+  }
 
 }
 

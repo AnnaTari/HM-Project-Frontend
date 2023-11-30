@@ -1,6 +1,10 @@
 # LotteryApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.4. We had version 10.1.0 for the npm package manager and version 20.9.0 for Node.js.
+
+## Setup
+
+If you want to use the Angular Framework, you need to set everything up according to the official website: https://angular.io/guide/setup-local. 
 
 ## Development server
 

@@ -6,8 +6,7 @@
   font-weight: 700;
   line-height: 60px;
   text-align: center;
-  margin-top: 100px;
-  margin-bottom: -80px;
+  margin-bottom: -2%;
 }
 
 /* event-body complete */
@@ -19,25 +18,28 @@
 
 .picture-placeholder {
   width: 20%;
-  height: 230px;
+  height: 160px;
   border-radius: 15px;
   border: 2px #00A075 solid;
   position: relative;
-  left: 250px;
-  top: 120px;
-  margin-bottom: 20px;
+  left: 13%;
+  margin-top: 5%;
+  text-align: center;
 }
 
+img{
+  width: 300px;
+  height: 160px;
+}
 /* matchdetails-style */
 
 .matchinfo-box {
   width: 25%;
-  height: 280px;
+  height: 30%;
   border-radius: 15px;
   border: 2px #00A075 solid;
-  position: relative;
-  top: 120px;
-  left: 200px;
+  margin-top: 2%;
+  margin-left: 10%;
 }
 
 .matchinfo-box > h3 {
@@ -46,7 +48,7 @@
   text-align: center;
   font-weight: 700;
   line-height: 60px;
-  margin-top: 1px;
+  margin-top: 5%;
 }
 
 .matchinfo-box > p {
@@ -64,20 +66,19 @@
   font-style: italic;
 }
 
-/*Box with the participation window*/
+/*Box with the participation window */
 .participation-box {
   width: 35%;
-  height: 450px;
-  border: 2px #00A075 solid;
+  border: 2px #005E52 solid;
   border-radius: 15px;
   box-shadow: 30px 20px 30px rgba(0, 0, 0, 0.2);
   position: relative;
-  left: 1020px;
-  margin-top: -370px;
-  margin-bottom: 150px;
+  margin-left: 57%;
+  margin-top: -22%;
+  margin-bottom: 5%;
 }
 
-.title-box{
+.title-box {
   height: 13%;
   width: 95%;
   margin: auto;
@@ -90,7 +91,9 @@
   font-weight: 700;
   line-height: 60px;
   text-align: center;
+  margin-top: 2%;
 }
+
 
 /*participation-box, where user can type in */
 .container {
@@ -104,10 +107,11 @@
 .container p {
   color: black;
   font-size: 22px;
+  margin-top: 10%;
 }
 
-.input-box{
-  width: 330px;
+.input-box {
+  width: 75%;
   height: 36px;
   border-radius: 6px;
   margin-top: 4%;
@@ -116,15 +120,18 @@
 }
 
 /*abschicken-button */
-.send-box{
-  margin-left: 240px;
-  margin-top: 50px;
+.send-box {
+  height: 60px;
+  margin-left: 110%;
+  margin-top: 25%;
+  margin-bottom: 15%;
 }
+
 
 button.send-button {
   width: 174px;
-  height: 35px;
-  background: #00A075;
+  height: 60px;
+  background: #005E52;
   border-radius: 20px;
   border-color: black;
   transition: background-color 0.3s;
@@ -136,11 +143,7 @@ button.send-button:hover {
 }
 
 p.button-text {
-  font-size: 15px;
-  color: black;
-  text-align: center;
-  line-height: 0;
-  margin-top: 10px;
+  color: white !important;
 }
 
 .message-text {
@@ -148,7 +151,8 @@ p.button-text {
   font-weight: bold;
   font-size: 18px;
   text-align: center;
-  margin-top: 30px;
+  margin-top: 3%;
   font-style: italic;
+  margin-bottom: 2%;
 }
 

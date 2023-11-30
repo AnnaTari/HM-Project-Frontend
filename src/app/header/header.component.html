@@ -1,18 +1,23 @@
 <!-- headerbar when admin is logged in-->
-<div class="headerbar" *ngIf="!currentStateService.isLoggedIn()">
-  <!--button Teilnahmebedingungen-->
+<div class="headerbar" *ngIf="!(authService.getLoggedIn() | async)">
+   <!--button Teilnahmebedingungen-->
   <button class="events-button" (click)="navigateToTermsAndConditions()">Teilnahmebedingungen</button>
   <!--Logo-->
   <div class="logo-box"><img class="logo" alt="logo" src="/assets/images/logo.jpg" (click)="navigateToHomepage()"></div>
   <!--button Adminanmeldung-->
     <button class="events-button" (click)="navigateToLogin()">Adminanmeldung</button>
   </div>
-
 <!-- headerbar when admin is logged out-->
-<div class="headerbar" *ngIf="currentStateService.isLoggedIn()">
+<div class="headerbar" *ngIf="authService.getLoggedIn()| async">
   <button class="events-button" (click)="navigateToRafflePage()">Auslosungen</button>
   <div class="logo-box"><img class="logo" alt="logo" src="/assets/images/logo.jpg" (click)="navigateToHomepage()"></div>
-  <button class="events-button" (click)="navigateToAdminEdit()">Adminbereich</button>
+  <div class="dropdown">
+    <button class="events-button">Adminbereich</button>
+    <div class="dropdown-content">
+      <button class="events-button" (click)="navigateToAdminEdit()">Event bearbeiten</button>
+      <button class="events-button" (click)="logout()">Abmelden</button>
+    </div>
+  </div>
 </div>
 
 

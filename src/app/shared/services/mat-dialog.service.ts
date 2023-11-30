@@ -12,9 +12,4 @@ export class MatDialogService {
   constructor(public dialog: MatDialog) {
   }
 
-  openDialogWithVariableText(text: string): void {
-    this.dialog.open(PopUpComponent, {
-      data: {dynamicText: text} // Pass the variable text as data
-    });
-      }
 }

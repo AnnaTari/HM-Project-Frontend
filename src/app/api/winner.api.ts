@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {WinnerModel} from "../shared/models/winner.model";
-import {EventModel} from "../shared/models/event.model";
 import {EventWithPictureModel} from "../shared/models/eventWithPicture.model";
 import {share} from "rxjs/operators";
 

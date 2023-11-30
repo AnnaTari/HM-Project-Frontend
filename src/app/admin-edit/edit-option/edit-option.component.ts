@@ -27,17 +27,19 @@ export class EditOptionComponent {
     ticketType: 0,
   };
 
-  deleteText: string = "Möchten Sie dieses Event wirklich löschen?";
+  //text that appears in the popup when you delete an event
+  deletionText: string = "Möchten Sie dieses Event wirklich löschen?";
 
   constructor(public dialog: MatDialog, private route: ActivatedRoute, private eventApi: EventApi, private currentStateService: CurrentStateService, private router: Router) {
   }
 
+  //popup opens when you delete an event
   openDialog() {
     const segments = this.route.snapshot.url.map(segments => segments.path);
     let dialogRef = this.dialog.open(PopUpComponent, {
-      data: {action: false, message: this.deleteText, route: segments},
+      data: {action: false, message: this.deletionText, route: segments},
     });
-
+    //When you close the dialog, it checks through the boolean value  of action if an event was deleted or not
     dialogRef.afterClosed().subscribe((result: PopupActionModel) => {
       if (result.action) {
         this.eventApi.deleteEvent(this.event).subscribe(
