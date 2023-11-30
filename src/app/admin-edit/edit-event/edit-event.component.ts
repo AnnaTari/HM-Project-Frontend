@@ -43,8 +43,8 @@ export class EditEventComponent implements OnInit {
       matchTime: ['', Validators.required],
       location: ['Volksparkstadion'],
       deadline: [Date, Validators.required],
-      ticketType: [2],
-      ticketAmount: [0],
+      ticketType: [2, Validators.required],
+      ticketAmount: [0, Validators.required],
       registrationDate: [Date, Validators.required],
     })
     this.$actualEvents = this.currentStateService.getActualEvents()

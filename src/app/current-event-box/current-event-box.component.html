@@ -4,7 +4,7 @@
   <div class="information-event-box"> {{event.matchName}} am {{event.eventDate | date: 'dd.MM.yyyy'}}
   </div>
   <!-- output eventpicture-->
-  <div class ="event-image" *ngIf="event.picture">
+  <div class ="event-image">
     <img [src]="showImage" alt="Event Image">
   </div>
   <!-- participation button and giving ID to eventpage-->

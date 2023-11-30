@@ -23,7 +23,7 @@
 <div class="future-event-box" *ngFor="let event of (futureEvents$ | async)" >
   <div class="information-event-box"> {{event.matchName}} am {{event.eventDate | date: 'dd.MM.yyyy'}}
   </div>
-  <div class ="event-image" *ngIf="event.picture">
+  <div class ="event-image">
     <img [src]="currentStateService.transform(event.picture)" alt="Event Image">
   </div>
 

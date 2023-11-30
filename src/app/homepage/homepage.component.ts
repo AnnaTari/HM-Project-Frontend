@@ -22,7 +22,7 @@ export class HomepageComponent implements OnInit{
   showImage: any;
 
   //fetch event data from eventApi, setting event observation in current state service, retrieve actual and future events
-  constructor(private eventApi: EventApi, private currentStateService: CurrentStateService, private sanitizer:DomSanitizer) {
+  constructor(private eventApi: EventApi, public currentStateService: CurrentStateService, private sanitizer:DomSanitizer) {
     this.eventApi.getAllEvents().subscribe((data)=> this.currentStateService.setEventObs(data));
     this.actualEvents$ = this.currentStateService.getActualEvents();
     this.futureEvents$ = this.currentStateService.getFutureEvents();

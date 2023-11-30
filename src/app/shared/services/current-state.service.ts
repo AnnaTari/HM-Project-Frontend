@@ -113,6 +113,7 @@ export class CurrentStateService {
     return this.winner$.asObservable();
   }
 
+  //create trusted URL for the image
   transform(base64Image: Uint8Array) {
     return this.sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + base64Image);
   }
